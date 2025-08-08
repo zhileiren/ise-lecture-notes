@@ -122,7 +122,7 @@ Dalian University of Technology
     \includegraphics[width=.4\textwidth]{treecust.jpg}
 \end{frame}
 
-\begin{frame}[t]{Guide to GoodProgramming Practice, 1979}
+\begin{frame}[t]{Guide to Good Programming Practice, 1979}
     \includegraphics[width=.4\textwidth]{treeswing_computer_book_cover.jpg}
 \end{frame}
 
@@ -142,6 +142,25 @@ Dalian University of Technology
     % https://mde-optimiser.github.io/case-studies/nrp/
     % https://www.sciencedirect.com/science/article/pii/S095058490100194X
     % feature model
+    Given:
+    \begin{itemize}
+      \item A set of software requirements \( R = \{r_1, r_2, \dots, r_n\} \),
+      \item A set of customers \( C = \{c_1, c_2, \dots, c_m\} \),
+      \item Each customer \( c_j \in C \) requests a subset of requirements \( R_j \subseteq R \) and provides a profit  \( p_j > 0 \) if all requirements in \( R_j \) are satisfied,
+      \item Each requirement \( r_i \in R \) has an associated cost \( \text{cost}(r_i) > 0 \),
+      \item A total available budget \( B > 0 \).
+    \end{itemize}
+
+    The goal is to select a subset of requirements \( R' \subseteq R \) such that:
+    \begin{enumerate}
+      \item The total cost does not exceed the budget: $\sum_{r_i \in R'} \text{cost}(r_i) \leq B$, 
+      \item The total profit is maximized:
+      \[
+      \max_{R' \subseteq R} \sum_{\substack{c_j \in C \\ R_j \subseteq R'}} p_j.
+      \]
+    \end{enumerate}
+
+    This is known as the \textbf{Next Release Problem (NRP)} and is a well-known NP-hard problem in requirements engineering and software release planning.
 \end{frame}
 
 \begin{frame}[t]{bug or feature?}
