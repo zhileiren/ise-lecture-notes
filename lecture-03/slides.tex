@@ -23,6 +23,7 @@
 \usepackage{biblatex}
 \usepackage{bibentry}
 \usepackage{verbatim}
+\usepackage{listings}
 \bibliography{cite}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
@@ -78,6 +79,27 @@ Dalian University of Technology
 \setbeamertemplate{bibliography entry title}{}
 \setbeamertemplate{bibliography entry journal}{}
 
+% PlantUML listing configuration
+\lstdefinestyle{plantuml}{
+    language=Java,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{white!95!black},
+    frame=single,
+    rulecolor=\color{black},
+    tabsize=2,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    showstringspaces=false
+}
+
 \begin{document}
 
 \begin{frame}
@@ -120,6 +142,7 @@ There is no single development, in either technology or management technique, wh
 \includegraphics[width=.2\textwidth]{man_month.jpg} 
 
 \end{frame}
+
 
 \end{document}
 
