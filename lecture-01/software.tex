@@ -1,141 +1,18 @@
 \documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{seahorse}
 
-
-\mode<presentation>
-{
-  \usetheme{CambridgeUS}
-	\usecolortheme{beaver}
-  % or ...
-
-  \setbeamercovered{transparent}
-  % or whatever (possibly just delete it)
-}
-
-
-\usepackage{xeCJK}
-\usepackage{ulem}
-\usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{times}
-\usepackage[T1]{fontenc}
-\usepackage{hyperref}
-\usepackage{pifont}
-\usepackage{biblatex}
-\usepackage{bibentry}
-\usepackage{verbatim}
-\bibliography{cite}
-\newcommand{\cmark}{\ding{51}}%
-\newcommand{\xmark}{\ding{55}}%
-\setCJKmainfont{WenQuanYi Micro Hei}
-\renewcommand{\raggedright}{\leftskip=0pt \rightskip=0pt plus 0cm}
-\raggedright
-
-\let\oldfootnotesize\footnotesize
-\renewcommand*{\footnotesize}{\oldfootnotesize\tiny}
-
-\title[Intelligent Software Engineering] 
-{Intelligent Software Engineering}
-\subtitle{\small{When Software Meets Artificial Intelligence}}
-
-\author[Zhilei Ren] 
-{Zhilei Ren}
-
-\institute[Dalian University of Technology] % (optional, but mostly needed)
-{
-\\\includegraphics[width=0.1\textwidth]{../utils/logo.png}\\
-Dalian University of Technology
-}
-
-
-\subject{Software Engineering}
-
-
-
-\pgfdeclareimage[width=0.08\textwidth]{university-logo}{../utils/logo.png}
-\logo{\pgfuseimage{university-logo}}
-
-
-
-% Delete this, if you do not want the table of contents to pop up at
-% the beginning of each subsection:
-%%%%% \AtBeginSubsection[]
-%%%%% {
-%%%%%   \begin{frame}<beamer>{Outline}
-%%%%%     \tableofcontents[currentsection]
-%%%%%   \end{frame}
-%%%%% }
-
-
-% If you wish to uncover everything in a step-wise fashion, uncomment
-% the following command: 
-
-%\beamerdefaultoverlayspecification{<+->}
-
-\setbeamertemplate{section in toc}[circle]
-\setbeamertemplate{items}[circle]
-\setbeamertemplate{caption}[numbered]
-\setbeamertemplate{bibliography item}{\insertbiblabel}
-\setbeamertemplate{bibliography entry title}{}
-\setbeamertemplate{bibliography entry journal}{}
-\setbeamerfont{subsection in toc}{size=\tiny}
+\title{History of Software Engineering}
+\subtitle{From 1968 to the LLM Era}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
 
 \begin{document}
 
-\begin{frame}
-  \titlepage
-\end{frame}
+\frame{\titlepage}
 
-\begin{frame}{Outline}
-  \tableofcontents[currentsection,currentsubsection, 
-    sectionstyle=show,
-    subsectionstyle=show,
-]
-\end{frame}
-
-\AtBeginSection[]
-{
- \begin{frame}<beamer>
- \frametitle{Outline}
- \tableofcontents[currentsection]
- \end{frame}
-}
-\section{Introduction}
-
-\begin{frame}
-\frametitle{About Me}
-\begin{block}{Zhilei Ren}
-	\begin{itemize}
-		\item Professor at Dalian University of Technology
-        \item \url{https://zhilei.ren}
-		\item \href{mailto:zren@dlut.edu.cn}{\texttt{zren@dlut.edu.cn}}
-		\item Research Interests: 
-
-			\begin{itemize}
-				\item Intelligent software engineering
-                \item Software testing, fault localization, and automated repairing
-				\item Dynamic tracing 
-			\end{itemize}
-
-%		\item OSCAR stands for ``Optimizing Software by Computation from ARtificial intelligence''
-%			\pause
-%		\item or ``Operating System will Crash whenever my Algorithm Runs''
-        \item \scriptsize{\url{https://github.com/zhileiren/ise-lecture-notes.git}}
-	\end{itemize}
-\end{block}
-\end{frame}
-\begin{frame}
-\frametitle{Research Team}
-\begin{block}{OSCAR}
-	\begin{itemize}
-        \item ``\textbf{O}perating \textbf{S}ystem and \textbf{C}ompiler with \textbf{A}pplication \textbf{R}esearch''
-		\item ``\textbf{O}ptimizing \textbf{S}oftware by \textbf{C}omputation from \textbf{AR}tificial intelligence''
-		\item ``\textbf{O}perating \textbf{S}ystem will \textbf{C}rash whenever my \textbf{A}lgorithm \textbf{R}uns''
-	\end{itemize}
-\end{block}
-\end{frame}
-
-\section{Brief History of Software Engineering}
-\subsection{Pioneering Thoughts}
+\section{Pioneering Thoughts}
 
 % 第一页：Ada Lovelace 简介
 \begin{frame}{1843: Ada Lovelace - The First Programmer}
@@ -228,7 +105,7 @@ She asked the fundamental question about AI and machine capability that we still
 The conceptual foundation laid by Lovelace had to wait for technology to catch up.
 \end{block}
 \end{frame}
-\subsection{The Origins}
+\section{The Origins}
 
 \begin{frame}{The Dawn of Software Engineering}
 \begin{itemize}
@@ -243,7 +120,7 @@ The conceptual foundation laid by Lovelace had to wait for technology to catch u
 \end{center}
 \end{frame}
 
-\subsection{Foundational Concepts}
+\section{Foundational Concepts}
 
 \begin{frame}{1968: The Birth of a Discipline}
 \begin{columns}
@@ -299,7 +176,7 @@ The book remains a cornerstone of software project management, highlighting the 
 \end{frame}
 % ========== END OF NEW SLIDE ==========
 
-\subsection{Key Milestones}
+\section{Key Milestones}
 
 \begin{frame}{1984: Reflections on Trusting Trust}
 \begin{itemize}
@@ -351,7 +228,7 @@ The tools we use to build software must themselves be trustworthy. There is no u
 \end{center}
 \end{frame}
 
-\subsection{The Eternal Battle: Bugs, Debugging, and Testing}
+\section{The Eternal Battle: Bugs, Debugging, and Testing}
 
 \begin{frame}{1947: The First "Computer Bug"}
 \begin{columns}
@@ -489,7 +366,7 @@ Early "debugging" was a physical, hardware-centric activity.
 To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, and to reduce the time between discovering a failure and fixing it from months to minutes.
 \end{block}
 \end{frame}
-\subsection{Modern Era}
+\section{Modern Era}
 
 \begin{frame}{2000s: Agile and DevOps}
 \begin{columns}
@@ -531,7 +408,7 @@ To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, an
 \end{center}
 \end{frame}
 
-\subsection{LLM Era}
+\section{LLM Era}
 
 \begin{frame}{2020s: The LLM Revolution}
 \begin{columns}
@@ -568,7 +445,7 @@ To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, an
 \end{block}
 \end{frame}
 
-\subsection{Conclusion}
+\section{Conclusion}
 
 \begin{frame}{Software Engineering Evolution Timeline}
 \begin{center}
@@ -591,198 +468,7 @@ To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, an
     \textbf{The journey continues...}
 \end{center}
 \end{frame}
-\section{Brief History of Artificial Intelligence}
-\subsection{Pioneering Thoughts}
-\begin{frame}{The Seeds of an Idea}
-\begin{itemize}
-    \item \textbf{Ancient Myths}: Stories of artificial beings endowed with intelligence (e.g., Talos, Golems).
-    \item \textbf{Philosophical Foundations}: Descartes' mind-body problem, Hobbes' view of reasoning as calculation.
-    \item \textbf{Ada Lovelace (1843)}: Questioned whether machines could originate ideas, or only do what we command.
-    \item \textbf{Early 20th Century}: Karel Čapek's play "R.U.R." (1920) coins the term "robot".
-\end{itemize}
-\begin{center}
-    % \includegraphics[width=0.3\textwidth]{images/talos_robot.jpg}
-    \quad
-    % \includegraphics[width=0.3\textwidth]{images/rur_play.jpg}
-\end{center}
-\end{frame}
-\subsection{1950s: The Birth of a Field}
 
-\begin{frame}{1950s: The Foundational Decade}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
-        \begin{itemize}
-            \item \textbf{Alan Turing (1950)}: Publishes "Computing Machinery and Intelligence", proposing the \textbf{Turing Test}.
-            \item \textbf{The Name is Coined}: John McCarthy organizes the \textbf{Dartmouth Conference} (1956) and coins the term "Artificial Intelligence".
-            \item \textbf{Early Optimism}: Founders predicted a machine as intelligent as a human within a generation.
-            \item \textbf{Key Early Programs}:
-                \begin{itemize}
-                    \item Logic Theorist (Newell \& Simon, 1956)
-                    \item Samuel's Checkers Player (1959)
-                \end{itemize}
-        \end{itemize}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        % \includegraphics[width=0.9\textwidth]{images/turing_test_diagram.png}
-        \\\scriptsize{Diagram of the Turing Test}
-    \end{column}
-\end{columns}
-\begin{block}{The Goal Was Set}
-"Every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it." - Dartmouth Proposal
-\end{block}
-\end{frame}
-
-\subsection{1960s-70s: Symbolic AI and the First AI Winter}
-
-\begin{frame}{1960s-70s: Symbolic AI \& Limits}
-\begin{itemize}
-    \item \textbf{Symbolic AI (GOFAI)}: Dominant paradigm. Focused on manipulating symbols and logical rules to represent knowledge and solve problems.
-    \item \textbf{Successes}:
-        \begin{itemize}
-            \item \textbf{ELIZA} (1966): An early natural language processing program that simulated a Rogerian psychotherapist.
-            \item \textbf{SHRDLU} (1970): A program that could understand natural language commands in a "blocks world".
-            \item Expert systems began development.
-        \end{itemize}
-    \item \textbf{The Limits}: Symbolic AI struggled with the complexity and ambiguity of the real world. It required massive, hand-coded knowledge bases.
-    \item \textbf{The Lighthill Report (1973)}: Criticized the failure of AI to meet its grand promises, leading to a sharp cut in funding - the \alert{First AI Winter}.
-\end{itemize}
-\end{frame}
-
-\subsection{1980s: Expert Systems and the Second AI Winter}
-
-\begin{frame}{1980s: The Rise and Fall of Expert Systems}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
-        \textbf{Expert Systems}
-        \begin{itemize}
-            \item Commercial applications of AI.
-            \item Aimed to capture the knowledge of human experts in rule-based systems.
-            \item \textbf{Success Story}: MYCIN system for diagnosing blood infections performed as well as experts.
-            \item Led to a wave of commercial investment.
-        \end{itemize}
-        \textbf{The Second AI Winter}
-        \begin{itemize}
-            \item Expert systems were \alert{brittle}, expensive to maintain, and could not learn.
-            \item They failed to scale beyond narrow domains.
-            \item By the late 1980s, the hype cycle crashed again, leading to the \textbf{Second AI Winter}.
-        \end{itemize}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        % \includegraphics[width=0.9\textwidth]{images/expert_system_diagram.png}
-        \\\scriptsize{Architecture of an Expert System}
-    \end{column}
-\end{columns}
-\end{frame}
-
-\subsection{1990s-2000s: The Statistical Turn and Machine Learning}
-
-\begin{frame}{1990s-2000s: A New Paradigm}
-\begin{itemize}
-    \item \textbf{Shift from Logic to Statistics}: Instead of programming logical rules, researchers focused on creating systems that could \textbf{learn from data}.
-    \item \textbf{The Rise of Machine Learning}:
-        \begin{itemize}
-            \item \textbf{Support Vector Machines (SVMs)} and other statistical models became powerful tools.
-            \item \textbf{The Web} provided vast amounts of data for training.
-        \end{itemize}
-    \item \textbf{Practical Successes}:
-        \begin{itemize}
-            \item \textbf{Spam Filters} using Naive Bayes classifiers.
-            \item \textbf{Recommendation Systems} (e.g., Amazon, Netflix).
-            \item \textbf{Search Engines} (e.g., Google's PageRank algorithm).
-        \end{itemize}
-    \item \textbf{IBM Deep Blue (1997)}: Defeated world chess champion Garry Kasparov, a landmark symbolic achievement powered largely by search and evaluation functions.
-\end{itemize}
-\begin{center}
-    % \includegraphics[width=0.2\textwidth]{images/svm_diagram.png}
-    \quad
-    % \includegraphics[width=0.2\textwidth]{images/deep_blue.jpg}
-\end{center}
-\end{frame}
-
-\subsection{2010s: The Deep Learning Revolution}
-
-\begin{frame}{2010s: Deep Learning Unleashed}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
-        \textbf{The Breakthrough}
-        \begin{itemize}
-            \item \textbf{Key Enablers}: Massive datasets (Big Data) and powerful parallel processing (GPUs).
-            \item \textbf{ImageNet Competition (2012)}: A deep neural network (AlexNet) drastically reduced error rates, shocking the research community. This was the "big bang" moment for modern AI.
-            \item \textbf{The Technique}: \textbf{Deep Learning} uses neural networks with many layers to automatically learn hierarchical features from raw data.
-        \end{itemize}
-        \textbf{Landmark Achievements}
-        \begin{itemize}
-            \item \textbf{AlphaGo (2016)}: Defeated the world champion in Go, a game considered far more complex than chess.
-            \item Rapid progress in \textbf{computer vision}, \textbf{speech recognition}, and \textbf{machine translation}.
-        \end{itemize}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        % \includegraphics[width=0.95\textwidth]{images/imagenet_error_rate.png}
-        \\\scriptsize{ImageNet Error Rates Plummet with Deep Learning}
-    \end{column}
-\end{columns}
-\end{frame}
-
-\subsection{2020s: The Era of Large Language Models}
-
-\begin{frame}{2020s: The LLM and Generative AI Era}
-\begin{itemize}
-    \item \textbf{Scale is All You Need}: The discovery that vastly scaling up neural networks (size, data, compute) leads to emergent abilities.
-    \item \textbf{The Transformer Architecture (2017)}: Became the foundational model for almost all modern AI, enabling parallel processing of sequences (like text).
-    \item \textbf{Large Language Models (LLMs)}:
-        \begin{itemize}
-            \item Models like GPT-3, GPT-4, Claude, Llama are trained on most of the public internet.
-            \item Capable of \textbf{generating human-like text}, translating, summarizing, and coding.
-        \end{itemize}
-    \item \textbf{Generative AI}: LLMs power tools like ChatGPT, which bring AI capabilities to the general public.
-    \item \textbf{Multimodal AI}: Models that can understand and generate across different modalities (text, images, audio).
-\end{itemize}
-\begin{center}
-    % \includegraphics[width=0.7\textwidth]{images/transformer_architecture.png}
-\end{center}
-\end{frame}
-
-\subsection{Conclusion}
-
-\begin{frame}{AI History: A Journey of Waves}
-\begin{center}
-    % \includegraphics[width=0.9\textwidth]{images/ai_history_waves.png}
-    \scriptsize{The AI field has progressed through waves of optimism followed by "winters" of reduced funding, each wave building on the last.}
-\end{center}
-\begin{block}{The Pattern}
-Symbolic AI (Rules) $\rightarrow$ Statistical ML (Data) $\rightarrow$ Deep Learning (Representations) $\rightarrow$ Generative AI (Creation)
-\end{block}
-\end{frame}
-
-\begin{frame}{Looking Forward}
-\begin{itemize}
-    \item \textbf{Artificial General Intelligence (AGI)}: The original, elusive goal of human-level intelligence remains on the horizon.
-    \item \textbf{Ethics and Safety}: As AI becomes more powerful, concerns about bias, control, and alignment with human values become paramount.
-    \item \textbf{AI as a Commodity}: AI capabilities are being integrated into almost every software product.
-    \item \textbf{The Symbiosis}: The future likely involves a close collaboration between human and artificial intelligence, augmenting human capabilities.
-\end{itemize}
-\begin{center}
-    \textbf{The dream of thinking machines is older than computing itself. The journey is far from over.}
-\end{center}
-\end{frame}
-
-\section{Topics Combining the Two Disciplines}
-\begin{frame}[t]{Search-Based Software Engineering}
-    Search-based software engineering (SBSE) applies metaheuristic search techniques such as genetic algorithms, simulated annealing and tabu search to software engineering problems. Many activities in software engineering can be stated as optimization problems. Optimization techniques of operations research such as linear programming or dynamic programming are often impractical for large scale software engineering problems because of their computational complexity or their assumptions on the problem structure. Researchers and practitioners use metaheuristic search techniques, which impose little assumptions on the problem structure, to find near-optimal or ``good-enough'' solutions\footnote{\url{https://en.wikipedia.org/wiki/Search-based_software_engineering}}.
-\end{frame}
-
-\begin{frame}[t]{Mining Software Repositories}
-Within software engineering, the mining software repositories (MSR) field analyzes the rich data available in software repositories, such as version control repositories, mailing list archives, bug tracking systems, issue tracking systems, etc. to uncover interesting and actionable information about software systems, projects and software engineering\footnote{\url{https://en.wikipedia.org/wiki/Mining_software_repositories}}.
-\end{frame}
-
-\begin{frame}[t]{Empirical Software Engineering}
-Empirical software engineering (ESE) is a subfield of software engineering (SE) research that uses empirical research methods to study and evaluate an SE phenomenon of interest. The phenomenon may refer to software development tools/technology, practices, processes, policies, or other human and organizational aspects\footnote{\url{https://en.wikipedia.org/wiki/Empirical_software_engineering}}. Common research methods used in ESE for primary and secondary research are the following:
-
-\begin{enumerate}
-    \item Primary research (experimentation, case study research, survey research, simulations in particular software Process simulation)
-    \item Secondary research methods (Systematic reviews, Systematic mapping studies, rapid reviews, tertiary review)
-\end{enumerate}
-\end{frame}
 \begin{frame}{References}
 \begin{thebibliography}{10}
 \bibitem{nato1968} NATO Software Engineering Conference (1968)
@@ -796,4 +482,3 @@ Empirical software engineering (ESE) is a subfield of software engineering (SE) 
 \end{frame}
 
 \end{document}
-
