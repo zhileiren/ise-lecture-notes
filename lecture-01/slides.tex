@@ -23,6 +23,8 @@
 \usepackage{biblatex}
 \usepackage{bibentry}
 \usepackage{verbatim}
+\usepackage{subfig}
+\usepackage{tikz}
 \bibliography{cite}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
@@ -138,131 +140,103 @@ Dalian University of Technology
 \subsection{Pioneering Thoughts}
 
 % 第一页：Ada Lovelace 简介
-\begin{frame}{1843: Ada Lovelace - The First Programmer}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
+\begin{frame}[t]{1843: Ada Lovelace - The First Programmer}
         \begin{itemize}
             \item \textbf{Augusta Ada King, Countess of Lovelace} (1815-1852)
             \item Daughter of the poet Lord Byron, trained in mathematics
-            \item Collaborated with Charles Babbage on his \textbf{Analytical Engine}
-            \item Translated an Italian article on the engine, adding her own extensive \textbf{Notes}
-            \item \textbf{Note G} contained what is considered the first computer program
         \end{itemize}
-        \begin{block}{Her Vision}
-            She saw beyond mere calculation to the potential for computers to manipulate any symbols, including music and art.
-        \end{block}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        % \includegraphics[width=0.9\textwidth]{images/ada_lovelace_portrait.jpg}
-        \\\scriptsize{Portrait of Ada Lovelace}
-    \end{column}
-\end{columns}
+        \begin{figure}[b]
+            \centering
+            \includegraphics[width=0.3\textwidth]{images/Ada_Lovelace_portrait.jpg}
+            \caption{Portrait of Ada Lovelace}
+        \end{figure}
 \end{frame}
 
-% 第二页：具体贡献与洞察
-% \begin{frame}{Lovelace's Groundbreaking Insights}
-% \begin{itemize}
-%     \item \textbf{The First Algorithm}: Published an algorithm for computing Bernoulli numbers using the Analytical Engine - the first program intended for a machine.
-%     \item \textbf{Separation of Hardware and Software}: Understood that the machine (hardware) could be instructed (software) to perform various tasks.
-%     \item \textbf{Beyond Calculation}: Envisioned that computers could create music and art, if these could be represented symbolically.
-%     \item \textbf{The Loop Concept}: Her algorithm included a loop, a fundamental programming construct.
-% \end{itemize}
-% 
-% \begin{columns}
-%     \begin{column}{0.5\textwidth}
-%         \begin{center}
-%             % \includegraphics[width=0.8\textwidth]{images/analytical_engine.jpg}
-%             \\\scriptsize{\\Babbage's Analytical Engine}
-%         \end{center}
-%     \end{column}
-%     \begin{column}{0.5\textwidth}
-%         \begin{center}
-%             % \includegraphics[width=0.9\textwidth]{images/ada_notes_algorithm.png}
-%             \\\scriptsize{\\Algorithm from Lovelace's Notes}
-%         \end{center}
-%     \end{column}
-% \end{columns}
-% \end{frame}
+\begin{frame}[t]{1843: Ada Lovelace - The First Programmer}
+        \begin{itemize}
+            \item Collaborated with Charles Babbage on his \textbf{Analytical Engine}
+            \item The Thrilling Adventures of Lovelace and Babbage
+        \end{itemize}
+
+
+        \begin{figure}[b]
+        \centering
+          \subfloat[Trial Model of Analytical Machine]{\includegraphics[height=4cm]{images/AnalyticalMachine_Babbage_London.jpg}}\qquad    
+          \subfloat[Cover of the Comic]{\includegraphics[height=4cm]{images/Comic_cover.jpg}}    
+
+        % \subfloat[Trial Model of Analytical Machine]{
+        %     \includegraphics[width=0.3\textwidth]{images/AnalyticalMachine_Babbage_London.jpg}
+        % }
+        % \subfloat[Trial Model of Analytical Machine]{
+        %     \includegraphics[width=0.3\textwidth]{images/AnalyticalMachine_Babbage_London.jpg}
+        % }
+
+        \caption{Analytical Machine}
+        \end{figure}
+\end{frame}
+
+\begin{frame}[t]{1843: Ada Lovelace - The First Programmer}
+        \begin{itemize}
+            \item She ranslated an Italian article on the engine, adding her own extensive \textbf{Notes}
+            \item \textbf{Note G} contained what is considered the first computer program
+        \end{itemize}
+        \begin{figure}[b]
+            \centering
+            \includegraphics[width=0.5\textwidth]{images/Diagram_for_the_computation_of_Bernoulli_numbers.jpg}
+            \caption{The First Program}
+        \end{figure}
+\end{frame}
+
 
 % 第三页：遗产与影响
-\begin{frame}{Lovelace's Legacy}
+\begin{frame}[t]{Lovelace's Legacy}
 \begin{itemize}
     \item \textbf{The Ada Programming Language}: Named in her honor by the US Department of Defense (1980). Designed for large-scale, safety-critical systems.
-    \item \textbf{Ada Lovelace Day}: An international celebration held every October to recognize the achievements of women in STEM.
-    \item \textbf{Symbolic Importance}: Represents the birth of the idea of software, a century before the first electronic computers.
-    \item \textbf{Bridging Arts and Sciences}: Her unique background highlights the creative aspect of programming.
+    \item \textbf{Ada Lovelace Day}: An international celebration held every second Tuesday of October.
 \end{itemize}
 
-\begin{block}{Her Lasting Impact}
-"Understand well as I may, I cannot yet make it think." - Ada Lovelace.\\
-She asked the fundamental question about AI and machine capability that we still grapple with today.
-\end{block}
 
-\begin{center}
-    % \includegraphics[width=0.2\textwidth]{images/ada_programming_language.png}
-    \quad
-    % \includegraphics[width=0.3\textwidth]{images/ada_lovelace_day_logo.png}
-\end{center}
+    \begin{figure}[b]
+        \centering
+        \includegraphics[width=0.3\textwidth]{images/Ada_logo.png}
+        \caption{The Ada Programming Language Mascot}
+    \end{figure}
 \end{frame}
 
 % 过渡幻灯片：从思想到实践
-\begin{frame}{From Vision to Reality}
+\begin{frame}[t]{From Vision to Reality}
 \begin{center}
-    \textbf{The Long Gap}\\
-    \vspace{0.5cm}
     \begin{tabular}{c}
-        % \includegraphics[width=0.3\textwidth]{images/analytical_engine_small.jpg} \\
-        \textbf{1840s} \\
-        Lovelace's Theoretical Program \\
+        \includegraphics[width=0.25\textwidth]{images/AnalyticalMachine_Babbage_London.jpg} \\
+        \textbf{1840s} Lovelace's Theoretical Program \\
         $\Downarrow$ \textbf{~100 Years} $\Downarrow$ \\
-        % \includegraphics[width=0.3\textwidth]{images/eniac.jpg} \\
-        \textbf{1940s} \\
-        ENIAC - First Electronic Computer \\
-        $\Downarrow$ \\
+        \includegraphics[width=0.25\textwidth]{images/ENIAC_Penn1.jpg} \\
+        \textbf{1940s} ENIAC - First Electronic Computer \\
+        % $\Downarrow$ \\
         % \includegraphics[width=0.3\textwidth]{images/nato1968_small.jpg} \\
-        \textbf{1968} \\
-        Software Engineering Born
+        % \textbf{1968} \\
+        % Software Engineering Born
     \end{tabular}
 \end{center}
-\begin{block}{}
-The conceptual foundation laid by Lovelace had to wait for technology to catch up.
-\end{block}
 \end{frame}
 \subsection{The Origins}
 
-\begin{frame}{The Dawn of Software Engineering}
+\begin{frame}[t]{The Dawn of Software Engineering}
 \begin{itemize}
-    \item \textbf{1968 NATO Conference}: The term "Software Engineering" was coined
+    \item \textbf{1968 NATO Conference}: The term "Software Engineering" 
     \item Addressing the "software crisis" - growing complexity and cost of software development
     \item Key goal: Apply engineering principles to software development
-    \item Recognition that software development needed disciplined approaches
 \end{itemize}
-\begin{center}
-    % Add appropriate image
-    % \includegraphics[width=0.4\textwidth]{images/nato1968.png}
-\end{center}
+    \begin{figure}[b]
+        \centering
+        \includegraphics[width=0.3\textwidth]{images/NATO-conference-photo.png}
+        \caption{The 1968 NATO Garmisch Conference}
+    \end{figure}
 \end{frame}
 
 \subsection{Foundational Concepts}
 
-\begin{frame}{1968: The Birth of a Discipline}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
-        \begin{itemize}
-            \item First NATO Software Engineering Conference in Garmisch, Germany
-            \item Focus on reliable, efficient, and economical software
-            \item Established software development as engineering discipline
-            \item Emphasized need for systematic approaches
-        \end{itemize}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        % Add appropriate image
-        % \includegraphics[width=\textwidth]{images/garmisch.png}
-    \end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{1968: "Goto Statement Considered Harmful"}
+\begin{frame}[t]{1968: "Goto Statement Considered Harmful"}
 \begin{itemize}
     \item \textbf{Edsger Dijkstra's seminal letter} (1968)
     \item Advocated against use of GOTO statements
@@ -275,8 +249,7 @@ The conceptual foundation laid by Lovelace had to wait for technology to catch u
 \end{block}
 \end{frame}
 
-% ========== NEW SLIDE: Mythical Man-Month ==========
-\begin{frame}{1975: The Mythical Man-Month}
+\begin{frame}[t]{1975: The Mythical Man-Month}
 \begin{columns}
     \begin{column}{0.6\textwidth}
         \begin{itemize}
@@ -284,55 +257,141 @@ The conceptual foundation laid by Lovelace had to wait for technology to catch u
             \item Based on experience managing IBM OS/360 development
             \item \textbf{Core thesis}: "Adding manpower to a late software project makes it later"
             \item \alert{Brooks's Law}: The "man-month" is a dangerous and fallacious unit of measurement for software work due to communication overhead.
-            \item Distinction between \textbf{essential} and \textbf{accidental} complexity.
+            \item ``No Silver Bullet''
         \end{itemize}
     \end{column}
     \begin{column}{0.4\textwidth}
         % Placeholder for the book cover image
         % \includegraphics[width=0.9\textwidth]{images/man-month-cover.jpg}
-        \\\scriptsize{Cover of "The Mythical Man-Month"}
+        \includegraphics[width=0.6\textwidth]{images/Mythical Man-Month.jpg}
     \end{column}
 \end{columns}
-\begin{block}{Enduring Legacy}
-The book remains a cornerstone of software project management, highlighting the human and communicative nature of the software process.
-\end{block}
 \end{frame}
 % ========== END OF NEW SLIDE ==========
 
 \subsection{Key Milestones}
 
-\begin{frame}{1984: Reflections on Trusting Trust}
+\begin{frame}[t]{1984: Reflections on Trusting Trust}
 \begin{itemize}
     \item \textbf{Ken Thompson's Turing Award Lecture} (1984)
-    \item Demonstrated the "trusting trust" attack
     \item A compiler could insert backdoors that propagate themselves
     \item Fundamental insight into software supply chain security
-    \item Still critically relevant in modern software security
 \end{itemize}
+\begin{figure}
+    \includegraphics[width=0.3\textwidth]{images/Ken_UNIX.png}
+    \caption{Ken Thompson and Dennis Ritchie with UNIX}
+\end{figure}
+\pause
 \begin{alertblock}{Key Takeaway}
-The tools we use to build software must themselves be trustworthy. There is no ultimate root of trust.
+    The tools we use to build software must themselves be trustworthy. There is no ultimate root of trust.
 \end{alertblock}
 \end{frame}
 
-\begin{frame}{1980s-1990s: GNU and Open Source Revolution}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
-        \begin{itemize}
-            \item \textbf{Richard Stallman launches GNU Project} (1983)
-            \item Free Software Foundation established (1985)
-            \item Linux kernel created by Linus Torvalds (1991)
-            \item Open Source Initiative founded (1998)
-            \item Collaborative development model proven successful
-        \end{itemize}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        % Add appropriate image
-        % \includegraphics[width=0.8\textwidth]{images/gnu-linux.png}
-    \end{column}
-\end{columns}
+
+
+\begin{frame}[t]{1980s-1990s: GNU and Open Source Revolution}
+    \begin{itemize}
+        \item \textbf{Richard Stallman launches GNU Project} (1983)
+        \item Free Software Foundation established (1985)
+    \end{itemize}
+    \begin{figure}
+        \includegraphics[width=0.8\textwidth]{images/stallman.jpg}
+        \caption{Richard and the GNU project}
+    \end{figure}
 \end{frame}
 
-\begin{frame}{1980s-1990s: Object-Oriented Revolution}
+\begin{frame}[t]{1980s-1990s: GNU and Open Source Revolution}
+    \begin{itemize}
+        \item Linux kernel created by Linus Torvalds (1991)
+        \item Open Source Initiative founded (1998)
+    \end{itemize}
+    \begin{figure}
+        \includegraphics[width=0.8\textwidth]{images/Linus-Torvalds-Linux.png}
+        \caption{Linus Torvalds and Linux}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[t]{From Netscape to Firefox}
+
+\begin{block}{The Fall of a Giant: Netscape's ``Cathedral''}
+\begin{itemize}
+    \item \textbf{Netscape Navigator} dominated the early web with 90\% market share in the mid-1990s.
+    \item Lost the "first browser war" to Microsoft's Internet Explorer (bundled with Windows).
+    \item Facing irrelevance, Netscape took a radical step in \textbf{1998}.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[t]{From Netscape to Firefox}
+\begin{block}{The Radical Shift: Embracing the ``Bazaar''}
+\begin{itemize}
+    \item In January 1998, Netscape \textbf{open-sourced} its browser code (Netscape Communicator 4.0) to harness the power of distributed developers.
+    \item The \textbf{Mozilla Organization} was created to manage the project.
+    \item The old code was unwieldy; developers started from scratch with the new \textbf{Gecko} rendering engine.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}[t]{From Netscape to Firefox}
+\begin{block}{The Phoenix Rises: Birth of Firefox}
+\begin{itemize}
+    \item From the Mozilla codebase, a lightweight, user-focused browser emerged named \textbf{Phoenix} (2002).
+    \item After trademark disputes (Phoenix $\rightarrow$ Firebird $\rightarrow$ \textbf{Firefox}), Mozilla Firefox 1.0 launched in \textbf{2004}.
+    \item Firefox challenged IE's monopoly, championing open standards and user choice.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}[t]{The Philosophical Engine: Cathedral vs. Bazaar}
+
+\begin{columns}
+    \begin{column}{0.48\textwidth}
+        \begin{block}{Cathedral Model}
+            \scriptsize
+            \begin{itemize}
+                \item \textbf{Closed, centralized development}.
+                \item Built by a small, dedicated team of experts.
+                \item Releases are infrequent, grand events.
+                \item \textbf{Examples}: Pre-1998 Netscape, traditional software development.
+            \end{itemize}
+        \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+        \begin{block}{Bazaar Model}
+            \scriptsize
+            \begin{itemize}
+                \item \textbf{Open, decentralized development}.
+                \item Code is developed publicly over the Internet.
+                \item "Given enough eyeballs, all bugs are shallow."
+                \item \textbf{Examples}: Mozilla, Linux, Firefox.
+            \end{itemize}
+        \end{block}
+    \end{column}
+\end{columns}
+
+\vspace{1em}
+
+\begin{exampleblock}{The Core Lesson}
+The Netscape-to-Firefox story shows that a well-managed \textbf{Bazaar} model can build complex, high-quality systems (a "cathedral") more effectively than a closed model by leveraging global collaboration.
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[t]{Legacy and Lasting Impact}
+\begin{itemize}
+    \item \textbf{Technical Foundations}: The Gecko engine paved the way for Firefox. Netscape's legacy also includes JavaScript, SSL, and Cookies, invented by its engineers.
+    \item \textbf{Institutionalization}: The \textbf{Mozilla Foundation} (est. July 15, 2003) ensures the project's mission continues beyond any single company.
+    \item \textbf{A Lasting Battle}: Firefox became the leading alternative to IE, proving the viability of open-source software for mainstream users and setting the stage for the modern web.
+\end{itemize}
+
+\begin{center}
+    \textbf{The open-source bazaar, born from a cathedral's ashes, helped ensure the web remained open and competitive.}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{1980s-1990s: Object-Oriented Revolution}
 \begin{itemize}
     \item \textbf{Smalltalk} (1970s-1980s): Pure OOP concepts
     \item \textbf{C++} (1985): Bringing OOP to systems programming
@@ -340,177 +399,351 @@ The tools we use to build software must themselves be trustworthy. There is no u
     \item Key principles: Encapsulation, Inheritance, Polymorphism
     \item Design Patterns (Gang of Four book, 1994)
 \end{itemize}
-\begin{center}
-    \begin{tabular}{ccc}
-        % Add appropriate images
-        % \includegraphics[width=0.2\textwidth]{images/smalltalk.png} &
-        % \includegraphics[width=0.2\textwidth]{images/cpp.png} &
-        % \includegraphics[width=0.2\textwidth]{images/java.png} \\
-        Smalltalk & C++ & Java
-    \end{tabular}
-\end{center}
+
+\begin{figure}
+    \includegraphics[width=0.3\textwidth]{images/cpp.jpeg}
+    \caption{Quotes of the Creator of C++}
+\end{figure}
+
 \end{frame}
 
-\subsection{The Eternal Battle: Bugs, Debugging, and Testing}
-
-\begin{frame}{1947: The First "Computer Bug"}
-\begin{columns}
-    \begin{column}{0.5\textwidth}
-        \begin{itemize}
-            \item \textbf{September 9, 1947}: Operators of the Harvard Mark II computer found a moth trapped in a relay.
-            \item The term "bug" had been used in engineering before, but this incident popularized it in computing.
-            \item The moth was taped into the logbook with the note: "First actual case of bug being found."
-            \item \textbf{Debugging} literally started as removing insects from hardware.
-        \end{itemize}
-    \end{column}
-    \begin{column}{0.5\textwidth}
-        % \includegraphics[width=0.9\textwidth]{images/first-computer-bug.jpg}
-        \\\scriptsize{The first computer "bug" from the Harvard Mark II log book.}
-    \end{column}
-\end{columns}
-\begin{block}{}
-Early "debugging" was a physical, hardware-centric activity.
-\end{block}
-\end{frame}
-
-\begin{frame}{1950s-1960s: The Dawn of Software Debugging}
-\begin{itemize}
-    \item \textbf{Print Statement Debugging}: The simplest and most enduring method. Programmers inserted print statements to trace program execution and variable states.
-    \item \textbf{Core Dumps}: Analyzing the contents of memory after a program crash. A low-level, complex, but powerful technique.
-    \item \textbf{Ad-hoc Testing}: Testing was manual, informal, and often performed by the developers themselves near the end of the project.
-    \item \textbf{The Challenge}: As software grew in complexity, these methods became insufficient. The "software crisis" was, in part, a crisis of quality and reliability.
-\end{itemize}
-\begin{center}
-    \texttt{printf("Got here! Value of x = \%d \textbackslash n", x);} % Example of a print statement
-\end{center}
-\end{frame}
-
-\begin{frame}{1970s-1980s: Formalizing Testing and Tools}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
-        \textbf{The Rise of Testing Theory}
-        \begin{itemize}
-            \item \textbf{Black-box vs. White-box Testing}: Distinguishing between testing functionality (black-box) and testing internal structures (white-box).
-            \item \textbf{Levels of Testing}: Unit, Integration, System, and Acceptance testing became standard concepts.
-            \item \textbf{Static Analysis}: Compilers began to include more sophisticated warnings for potential code issues.
-        \end{itemize}
-        \textbf{The First Debugging Tools}
-        \begin{itemize}
-            \item \textbf{Symbolic Debuggers} (e.g., gdb): Allowed programmers to interact with a running program, set breakpoints, and inspect variables symbolically.
-            \item This was a monumental leap from raw core dumps.
-        \end{itemize}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        % \includegraphics[width=0.8\textwidth]{images/gdb-screenshot.png}
-        \\\scriptsize{Early GNU Debugger (GDB) interface.}
-    \end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{1990s: Automation and Process Integration}
-\begin{itemize}
-    \item \textbf{Automated Regression Testing}: Tools like JUnit (1997) for Java, created by Kent Beck and Erich Gamma, revolutionized testing.
-    \begin{itemize}
-        \item Tests could be run automatically and frequently.
-        \item Provided a safety net for refactoring and adding new features.
-        \item Embodied the \textbf{Test-Driven Development (TDD)} philosophy.
-    \end{itemize}
-    \item \textbf{Testing Becomes a Discipline}: The role of \textbf{Quality Assurance (QA) Engineer} became specialized.
-    \item \textbf{Continuous Integration (CI)}: Tools like CruiseControl automated the process of building and testing software after every change, catching integration bugs early.
-\end{itemize}
-\begin{center}
-    % \includegraphics[width=0.7\textwidth]{images/junit-logo.png}
-\end{center}
-\end{frame}
-
-\begin{frame}{2000s-2010s: Scaling and Shifting Quality Left}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
-        \textbf{Paradigm Shifts}
-        \begin{itemize}
-            \item \textbf{Shift-Left Testing}: The idea of testing earlier in the development lifecycle, involving QA and writing tests during development, not after.
-            \item \textbf{Test Automation Pyramid}: A strategy for a balanced test suite: many fast, cheap Unit tests; fewer Integration tests; even fewer UI tests.
-            \item \textbf{DevOps and Quality}: With rapid deployments, automated testing became non-negotiable. Quality is everyone's responsibility.
-        \end{itemize}
-        \textbf{New Frontiers}
-        \begin{itemize}
-            \item \textbf{Selenium}: Automated web browser testing.
-            \item \textbf{Chaos Engineering}: Deliberately injecting failures into systems (e.g., Netflix's Chaos Monkey) to build resilience.
-        \end{itemize}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        % \includegraphics[width=\textwidth]{images/test-pyramid.png}
-        \\\scriptsize{The Test Automation Pyramid.}
-    \end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{2020s: The AI-Powered Future of Debugging}
-\begin{itemize}
-    \item \textbf{AI-Assisted Testing}:
-    \begin{itemize}
-        \item AI generates test cases, predicts flaky tests, and optimizes test suites.
-        \item Tools can automatically detect visual regressions in UI.
-    \end{itemize}
-    \item \textbf{Intelligent Fault Localization}:
-    \begin{itemize}
-        \item AI analyzes code, execution traces, and bug reports to suggest the most likely lines of code causing a failure.
-        \item \textbf{Example}: A tool like \textbf{Amazon CodeGuru} or \textbf{OpenAI's Debugger} can point directly to the suspicious code.
-    \end{itemize}
-    \item \textbf{Automated Program Repair}:
-    \begin{itemize}
-        \item LLMs can not only find bugs but also suggest and even generate fixes.
-        \item \textbf{Example}: GitHub Copilot Chat can explain a bug and propose a patch.
-    \end{itemize}
-    \item \textbf{Observability}: The evolution beyond monitoring. Using logs, metrics, and traces (the three pillars) to understand the internal state of a system by its external outputs, making debugging in production much more effective.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{The Evolution of Debugging at a Glance}
-\begin{center}
-    \begin{tabular}{|l|l|l|l|}
-    \hline
-    \textbf{Era} & \textbf{Primary Method} & \textbf{Testing Focus} & \textbf{Key Innovation} \\
-    \hline
-    1940s-50s   & Physical Inspection & Ad-hoc & The Term "Bug" \\
-    \hline
-    1960s-70s   & Print Statements & Manual, Late & Symbolic Debuggers \\
-    \hline
-    1980s-90s   & Interactive Debuggers (gdb) & Formalized Test Levels & Automated Unit Testing (JUnit) \\
-    \hline
-    2000s-10s   & CI/CD Integrated Tools & Shift-Left, Automation & Test Pyramid, Chaos Engineering \\
-    \hline
-    2020s+      & AI-Powered Analysis & AI-Generated Tests & Intelligent Fault Localization \& Repair \\
-    \hline
-    \end{tabular}
-\end{center}
-\vspace{1em}
-\begin{block}{The Unchanging Goal}
-To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, and to reduce the time between discovering a failure and fixing it from months to minutes.
-\end{block}
-\end{frame}
+%%%%% \subsection{The Eternal Battle: Bugs, Debugging, and Testing}
+%%%%% 
+%%%%% \begin{frame}[t]{1947: The First "Computer Bug"}
+%%%%% \begin{columns}
+%%%%%     \begin{column}{0.5\textwidth}
+%%%%%         \begin{itemize}
+%%%%%             \item \textbf{September 9, 1947}: Operators of the Harvard Mark II computer found a moth trapped in a relay.
+%%%%%             \item The term "bug" had been used in engineering before, but this incident popularized it in computing.
+%%%%%             \item The moth was taped into the logbook with the note: "First actual case of bug being found."
+%%%%%             \item \textbf{Debugging} literally started as removing insects from hardware.
+%%%%%         \end{itemize}
+%%%%%     \end{column}
+%%%%%     \begin{column}{0.5\textwidth}
+%%%%%         % \includegraphics[width=0.9\textwidth]{images/first-computer-bug.jpg}
+%%%%%         \\\scriptsize{The first computer "bug" from the Harvard Mark II log book.}
+%%%%%     \end{column}
+%%%%% \end{columns}
+%%%%% \begin{block}{}
+%%%%% Early "debugging" was a physical, hardware-centric activity.
+%%%%% \end{block}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{1950s-1960s: The Dawn of Software Debugging}
+%%%%% \begin{itemize}
+%%%%%     \item \textbf{Print Statement Debugging}: The simplest and most enduring method. Programmers inserted print statements to trace program execution and variable states.
+%%%%%     \item \textbf{Core Dumps}: Analyzing the contents of memory after a program crash. A low-level, complex, but powerful technique.
+%%%%%     \item \textbf{Ad-hoc Testing}: Testing was manual, informal, and often performed by the developers themselves near the end of the project.
+%%%%%     \item \textbf{The Challenge}: As software grew in complexity, these methods became insufficient. The "software crisis" was, in part, a crisis of quality and reliability.
+%%%%% \end{itemize}
+%%%%% \begin{center}
+%%%%%     \texttt{printf("Got here! Value of x = \%d \textbackslash n", x);} % Example of a print statement
+%%%%% \end{center}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{1970s-1980s: Formalizing Testing and Tools}
+%%%%% \begin{columns}
+%%%%%     \begin{column}{0.6\textwidth}
+%%%%%         \textbf{The Rise of Testing Theory}
+%%%%%         \begin{itemize}
+%%%%%             \item \textbf{Black-box vs. White-box Testing}: Distinguishing between testing functionality (black-box) and testing internal structures (white-box).
+%%%%%             \item \textbf{Levels of Testing}: Unit, Integration, System, and Acceptance testing became standard concepts.
+%%%%%             \item \textbf{Static Analysis}: Compilers began to include more sophisticated warnings for potential code issues.
+%%%%%         \end{itemize}
+%%%%%         \textbf{The First Debugging Tools}
+%%%%%         \begin{itemize}
+%%%%%             \item \textbf{Symbolic Debuggers} (e.g., gdb): Allowed programmers to interact with a running program, set breakpoints, and inspect variables symbolically.
+%%%%%             \item This was a monumental leap from raw core dumps.
+%%%%%         \end{itemize}
+%%%%%     \end{column}
+%%%%%     \begin{column}{0.4\textwidth}
+%%%%%         % \includegraphics[width=0.8\textwidth]{images/gdb-screenshot.png}
+%%%%%         \\\scriptsize{Early GNU Debugger (GDB) interface.}
+%%%%%     \end{column}
+%%%%% \end{columns}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{1990s: Automation and Process Integration}
+%%%%% \begin{itemize}
+%%%%%     \item \textbf{Automated Regression Testing}: Tools like JUnit (1997) for Java, created by Kent Beck and Erich Gamma, revolutionized testing.
+%%%%%     \begin{itemize}
+%%%%%         \item Tests could be run automatically and frequently.
+%%%%%         \item Provided a safety net for refactoring and adding new features.
+%%%%%         \item Embodied the \textbf{Test-Driven Development (TDD)} philosophy.
+%%%%%     \end{itemize}
+%%%%%     \item \textbf{Testing Becomes a Discipline}: The role of \textbf{Quality Assurance (QA) Engineer} became specialized.
+%%%%%     \item \textbf{Continuous Integration (CI)}: Tools like CruiseControl automated the process of building and testing software after every change, catching integration bugs early.
+%%%%% \end{itemize}
+%%%%% \begin{center}
+%%%%%     % \includegraphics[width=0.7\textwidth]{images/junit-logo.png}
+%%%%% \end{center}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{2000s-2010s: Scaling and Shifting Quality Left}
+%%%%% \begin{columns}
+%%%%%     \begin{column}{0.6\textwidth}
+%%%%%         \textbf{Paradigm Shifts}
+%%%%%         \begin{itemize}
+%%%%%             \item \textbf{Shift-Left Testing}: The idea of testing earlier in the development lifecycle, involving QA and writing tests during development, not after.
+%%%%%             \item \textbf{Test Automation Pyramid}: A strategy for a balanced test suite: many fast, cheap Unit tests; fewer Integration tests; even fewer UI tests.
+%%%%%             \item \textbf{DevOps and Quality}: With rapid deployments, automated testing became non-negotiable. Quality is everyone's responsibility.
+%%%%%         \end{itemize}
+%%%%%         \textbf{New Frontiers}
+%%%%%         \begin{itemize}
+%%%%%             \item \textbf{Selenium}: Automated web browser testing.
+%%%%%             \item \textbf{Chaos Engineering}: Deliberately injecting failures into systems (e.g., Netflix's Chaos Monkey) to build resilience.
+%%%%%         \end{itemize}
+%%%%%     \end{column}
+%%%%%     \begin{column}{0.4\textwidth}
+%%%%%         % \includegraphics[width=\textwidth]{images/test-pyramid.png}
+%%%%%         \\\scriptsize{The Test Automation Pyramid.}
+%%%%%     \end{column}
+%%%%% \end{columns}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{2020s: The AI-Powered Future of Debugging}
+%%%%% \begin{itemize}
+%%%%%     \item \textbf{AI-Assisted Testing}:
+%%%%%     \begin{itemize}
+%%%%%         \item AI generates test cases, predicts flaky tests, and optimizes test suites.
+%%%%%         \item Tools can automatically detect visual regressions in UI.
+%%%%%     \end{itemize}
+%%%%%     \item \textbf{Intelligent Fault Localization}:
+%%%%%     \begin{itemize}
+%%%%%         \item AI analyzes code, execution traces, and bug reports to suggest the most likely lines of code causing a failure.
+%%%%%         \item \textbf{Example}: A tool like \textbf{Amazon CodeGuru} or \textbf{OpenAI's Debugger} can point directly to the suspicious code.
+%%%%%     \end{itemize}
+%%%%%     \item \textbf{Automated Program Repair}:
+%%%%%     \begin{itemize}
+%%%%%         \item LLMs can not only find bugs but also suggest and even generate fixes.
+%%%%%         \item \textbf{Example}: GitHub Copilot Chat can explain a bug and propose a patch.
+%%%%%     \end{itemize}
+%%%%%     \item \textbf{Observability}: The evolution beyond monitoring. Using logs, metrics, and traces (the three pillars) to understand the internal state of a system by its external outputs, making debugging in production much more effective.
+%%%%% \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{The Evolution of Debugging at a Glance}
+%%%%% \begin{center}
+%%%%%     \begin{tabular}{|l|l|l|l|}
+%%%%%     \hline
+%%%%%     \textbf{Era} & \textbf{Primary Method} & \textbf{Testing Focus} & \textbf{Key Innovation} \\
+%%%%%     \hline
+%%%%%     1940s-50s   & Physical Inspection & Ad-hoc & The Term "Bug" \\
+%%%%%     \hline
+%%%%%     1960s-70s   & Print Statements & Manual, Late & Symbolic Debuggers \\
+%%%%%     \hline
+%%%%%     1980s-90s   & Interactive Debuggers (gdb) & Formalized Test Levels & Automated Unit Testing (JUnit) \\
+%%%%%     \hline
+%%%%%     2000s-10s   & CI/CD Integrated Tools & Shift-Left, Automation & Test Pyramid, Chaos Engineering \\
+%%%%%     \hline
+%%%%%     2020s+      & AI-Powered Analysis & AI-Generated Tests & Intelligent Fault Localization \& Repair \\
+%%%%%     \hline
+%%%%%     \end{tabular}
+%%%%% \end{center}
+%%%%% \vspace{1em}
+%%%%% \begin{block}{The Unchanging Goal}
+%%%%% To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, and to reduce the time between discovering a failure and fixing it from months to minutes.
+%%%%% \end{block}
+%%%%% \end{frame}
 \subsection{Modern Era}
 
-\begin{frame}{2000s: Agile and DevOps}
+\begin{frame}[t]{2000s: Agile and DevOps}
+    \begin{itemize}
+        \item \textbf{Agile Manifesto} (2001):  Emphasis on iterative development and customer collaboration
+        \item \textbf{DevOps movement} (late 2000s)
+        \item Bridging development and operations, featuring Git and CI/CD
+        \item Infrastructure as Code
+    \end{itemize}
+    \begin{figure}
+        \includegraphics[width=0.3\textwidth]{images/agile-manifesto.png}
+        \caption{the 12 Agile Principles}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{1990s: CVS - Concurrent Versions System}
 \begin{columns}
     \begin{column}{0.6\textwidth}
         \begin{itemize}
-            \item \textbf{Agile Manifesto} (2001)
-            \item Emphasis on iterative development and customer collaboration
-            \item \textbf{DevOps movement} (late 2000s)
-            \item Bridging development and operations
-            \item Continuous Integration/Continuous Deployment
-            \item Infrastructure as Code
+            \item \textbf{Developed in 1986}, became dominant in 1990s
+            \item \textbf{Centralized Architecture}: Single central repository
+            \item \textbf{Key Features}:
+                \begin{itemize}
+                    \item Basic version tracking
+                    \item Multiple developer support
+                    \item Network-based access
+                \end{itemize}
+            \item \textbf{Limitations}:
+                \begin{itemize}
+                    \item No atomic commits
+                    \item Poor branching/merging
+                    \item Slow network operations
+                    \item Single point of failure
+                \end{itemize}
+        \end{itemize}
+    \end{column}
+    % \begin{column}{0.4\textwidth}
+    %     \includegraphics[width=0.9\textwidth]{images/cvs_architecture.png}
+    %     \\\scriptsize{CVS Centralized Architecture}
+    % \end{column}
+\end{columns}
+\begin{block}{}
+CVS brought version control to the masses, but collaboration was sequential and cautious.
+\end{block}
+\end{frame}
+
+\begin{frame}{2000: Subversion - "CVS Done Right"}
+\begin{itemize}
+    \item \textbf{Created in 2000} by CollabNet to fix CVS limitations
+    \item \textbf{Improvements over CVS}:
+        \begin{itemize}
+            \item \textbf{Atomic commits}: All changes succeed or fail together
+            \item \textbf{Better branching/tagging}: Cheap copy operations
+            \item \textbf{Versioned directories and renames}
+            \item \textbf{Better binary file handling}
+        \end{itemize}
+    \item \textbf{Still centralized}: Single repository model
+    \item \textbf{Adoption}: Quickly became the enterprise standard
+    \item \textbf{Limitations}: Central server = single point of failure, offline work difficult
+\end{itemize}
+% \begin{center}
+%     \includegraphics[width=0.5\textwidth]{images/svn_logo.png}
+% \end{center}
+\end{frame}
+
+
+\begin{frame}{2002-2005: The BitKeeper Controversy}
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+        \begin{itemize}
+            \item \textbf{Linux kernel development} outgrew patch-based workflow
+            \item \textbf{BitKeeper}: Proprietary distributed version control system
+            \item \textbf{Adopted by Linux in 2002}: Enabled true distributed development
+            \item \textbf{Revolutionary features}:
+                \begin{itemize}
+                    \item Distributed repositories
+                    \item Excellent branching/merging
+                    \item Fast performance
+                \end{itemize}
+            \item \textbf{Controversy (2005)}: License disputes led to BitKeeper withdrawal
+            \item \textbf{Catalyst}: Forced Linux community to create their own solution
         \end{itemize}
     \end{column}
     \begin{column}{0.4\textwidth}
-        % Add appropriate image
-        % \includegraphics[width=\textwidth]{images/agile-devops.png}
+        % \includegraphics[width=0.9\textwidth]{images/linus_torvalds.jpg}
+        % \\\scriptsize{Linus Torvalds, creator of Linux and Git}
     \end{column}
 \end{columns}
 \end{frame}
 
-\begin{frame}{2010s: AIOps and Cloud Native}
+\begin{frame}{2005: Git - The Linux Community's Answer}
+\begin{itemize}
+    \item \textbf{Created by Linus Torvalds in 2005} after BitKeeper controversy
+    \item \textbf{Design goals}:
+        \begin{itemize}
+            \item Distributed and peer-to-peer
+            \item Strong cryptographic integrity
+            \item Fast branching/merging
+            \item Efficient with large projects
+            \item Support for non-linear development
+        \end{itemize}
+    \item \textbf{Key innovations}:
+        \begin{itemize}
+            \item Content-addressable storage (SHA-1 hashes)
+            \item Directed acyclic graph (DAG) for history
+            \item Three-stage thinking (working directory, staging area, repository)
+        \end{itemize}
+\end{itemize}
+% \begin{center}
+%     \includegraphics[width=0.3\textwidth]{images/git_logo.png}
+% \end{center}
+\end{frame}
+
+\begin{frame}{Why Git Won: Distributed Workflows}
+\begin{columns}
+    \begin{column}{0.5\textwidth}
+        \textbf{Centralized (CVS/SVN)}
+        \begin{itemize}
+            \item Single source of truth
+            \item Sequential commits
+            \item Server required 
+            \item Branching is expensive
+            \item Linear history
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \textbf{Distributed (Git)}
+        \begin{itemize}
+            \item Every clone is a full repository
+            \item Parallel development
+            \item Work offline, sync later
+            \item Cheap branching
+            \item Non-linear history
+        \end{itemize}
+    \end{column}
+\end{columns}
+
+\begin{block}{The Game Changer}
+Git enabled workflows like \textbf{feature branching} and \textbf{pull requests}, making open-source collaboration scalable.
+\end{block}
+\end{frame}
+
+
+\begin{frame}{GitHub and the Social Coding Revolution (2008)}
+\begin{itemize}
+    \item \textbf{GitHub launched 2008}: Added social layer to Git
+    \item \textbf{Key innovations}:
+        \begin{itemize}
+            \item Pull Requests: Code review as first-class citizen
+            \item Fork \& Pull model: Easy contribution to any project
+            \item Issues, Projects, Wikis: Integrated project management
+        \end{itemize}
+    \item \textbf{Network effects}: Made open-source collaboration mainstream
+    \item \textbf{Enterprise adoption}: GitHub Enterprise, GitLab, Bitbucket
+\end{itemize}
+% \begin{center}
+%     \includegraphics[width=0.6\textwidth]{images/github_pull_request.png}
+%     \\\scriptsize{Pull Request Interface - The Heart of Modern Collaboration}
+% \end{center}
+\end{frame}
+
+\begin{frame}{Git-Enabled CI/CD: The Automation Revolution}
+\begin{itemize}
+    \item \textbf{Continuous Integration (CI)}: Automatically build and test every commit
+    \item \textbf{Continuous Deployment/Delivery (CD)}: Automatically deploy passing code
+    \item \textbf{Git as the trigger}: 
+        \begin{itemize}
+            \item Push to repository triggers automated pipeline
+            \item Branch protection rules enforce quality gates
+            \item Pull request status checks prevent bugs
+        \end{itemize}
+    \item \textbf{Key tools}: Jenkins, GitHub Actions, GitLab CI, CircleCI
+\end{itemize}
+
+% \begin{center}
+%     \includegraphics[width=0.8\textwidth]{images/git_ci_cd_pipeline.png}
+%     \\\scriptsize{Modern Git-triggered CI/CD Pipeline}
+% \end{center}
+\end{frame}
+
+\begin{frame}{The Evolution Timeline}
+\begin{center}
+    \begin{tikzpicture}[scale=0.8]
+        \draw[->] (0,0) -- (10,0);
+        \foreach \x/\year/\text in {0/1990/CVS, 2/2000/SVN, 4/2002/BitKeeper, 6/2005/Git, 8/2008/GitHub+CI/CD}
+            \draw (\x,0.1) -- (\x,-0.1) node[below] {\year} node[above] {\text};
+    \end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+    \item \textbf{1990s}: Centralized era - sequential collaboration
+    \item \textbf{2000s}: Centralized improvement - better but still limited
+    \item \textbf{2002-2005}: Distributed awakening - BitKeeper shows the way
+    \item \textbf{2005+}: Git revolution - parallel, distributed collaboration
+    \item \textbf{2008+}: Social coding + automation - CI/CD ecosystem
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{2010s: AIOps and Cloud Native}
 \begin{itemize}
     \item \textbf{AIOps}: Applying AI to operations
     \begin{itemize}
@@ -533,7 +766,7 @@ To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, an
 
 \subsection{LLM Era}
 
-\begin{frame}{2020s: The LLM Revolution}
+\begin{frame}[t]{2020s: The LLM Revolution}
 \begin{columns}
     \begin{column}{0.6\textwidth}
         \begin{itemize}
@@ -551,7 +784,7 @@ To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, an
 \end{columns}
 \end{frame}
 
-\begin{frame}{LLM Impact on Software Engineering}
+\begin{frame}[t]{LLM Impact on Software Engineering}
 \begin{itemize}
     \item \textbf{Code Generation}: From autocomplete to entire function generation
     \item \textbf{Debugging Assistance}: AI-powered bug detection and fixes
@@ -570,16 +803,8 @@ To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, an
 
 \subsection{Conclusion}
 
-\begin{frame}{Software Engineering Evolution Timeline}
-\begin{center}
-    % Add timeline image
-    % \includegraphics[width=0.9\textwidth]{images/timeline.png}
-    \textbf{Visual Timeline Here}\\
-    (1968 NATO → 1975 Man-Month → 1984 Trusting Trust → 1990s OSS/OOP → 2000s Agile/DevOps → 2010s Cloud → 2020s LLM)
-\end{center}
-\end{frame}
 
-\begin{frame}{Looking Forward}
+\begin{frame}[t]{Looking Forward}
 \begin{itemize}
     \item Continuous evolution from disciplined engineering to AI augmentation
     \item Increasing emphasis on automation and intelligence
@@ -593,7 +818,7 @@ To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, an
 \end{frame}
 \section{Brief History of Artificial Intelligence}
 \subsection{Pioneering Thoughts}
-\begin{frame}{The Seeds of an Idea}
+\begin{frame}[t]{The Seeds of an Idea}
 \begin{itemize}
     \item \textbf{Ancient Myths}: Stories of artificial beings endowed with intelligence (e.g., Talos, Golems).
     \item \textbf{Philosophical Foundations}: Descartes' mind-body problem, Hobbes' view of reasoning as calculation.
@@ -608,57 +833,54 @@ To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, an
 \end{frame}
 \subsection{1950s: The Birth of a Field}
 
-\begin{frame}{1950s: The Foundational Decade}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
-        \begin{itemize}
-            \item \textbf{Alan Turing (1950)}: Publishes "Computing Machinery and Intelligence", proposing the \textbf{Turing Test}.
-            \item \textbf{The Name is Coined}: John McCarthy organizes the \textbf{Dartmouth Conference} (1956) and coins the term "Artificial Intelligence".
-            \item \textbf{Early Optimism}: Founders predicted a machine as intelligent as a human within a generation.
-            \item \textbf{Key Early Programs}:
-                \begin{itemize}
-                    \item Logic Theorist (Newell \& Simon, 1956)
-                    \item Samuel's Checkers Player (1959)
-                \end{itemize}
-        \end{itemize}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        % \includegraphics[width=0.9\textwidth]{images/turing_test_diagram.png}
-        \\\scriptsize{Diagram of the Turing Test}
-    \end{column}
-\end{columns}
-\begin{block}{The Goal Was Set}
-"Every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it." - Dartmouth Proposal
-\end{block}
+\begin{frame}[t]{1950s: The Foundational Decade}
+    \begin{itemize}
+        \item \textbf{Alan Turing (1950)}: Publishes "Computing Machinery and Intelligence", proposing the \textbf{Turing Test}.
+    \end{itemize}
+    \begin{figure}
+        \includegraphics[width=0.7\textwidth]{images/turing-test.png}
+        \caption{Diagram of the Turing Test}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[t]{1950s: The Foundational Decade}
+    \begin{itemize}
+        \item \textbf{The Name is Coined}: John McCarthy organizes the \textbf{Dartmouth Conference} (1956) and coins the term "Artificial Intelligence".
+    \end{itemize}
+    \begin{figure}
+        \includegraphics[width=0.7\textwidth]{images/Dartmouth-1956-Conference.jpg}
+        \caption{Dartmouth Conference}
+    \end{figure}
+
+    \begin{block}{The Goal Was Set}
+        "Every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it." - Dartmouth Proposal
+    \end{block}
 \end{frame}
 
 \subsection{1960s-70s: Symbolic AI and the First AI Winter}
 
-\begin{frame}{1960s-70s: Symbolic AI \& Limits}
+\begin{frame}[t]{1960s-70s: Symbolic AI \& Limits}
 \begin{itemize}
-    \item \textbf{Symbolic AI (GOFAI)}: Dominant paradigm. Focused on manipulating symbols and logical rules to represent knowledge and solve problems.
-    \item \textbf{Successes}:
-        \begin{itemize}
-            \item \textbf{ELIZA} (1966): An early natural language processing program that simulated a Rogerian psychotherapist.
-            \item \textbf{SHRDLU} (1970): A program that could understand natural language commands in a "blocks world".
-            \item Expert systems began development.
-        \end{itemize}
-    \item \textbf{The Limits}: Symbolic AI struggled with the complexity and ambiguity of the real world. It required massive, hand-coded knowledge bases.
-    \item \textbf{The Lighthill Report (1973)}: Criticized the failure of AI to meet its grand promises, leading to a sharp cut in funding - the \alert{First AI Winter}.
+    \item \textbf{Symbolic AI (GOFAI)}: Focused on manipulating symbols and logical rules to represent knowledge and solve problems.
+    \item \textbf{ELIZA} (1966): An early natural language processing program that simulated a Rogerian psychotherapist.
+    % \item \textbf{The Limits}: Symbolic AI struggled with the complexity and ambiguity of the real world. It required massive, hand-coded knowledge bases.
+    \item \textbf{The Lighthill Report (1973)}: Criticized AI's failure to meet its grand promises, leading to sharp cut in funding - the \alert{First AI Winter}.
 \end{itemize}
+\begin{figure}
+    \includegraphics[width=0.4\textwidth]{images/eliza.png}
+    \caption{ELIZA}
+\end{figure}
 \end{frame}
 
 \subsection{1980s: Expert Systems and the Second AI Winter}
 
-\begin{frame}{1980s: The Rise and Fall of Expert Systems}
+\begin{frame}[t]{1980s: The Rise and Fall of Expert Systems}
 \begin{columns}
     \begin{column}{0.6\textwidth}
         \textbf{Expert Systems}
         \begin{itemize}
-            \item Commercial applications of AI.
             \item Aimed to capture the knowledge of human experts in rule-based systems.
-            \item \textbf{Success Story}: MYCIN system for diagnosing blood infections performed as well as experts.
-            \item Led to a wave of commercial investment.
+            \item MYCIN system for diagnosing blood infections performed as well as experts.
         \end{itemize}
         \textbf{The Second AI Winter}
         \begin{itemize}
@@ -668,15 +890,15 @@ To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, an
         \end{itemize}
     \end{column}
     \begin{column}{0.4\textwidth}
-        % \includegraphics[width=0.9\textwidth]{images/expert_system_diagram.png}
-        \\\scriptsize{Architecture of an Expert System}
+        \includegraphics[width=0.9\textwidth]{images/mycin.jpg}
+        \\\scriptsize{Rule-Based Expert System}
     \end{column}
 \end{columns}
 \end{frame}
 
 \subsection{1990s-2000s: The Statistical Turn and Machine Learning}
 
-\begin{frame}{1990s-2000s: A New Paradigm}
+\begin{frame}[t]{1990s-2000s: A New Paradigm}
 \begin{itemize}
     \item \textbf{Shift from Logic to Statistics}: Instead of programming logical rules, researchers focused on creating systems that could \textbf{learn from data}.
     \item \textbf{The Rise of Machine Learning}:
@@ -701,7 +923,7 @@ To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, an
 
 \subsection{2010s: The Deep Learning Revolution}
 
-\begin{frame}{2010s: Deep Learning Unleashed}
+\begin{frame}[t]{2010s: Deep Learning Unleashed}
 \begin{columns}
     \begin{column}{0.6\textwidth}
         \textbf{The Breakthrough}
@@ -725,7 +947,7 @@ To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, an
 
 \subsection{2020s: The Era of Large Language Models}
 
-\begin{frame}{2020s: The LLM and Generative AI Era}
+\begin{frame}[t]{2020s: The LLM and Generative AI Era}
 \begin{itemize}
     \item \textbf{Scale is All You Need}: The discovery that vastly scaling up neural networks (size, data, compute) leads to emergent abilities.
     \item \textbf{The Transformer Architecture (2017)}: Became the foundational model for almost all modern AI, enabling parallel processing of sequences (like text).
@@ -744,7 +966,7 @@ To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, an
 
 \subsection{Conclusion}
 
-\begin{frame}{AI History: A Journey of Waves}
+\begin{frame}[t]{AI History: A Journey of Waves}
 \begin{center}
     % \includegraphics[width=0.9\textwidth]{images/ai_history_waves.png}
     \scriptsize{The AI field has progressed through waves of optimism followed by "winters" of reduced funding, each wave building on the last.}
@@ -754,7 +976,7 @@ Symbolic AI (Rules) $\rightarrow$ Statistical ML (Data) $\rightarrow$ Deep Learn
 \end{block}
 \end{frame}
 
-\begin{frame}{Looking Forward}
+\begin{frame}[t]{Looking Forward}
 \begin{itemize}
     \item \textbf{Artificial General Intelligence (AGI)}: The original, elusive goal of human-level intelligence remains on the horizon.
     \item \textbf{Ethics and Safety}: As AI becomes more powerful, concerns about bias, control, and alignment with human values become paramount.
@@ -783,7 +1005,7 @@ Empirical software engineering (ESE) is a subfield of software engineering (SE) 
     \item Secondary research methods (Systematic reviews, Systematic mapping studies, rapid reviews, tertiary review)
 \end{enumerate}
 \end{frame}
-\begin{frame}{References}
+\begin{frame}[t]{References}
 \begin{thebibliography}{10}
 \bibitem{nato1968} NATO Software Engineering Conference (1968)
 \bibitem{dijkstra1968} Dijkstra, E. W. (1968). "Go To Statement Considered Harmful"
