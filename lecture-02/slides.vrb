@@ -1,19 +1,26 @@
-\frametitle{Syntax Example: Use Case Diagram}
-\begin{lstlisting}[style=plantuml]
-@startuml
-left to right direction
-actor "Library User" as User
-usecase "Borrow Book" as Borrow
-usecase "Search Catalog" as Search
+\frametitle{Prompt Version Control Example}
+\lstset{style=code}
+    \begin{lstlisting}[caption={Version-Controlled Prompt Template}]
+# Prompt Template v2.1 - Use Case Generation
+# Date: 2024-01-15 | Author: RE Team
+# Changelog: Added validation criteria
 
-User --> Borrow
-User --> Search
-@enduml
+SYSTEM_PROMPT: """
+You are an experienced requirements engineer
+specializing in [DOMAIN]. Your task is to create
+comprehensive use case specifications.
+"""
+
+USER_PROMPT: """
+Generate a use case for [FEATURE] in [SYSTEM] with:
+
+1. PRIMARY_ACTOR: [actor role]
+2. PRECONDITIONS: [system state requirements]
+3. MAIN_SCENARIO: [step-by-step flow]
+4. ALTERNATIVE_FLOWS: [error handling paths]
+5. POSTCONDITIONS: [end state conditions]
+6. VALIDATION: [acceptance criteria]
+
+Format: Structured text with clear sections.
+"""
     \end{lstlisting}
-
-    \small
-    \begin{itemize}
-        \item \texttt{left to right direction}: Layout control
-        \item \texttt{actor}, \texttt{usecase}: Actor and use case definitions
-        \item \texttt{-->}: Connection arrows
-    \end{itemize}

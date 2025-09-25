@@ -83,6 +83,7 @@ Dalian University of Technology
 
 \begin{document}
 
+\section{Introduction}
 \begin{frame}
   \titlepage
 \end{frame}
@@ -94,12 +95,11 @@ Dalian University of Technology
 ]
 \end{frame}
 
-\AtBeginSection[]
+\AtBeginSubsection[]
 {
- \begin{frame}<beamer>
- \frametitle{Outline}
- \tableofcontents[currentsection]
- \end{frame}
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
 }
 \section{Introduction}
 

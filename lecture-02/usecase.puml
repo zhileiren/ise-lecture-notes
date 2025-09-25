@@ -1,0 +1,10 @@
+@startuml
+left to right direction
+actor "Library User" as User
+usecase "Borrow Book" as Borrow
+usecase "Search Catalog" as Search
+
+User --> Borrow
+User --> Search
+@enduml
+

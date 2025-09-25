@@ -1,0 +1,13 @@
+@startuml
+actor User
+participant "Web Browser" as Browser
+participant Server
+
+autonumber
+User -> Browser: Enter URL
+Browser -> Server: HTTP Request
+Server -> Server: Process Request
+Server --> Browser: Return HTML
+Browser --> User: Display Page
+@enduml
+
