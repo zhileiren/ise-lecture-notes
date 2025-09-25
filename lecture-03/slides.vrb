@@ -1,19 +1,20 @@
-\frametitle{Syntax Example: Use Case Diagram}
-\begin{lstlisting}[style=plantuml]
-@startuml
-left to right direction
-actor "Library User" as User
-usecase "Borrow Book" as Borrow
-usecase "Search Catalog" as Search
+\frametitle{Hybrid Example: Intelligent Code Completion}
+\begin{verbatim}
+// Developer writes partial method:
+public String processData(String input) {
+    // Step 1: LLM suggests initial completion
+    if (input == null) return "";
+    String result = input.trim();
 
-User --> Borrow
-User --> Search
-@enduml
-    \end{lstlisting}
+    // Step 2: Constraint solver verifies null safety
+    // ✓ input checked for null, ✓ return value not null
 
-    \small
-    \begin{itemize}
-        \item \texttt{left to right direction}: Layout control
-        \item \texttt{actor}, \texttt{usecase}: Actor and use case definitions
-        \item \texttt{-->}: Connection arrows
-    \end{itemize}
+    // Step 3: SBSE optimizes string operations
+    // Replaces inefficient concatenation with StringBuilder
+
+    // Step 4: Final verified and optimized code
+    StringBuilder sb = new StringBuilder();
+    sb.append(result.toLowerCase());
+    return sb.toString();
+}
+\end{verbatim}
