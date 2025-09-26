@@ -58,6 +58,13 @@ Dalian University of Technology
 
 % Delete this, if you do not want the table of contents to pop up at
 % the beginning of each subsection:
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
 \AtBeginSubsection[]
 {
   \begin{frame}<beamer>{Outline}
@@ -91,16 +98,323 @@ Dalian University of Technology
 %]
 %\end{frame}
 
-\AtBeginSection[]
-{
- \begin{frame}<beamer>
- \frametitle{Outline}
- \tableofcontents[currentsection]
- \end{frame}
-}
-\begin{frame}[t]{bug or feature?}
+\begin{frame}{Outline}
+  \tableofcontents[currentsection,currentsubsection, 
+    sectionstyle=show,
+    subsectionstyle=show,
+]
 \end{frame}
 
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\section{The Eternal Battle: Bugs, Debugging, and Testing}
+
+\begin{frame}[t]{1947: The First "Computer Bug"}
+\begin{columns}
+    \begin{column}{0.5\textwidth}
+        \begin{itemize}
+            \item \textbf{September 9, 1947}: Operators of the Harvard Mark II computer found a moth trapped in a relay.
+            \item The term "bug" had been used in engineering before, but this incident popularized it in computing.
+            \item The moth was taped into the logbook with the note: "First actual case of bug being found."
+            \item \textbf{Debugging} literally started as removing insects from hardware.
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        % \includegraphics[width=0.9\textwidth]{images/first-computer-bug.jpg}
+        \\\scriptsize{The first computer "bug" from the Harvard Mark II log book.}
+    \end{column}
+\end{columns}
+\begin{block}{}
+Early "debugging" was a physical, hardware-centric activity.
+\end{block}
+\end{frame}
+
+\begin{frame}[t]{1950s-1960s: The Dawn of Software Debugging}
+\begin{itemize}
+    \item \textbf{Print Statement Debugging}: The simplest and most enduring method. Programmers inserted print statements to trace program execution and variable states.
+    \item \textbf{Core Dumps}: Analyzing the contents of memory after a program crash. A low-level, complex, but powerful technique.
+    \item \textbf{Ad-hoc Testing}: Testing was manual, informal, and often performed by the developers themselves near the end of the project.
+    \item \textbf{The Challenge}: As software grew in complexity, these methods became insufficient. The "software crisis" was, in part, a crisis of quality and reliability.
+\end{itemize}
+\begin{center}
+    \texttt{printf("Got here! Value of x = \%d \textbackslash n", x);} % Example of a print statement
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{1970s-1980s: Formalizing Testing and Tools}
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+        \textbf{The Rise of Testing Theory}
+        \begin{itemize}
+            \item \textbf{Black-box vs. White-box Testing}: Distinguishing between testing functionality (black-box) and testing internal structures (white-box).
+            \item \textbf{Levels of Testing}: Unit, Integration, System, and Acceptance testing became standard concepts.
+            \item \textbf{Static Analysis}: Compilers began to include more sophisticated warnings for potential code issues.
+        \end{itemize}
+        \textbf{The First Debugging Tools}
+        \begin{itemize}
+            \item \textbf{Symbolic Debuggers} (e.g., gdb): Allowed programmers to interact with a running program, set breakpoints, and inspect variables symbolically.
+            \item This was a monumental leap from raw core dumps.
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+        % \includegraphics[width=0.8\textwidth]{images/gdb-screenshot.png}
+        \\\scriptsize{Early GNU Debugger (GDB) interface.}
+    \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{1990s: Automation and Process Integration}
+\begin{itemize}
+    \item \textbf{Automated Regression Testing}: Tools like JUnit (1997) for Java, created by Kent Beck and Erich Gamma, revolutionized testing.
+    \begin{itemize}
+        \item Tests could be run automatically and frequently.
+        \item Provided a safety net for refactoring and adding new features.
+        \item Embodied the \textbf{Test-Driven Development (TDD)} philosophy.
+    \end{itemize}
+    \item \textbf{Testing Becomes a Discipline}: The role of \textbf{Quality Assurance (QA) Engineer} became specialized.
+    \item \textbf{Continuous Integration (CI)}: Tools like CruiseControl automated the process of building and testing software after every change, catching integration bugs early.
+\end{itemize}
+\begin{center}
+    % \includegraphics[width=0.7\textwidth]{images/junit-logo.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{2000s-2010s: Scaling and Shifting Quality Left}
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+        \textbf{Paradigm Shifts}
+        \begin{itemize}
+            \item \textbf{Shift-Left Testing}: The idea of testing earlier in the development lifecycle, involving QA and writing tests during development, not after.
+            \item \textbf{Test Automation Pyramid}: A strategy for a balanced test suite: many fast, cheap Unit tests; fewer Integration tests; even fewer UI tests.
+            \item \textbf{DevOps and Quality}: With rapid deployments, automated testing became non-negotiable. Quality is everyone's responsibility.
+        \end{itemize}
+        \textbf{New Frontiers}
+        \begin{itemize}
+            \item \textbf{Selenium}: Automated web browser testing.
+            \item \textbf{Chaos Engineering}: Deliberately injecting failures into systems (e.g., Netflix's Chaos Monkey) to build resilience.
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+        % \includegraphics[width=\textwidth]{images/test-pyramid.png}
+        \\\scriptsize{The Test Automation Pyramid.}
+    \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[t]{2020s: The AI-Powered Future of Debugging}
+\begin{itemize}
+    \item \textbf{AI-Assisted Testing}:
+    \begin{itemize}
+        \item AI generates test cases, predicts flaky tests, and optimizes test suites.
+        \item Tools can automatically detect visual regressions in UI.
+    \end{itemize}
+    \item \textbf{Intelligent Fault Localization}:
+    \begin{itemize}
+        \item AI analyzes code, execution traces, and bug reports to suggest the most likely lines of code causing a failure.
+        \item \textbf{Example}: A tool like \textbf{Amazon CodeGuru} or \textbf{OpenAI's Debugger} can point directly to the suspicious code.
+    \end{itemize}
+    \item \textbf{Automated Program Repair}:
+    \begin{itemize}
+        \item LLMs can not only find bugs but also suggest and even generate fixes.
+        \item \textbf{Example}: GitHub Copilot Chat can explain a bug and propose a patch.
+    \end{itemize}
+    \item \textbf{Observability}: The evolution beyond monitoring. Using logs, metrics, and traces (the three pillars) to understand the internal state of a system by its external outputs, making debugging in production much more effective.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{The Evolution of Debugging at a Glance}
+\begin{center}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \textbf{Era} & \textbf{Primary Method} & \textbf{Testing Focus} & \textbf{Key Innovation} \\
+    \hline
+    1940s-50s   & Physical Inspection & Ad-hoc & The Term "Bug" \\
+    \hline
+    1960s-70s   & Print Statements & Manual, Late & Symbolic Debuggers \\
+    \hline
+    1980s-90s   & Interactive Debuggers (gdb) & Formalized Test Levels & Automated Unit Testing (JUnit) \\
+    \hline
+    2000s-10s   & CI/CD Integrated Tools & Shift-Left, Automation & Test Pyramid, Chaos Engineering \\
+    \hline
+    2020s+      & AI-Powered Analysis & AI-Generated Tests & Intelligent Fault Localization \& Repair \\
+    \hline
+    \end{tabular}
+\end{center}
+\vspace{1em}
+\begin{block}{The Unchanging Goal}
+To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, and to reduce the time between discovering a failure and fixing it from months to minutes.
+\end{block}
+\end{frame}
+
+\section{Taxonomy of Software Testing}
+\label{sec:concept}
+\begin{frame}[t]{Software Testing}
+Software testing (English: software testing) describes a process used to promote the verification of the correctness, completeness, security, and quality of software. Accordingly, you might think that software testing can never fully establish the correctness of any computer software. However, a simple mathematical proof in computability theory (a branch of computer science) deduces the following result: It is impossible to completely solve the so-called "halting problem," which refers to whether any computer program will enter an infinite loop or halt and produce output. In other words, software testing is an audit or comparison process between actual output and expected output.
+
+The classical definition of software testing is: the process of operating a program under specified conditions to discover program errors, measure software quality, and evaluate whether it can meet design requirements. \footnote{\url{https://en.wikipedia.org/wiki/Software_testing}}
+\end{frame}
+
+\begin{frame}[t]{Testing Phases}
+    \begin{block}
+        {Unit Testing}
+Unit testing tests the individual components of software with the purpose of verifying the correctness of the basic units of software design. The object of testing is the smallest unit of software design: functions.
+    \end{block}
+\end{frame}
+
+\begin{frame}[t]{Testing Phases}
+    \begin{block}{Integration Testing}
+Integration testing, also known as comprehensive testing, assembly testing, or joint testing, involves assembling program modules using appropriate integration strategies and testing the interfaces and integrated functionality. Its main purpose is to check whether the interfaces between software units are correct. The objects of integration testing are modules that have already undergone unit testing.
+    \end{block}
+\end{frame}
+
+\begin{frame}[t]{Testing Phases}
+    \begin{block}{System Testing}
+System testing mainly includes functional testing, interface testing, reliability testing, usability testing, and performance testing. Functional testing primarily focuses on aspects such as functional availability, degree of functional implementation (functional processes \& business processes, data processing \& business data processing).
+    \end{block}
+\end{frame}
+
+\begin{frame}[t]{Testing Phases}
+    \begin{block}{Regression Testing}
+Regression testing refers to testing activities conducted during the software maintenance phase to detect errors introduced by code modifications. Regression testing is an important task in the software maintenance phase, with studies showing that the cost of regression testing accounts for more than one-third of the total cost of the software lifecycle.
+
+Unlike ordinary testing, at the beginning of the regression testing process, testers have a complete set of test cases available. Therefore, how to effectively reuse existing test case sets based on code modifications is an important direction in regression testing research. Additionally, research directions in regression testing involve automation tools, object-oriented regression testing, test case prioritization, and supplementary generation of regression test cases.
+\end{block}
+\end{frame}
+
+\begin{frame}[t]{Unit Testing}
+In computer programming, unit testing (English: Unit Testing), also known as module testing, is testing work conducted to verify the correctness of program modules (the smallest units of software design). A program unit is the smallest testable component of an application. In procedural programming, a unit is a single program, function, procedure, etc.; for object-oriented programming, the smallest unit is a method, including methods in base classes (superclasses), abstract classes, or derived classes (subclasses).
+
+Each ideal test case is independent of other cases; to isolate modules during testing, test harness programs such as stubs, mocks, or fakes are often used. Unit testing is typically written by software developers to ensure that their code meets software requirements and follows development goals. Its implementation can be very manual or integrated as part of build automation.\footnote{\url{https://en.wikipedia.org/wiki/Unit_testing}}
+\end{frame}
+
+\begin{frame}[t]{Test Oracle}
+A test oracle, also known as a test criterion, is a mechanism used by software testers or software engineers to determine whether a test has passed. The test oracle determines the expected output of the product for a given test case input, which is then compared with the output of the system under test.
+
+Common test oracles include:
+
+\begin{itemize}
+    \item Design specifications and software documentation
+    \item Other products (for example, as a test oracle for a software program, it might be another program that computes the same mathematical expression using a different algorithm)
+    \item "Heuristic oracles" that provide approximate or accurate results for a small set of test inputs
+    \item "Statistical oracles" that use statistical features
+    \item "Model-based oracles" that use the same model to generate and verify system behavior
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Test Oracle}
+    \centering
+\includegraphics[width=0.3\linewidth]{images/differential.jpeg} % Replaced with example-image as requested
+\end{frame}
+
+\begin{frame}[t]{unittest --- Unit testing framework}
+The unittest unit testing framework was originally inspired by JUnit and has a similar flavor as major unit testing frameworks in other languages. It supports test automation, sharing of setup and shutdown code for tests, aggregation of tests into collections, and independence of the tests from the reporting framework.
+\end{frame}
+\begin{frame}[t]{Fun Fact}
+	\begin{block}
+		{Xfce Bug \#12117}The defualt wallpaper is having my animal scritch all the plastic off my LED MONITOR! Can we choose a different wallpaper? I cannot expect the scratches and whu not? Let's end the mouse games over here.\footnote{\url{https://bugzilla.xfce.org/show_bug.cgi?id=12117}}
+		
+	\end{block}
+	
+\end{frame}
+\begin{frame}[t]{Fun Fact}
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/cat-xfce-bug-2.jpg}
+	
+\end{frame}
+\begin{frame}[t]{Fun Fact}
+	\includegraphics[width=0.8\linewidth]{images/patched-wallpaper.jpg}
+	
+\end{frame}
+% section 基本概念 (end)
+\section{Specialized Testing Types}
+
+\begin{frame}[t]{Regression and Smoke Testing}
+\begin{block}{Regression Testing}
+\begin{itemize}
+\item Ensures \textbf{new changes don't break} existing functionality
+\item Critical during maintenance and enhancements
+\item Often automated for efficiency
+\end{itemize}
+\end{block}
+
+\begin{block}{Smoke Testing}
+\begin{itemize}
+\item \textbf{Basic functionality check} after build
+\item Determines if further testing is feasible
+\item "Build verification testing"
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[t]{Exploratory and Negative Testing}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\textbf{Exploratory Testing}
+\begin{itemize}
+\item \textbf{Simultaneous learning and testing}
+\item Relies on tester's creativity
+\item Unscripted approach
+\end{itemize}
+\end{column}
+\begin{column}{0.48\textwidth}
+\textbf{Negative Testing}
+\begin{itemize}
+\item Validates system with \textbf{invalid inputs}
+\item Checks \textbf{error handling}
+\item Ensures system robustness
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Test-Driven Software Development}
+
+\begin{frame}[t]{测试驱动开发\footnote{\url{https://en.wikipedia.org/wiki/Test-driven_development}}}
+    \includegraphics[width=0.8\linewidth]{images/TDD-Global-Lifecycle.png}
+    
+\end{frame}
+
+\begin{frame}[t]{Add a test}
+In test-driven development, each new feature begins with writing a test. Write a test that defines a function or improvements of a function, which should be very succinct. To write a test, the developer must clearly understand the feature's specification and requirements. The developer can accomplish this through use cases and user stories to cover the requirements and exception conditions, and can write the test in whatever testing framework is appropriate to the software environment. It could be a modified version of an existing test. This is a differentiating feature of test-driven development versus writing unit tests after the code is written: it makes the developer focus on the requirements before writing the code, a subtle but important difference.
+    
+\end{frame}
+
+
+\begin{frame}[t]{Run all tests and see if the new test fails}
+This validates that the test harness is working correctly, shows that the new test does not pass without requiring new code because the required behavior already exists, and it rules out the possibility that the new test is flawed and will always pass. The new test should fail for the expected reason. This step increases the developer's confidence in the new test.
+    
+\end{frame}
+
+\begin{frame}[t]{Write the code}
+The next step is to write some code that causes the test to pass. The new code written at this stage is not perfect and may, for example, pass the test in an inelegant way. That is acceptable because it will be improved and honed in Step 5.
+    
+At this point, the only purpose of the written code is to pass the test. The programmer must not write code that is beyond the functionality that the test checks.
+\end{frame}
+
+
+\begin{frame}[t]{Run tests}
+If all test cases now pass, the programmer can be confident that the new code meets the test requirements, and does not break or degrade any existing features. If they do not, the new code must be adjusted until they do.
+    
+\end{frame}
+
+
+\begin{frame}[t]{Refactor code}
+The growing code base must be cleaned up regularly during test-driven development. New code can be moved from where it was convenient for passing a test to where it more logically belongs. Duplication must be removed. Object, class, module, variable and method names should clearly represent their current purpose and use, as extra functionality is added. As features are added, method bodies can get longer and other objects larger. They benefit from being split and their parts carefully named to improve readability and maintainability, which will be increasingly valuable later in the software lifecycle. 
+    
+\end{frame}
+
+
+\begin{frame}[t]{Repeat}
+    
+Starting with another new test, the cycle is then repeated to push forward the functionality. The size of the steps should always be small, with as few as 1 to 10 edits between each test run. If new code does not rapidly satisfy a new test, or other tests fail unexpectedly, the programmer should undo or revert in preference to excessive debugging. Continuous integration helps by providing revertible checkpoints. When using external libraries it is important not to make increments that are so small as to be effectively merely testing the library itself,[4] unless there is some reason to believe that the library is buggy or is not sufficiently feature-complete to serve all the needs of the software under development.
+\end{frame}
+
+\section{Research Topics in Software Testing}
 \begin{frame}[t]{Fuzz Testing}
 In programming and software development, fuzzing or fuzz testing is an automated software testing technique that involves providing invalid, unexpected, or random data as inputs to a computer program. The program is then monitored for exceptions such as crashes, failing built-in code assertions, or potential memory leaks\footnote{\url{https://en.wikipedia.org/wiki/Fuzzing}}.
 \end{frame}
@@ -126,7 +440,7 @@ Metamorphic relations (MRs) are necessary properties of the intended functionali
 \end{frame}
 
 \begin{frame}[t]{Evolutionary Fuzz Testing}
-    \includegraphics[width=.5\textwidth]{evo_fuzz.png} 
+    \includegraphics[width=.5\textwidth]{images/evo_fuzz.png} 
 \end{frame}
 
 \begin{frame}

@@ -1,20 +1,38 @@
-\frametitle{Hybrid Example: Intelligent Code Completion}
-\begin{verbatim}
-// Developer writes partial method:
-public String processData(String input) {
-    // Step 1: LLM suggests initial completion
-    if (input == null) return "";
-    String result = input.trim();
+\frametitle{MCP in Action: Programming Workflow}
+\begin{block}{Practical MCP Implementation}
+        MCP enables sophisticated AI programming assistants with tool integration.
+    \end{block}
 
-    // Step 2: Constraint solver verifies null safety
-    // ✓ input checked for null, ✓ return value not null
-
-    // Step 3: SBSE optimizes string operations
-    // Replaces inefficient concatenation with StringBuilder
-
-    // Step 4: Final verified and optimized code
-    StringBuilder sb = new StringBuilder();
-    sb.append(result.toLowerCase());
-    return sb.toString();
+    \begin{lstlisting}[style=code, basicstyle=\ttfamily\tiny]
+// MCP Tool Registration
+{
+    "name": "code-analyzer",
+    "version": "1.0.0",
+    "capabilities": {
+        "functions": [
+            {
+                "name": "staticAnalysis",
+                "description": "Perform static code analysis",
+                "parameters": {
+                    "code": {"type": "string"},
+                    "ruleset": {"type": "string", "optional": true}
+                }
+            },
+            {
+                "name": "complexityMetrics",
+                "description": "Calculate code complexity metrics",
+                "parameters": {
+                    "code": {"type": "string"},
+                    "metrics": {"type": "array"}
+                }
+            }
+        ]
+    }
 }
-\end{verbatim}
+
+// AI Model using MCP
+const response = await mcpClient.request("code-analyzer/staticAnalysis", {
+    code: userCode,
+    ruleset: "strict"
+});
+    \end{lstlisting}
