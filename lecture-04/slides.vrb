@@ -1,0 +1,16 @@
+\frametitle{Strict Input Challenge (Command)}
+\begin{verbatim}
+gz service --timeout 10000 \
+-s /world/default/create \
+--reptype gz.msgs.Boolean \
+--reqtype gz.msgs.EntityFactory \
+--req 'sdf: "<model name=\"vehicle_blue\">...</model>"
+pose {
+  position {
+    x: 2.3509603833593182
+    y: 5.568459723740165
+    z: 9.435891851259887
+  }
+}
+name: "model"'
+\end{verbatim}

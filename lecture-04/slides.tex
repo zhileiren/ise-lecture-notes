@@ -516,5 +516,181 @@ Metamorphic relations (MRs) are necessary properties of the intended functionali
 \end{enumerate}
  
 \end{frame}
+\section{Case Study}
+\begin{frame}{Background}
+\begin{itemize}
+\item Robotic software development exhibits stark contrasts to traditional software engineering paradigms
+\item Simulators are a critical component of the software development toolchain for robotic systems
+\item Gazebo has emerged as the \textit{de facto standard} for simulation in robotics
+\item Applications: aerospace missions, subterranean exploration, maritime operational simulations
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Background: Challenges}
+\begin{itemize}
+\item Bugs in robotic simulators may result in:
+  \begin{itemize}
+  \item Simulation errors
+  \item Data loss
+  \item Vulnerability to malicious exploitation
+  \item Compromised efficiency and quality of software development
+  \end{itemize}
+\item Testing robotic simulators like Gazebo is difficult due to:
+  \begin{itemize}
+  \item Strict Input Challenge
+  \item State Space Challenge
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Strict Input Challenge (Input File)}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{example-image}
+\end{center}
+\begin{itemize}
+\item SDF file $\rightarrow$ DOM tree $\rightarrow$ Rendered scenario
+\item Load $\rightarrow$ Parse $\rightarrow$ Simulate
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Strict Input Challenge (Command)}
+\begin{verbatim}
+gz service --timeout 10000 \
+-s /world/default/create \
+--reptype gz.msgs.Boolean \
+--reqtype gz.msgs.EntityFactory \
+--req 'sdf: "<model name=\"vehicle_blue\">...</model>"
+pose {
+  position {
+    x: 2.3509603833593182
+    y: 5.568459723740165
+    z: 9.435891851259887
+  }
+}
+name: "model"'
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{State Space Challenge}
+\begin{itemize}
+\item More than 100 plugins/modules
+\item Joints/links/sensors dynamically created
+\item More than 50 built-in services and topics
+\item Plugin-specific services and topics
+\item Command sequence of arbitrary length
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Our Approach: GzFuzz}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{example-image}
+\end{center}
+\begin{itemize}
+\item Syntax-aware Feasible Command Generation
+\item Learning-based Command Generator Selection
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Syntax-aware Feasible Command Generation}
+\begin{itemize}
+\item For Generators 6–9, further determine specific parameters
+\item Ensures commands are both feasible and diverse
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Learning-based Command Generator Selection}
+\begin{itemize}
+\item Simplified hierarchical reinforcement learning (Advantage Actor-Critic)
+\item Actors select command generators
+\item Sub-Actors select parameters
+\item Critic updates parameters of Actors and Sub-Actors
+\item Reward based on crash, coverage improvement, and diversity
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bug Detection}
+\begin{itemize}
+\item Commands executed with spawned Gazebo
+\item Crash-based test oracle
+\item Once crash detected:
+  \begin{itemize}
+  \item Command sequence iteratively reduced
+  \item Manually checked
+  \item Bug reports issued
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Evaluation: Research Questions}
+\begin{itemize}
+\item \textbf{RQ1}: Is GzFuzz effective in finding bugs for Gazebo?
+\item \textbf{RQ2}: How effective is GzFuzz compared with existing fuzzing methods?
+\item \textbf{RQ3}: What is the impact of the two main components on GzFuzz?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Evaluation Setup}
+\begin{itemize}
+\item Baselines: AFL++, Fuzzotron
+\item Gazebo Version: latest dev (RQ1), Gazebo 8.0.0 (RQ2, RQ3)
+\item Data: 309 SDF files, 123 modules with plugins, 117 plugins
+\item Implementation: PyTorch, lxml, randomproto
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Evaluation Results}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{example-image}
+\end{center}
+\end{frame}
+
+\begin{frame}{Answer to RQ1}
+\begin{itemize}
+\item GzFuzz detected \textbf{25 unique crashes} in less than six months
+\item \textbf{24 bugs} were fixed or confirmed
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Answer to RQ2}
+\begin{itemize}
+\item GzFuzz significantly outperforms baseline approaches
+\item Over 12-hour testing: more bugs detected on previous Gazebo release
+\item Statistically significant improvement
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Answer to RQ3}
+\begin{itemize}
+\item Syntax-aware generators and RL-based selection both contribute
+\item Two mechanisms collectively enhance effectiveness
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Contributions}
+\begin{itemize}
+\item First study to apply fuzz testing to Gazebo
+\item Syntax-aware feasible command generators
+\item Learning-based command generator selection
+\item 25 unique crashes detected, 24 fixed/confirmed
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Future Work}
+\begin{itemize}
+\item Incorporate differential testing across simulators
+\item Integrate LLMs for more complex and realistic test cases
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\centering
+\Large
+Thank You\\
+\vspace{1cm}
+Zhilei Ren\\
+\small
+zren@dlut.edu.cn
+\end{frame}
+
 \end{document}
 
