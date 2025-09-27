@@ -23,6 +23,7 @@
 \usepackage{biblatex}
 \usepackage{bibentry}
 \usepackage{verbatim}
+\usepackage[absolute,overlay]{textpos}
 \bibliography{cite}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
@@ -125,8 +126,14 @@ Dalian University of Technology
         \end{itemize}
     \end{column}
     \begin{column}{0.5\textwidth}
-        % \includegraphics[width=0.9\textwidth]{images/first-computer-bug.jpg}
-        \\\scriptsize{The first computer "bug" from the Harvard Mark II log book.}
+        \begin{figure}
+        \begin{center}
+            \includegraphics[width=0.9\textwidth]{images/first-computer-bug.jpg}
+        \end{center}
+        \caption{The first computer "bug" from the Harvard Mark II log book.}
+        \label{fig:bug}
+        \end{figure}
+        
     \end{column}
 \end{columns}
 \begin{block}{}
@@ -186,22 +193,31 @@ Early "debugging" was a physical, hardware-centric activity.
 
 \begin{frame}[t]{2000s-2010s: Scaling and Shifting Quality Left}
 \begin{columns}
-    \begin{column}{0.6\textwidth}
+    \begin{column}{0.45\textwidth}
         \textbf{Paradigm Shifts}
+        \scriptsize
         \begin{itemize}
             \item \textbf{Shift-Left Testing}: The idea of testing earlier in the development lifecycle, involving QA and writing tests during development, not after.
             \item \textbf{Test Automation Pyramid}: A strategy for a balanced test suite: many fast, cheap Unit tests; fewer Integration tests; even fewer UI tests.
             \item \textbf{DevOps and Quality}: With rapid deployments, automated testing became non-negotiable. Quality is everyone's responsibility.
         \end{itemize}
+        \normalsize
         \textbf{New Frontiers}
+        \scriptsize
         \begin{itemize}
             \item \textbf{Selenium}: Automated web browser testing.
             \item \textbf{Chaos Engineering}: Deliberately injecting failures into systems (e.g., Netflix's Chaos Monkey) to build resilience.
         \end{itemize}
     \end{column}
-    \begin{column}{0.4\textwidth}
-        % \includegraphics[width=\textwidth]{images/test-pyramid.png}
-        \\\scriptsize{The Test Automation Pyramid.}
+    \begin{column}{0.45\textwidth}
+        \begin{figure}
+        \begin{center}
+            \includegraphics[width=\textwidth]{images/test-pyramid.png}
+        \end{center}
+        \caption{Test Automation Pyramid}
+        \label{fig:}
+        \end{figure}
+        
     \end{column}
 \end{columns}
 \end{frame}
@@ -229,19 +245,20 @@ Early "debugging" was a physical, hardware-centric activity.
 
 \begin{frame}[t]{The Evolution of Debugging at a Glance}
 \begin{center}
-    \begin{tabular}{|l|l|l|l|}
+    \scriptsize
+    \begin{tabular}{|l|l|l|}
     \hline
-    \textbf{Era} & \textbf{Primary Method} & \textbf{Testing Focus} & \textbf{Key Innovation} \\
+    \textbf{Era} & \textbf{Primary Method} & \textbf{Testing Focus} \\
     \hline
-    1940s-50s   & Physical Inspection & Ad-hoc & The Term "Bug" \\
+    1940s-50s   & Physical Inspection & Ad-hoc \\
     \hline
-    1960s-70s   & Print Statements & Manual, Late & Symbolic Debuggers \\
+    1960s-70s   & Print Statements & Manual, Late \\
     \hline
-    1980s-90s   & Interactive Debuggers (gdb) & Formalized Test Levels & Automated Unit Testing (JUnit) \\
+    1980s-90s   & Interactive Debuggers  & Formalized Test Levels \\
     \hline
-    2000s-10s   & CI/CD Integrated Tools & Shift-Left, Automation & Test Pyramid, Chaos Engineering \\
+    2000s-10s   & CI/CD Integrated Tools & Shift-Left, Automation \\
     \hline
-    2020s+      & AI-Powered Analysis & AI-Generated Tests & Intelligent Fault Localization \& Repair \\
+    2020s+      & AI-Powered Analysis & AI-Generated Tests \\
     \hline
     \end{tabular}
 \end{center}
@@ -254,9 +271,8 @@ To move from \alert{reactive} bug-fixing to \alert{proactive} bug-prevention, an
 \section{Taxonomy of Software Testing}
 \label{sec:concept}
 \begin{frame}[t]{Software Testing}
-Software testing (English: software testing) describes a process used to promote the verification of the correctness, completeness, security, and quality of software. Accordingly, you might think that software testing can never fully establish the correctness of any computer software. However, a simple mathematical proof in computability theory (a branch of computer science) deduces the following result: It is impossible to completely solve the so-called "halting problem," which refers to whether any computer program will enter an infinite loop or halt and produce output. In other words, software testing is an audit or comparison process between actual output and expected output.
 
-The classical definition of software testing is: the process of operating a program under specified conditions to discover program errors, measure software quality, and evaluate whether it can meet design requirements. \footnote{\url{https://en.wikipedia.org/wiki/Software_testing}}
+    Software testing is the process of evaluating and verifying that a software product or application functions correctly, securely and efficiently according to its specific requirements\footnote{\url{https://www.ibm.com/think/topics/software-testing}}.
 \end{frame}
 
 \begin{frame}[t]{Testing Phases}
@@ -308,12 +324,33 @@ Common test oracles include:
 
 \begin{frame}[t]{Test Oracle}
     \centering
-\includegraphics[width=0.3\linewidth]{images/differential.jpeg} % Replaced with example-image as requested
+    \begin{columns}
+        \begin{column}{0.3\textwidth}
+            
+            \includegraphics[width=0.9\linewidth]{images/differential.jpeg} % Replaced with example-image as requested
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \scriptsize
+            \begin{itemize}
+                \item A: ``Hey Han, how come your construction site shut down recently?''
+                \item B: ``That day we had nothing to do, so we all took out our tape measures and compared them.''
+                \item One bought from Temu.
+                \item One from Taobao.
+                \item One from a livestream sale.
+                \item One from the hardware store.
+                \item One picked up off the street.
+                \item A: ``Holy moly, what a mess''.
+                \item B: ``Anyway, I'm done talking. I'm gonna grab my bucket and run (quitting)''. 
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    \begin{textblock}{4}(6,4)
+        \only<2>{
+            \includegraphics[width=\textwidth]{images/bucket-run.jpeg}
+        }
+    \end{textblock}
 \end{frame}
 
-\begin{frame}[t]{unittest --- Unit testing framework}
-The unittest unit testing framework was originally inspired by JUnit and has a similar flavor as major unit testing frameworks in other languages. It supports test automation, sharing of setup and shutdown code for tests, aggregation of tests into collections, and independence of the tests from the reporting framework.
-\end{frame}
 \begin{frame}[t]{Fun Fact}
 	\begin{block}
 		{Xfce Bug \#12117}The defualt wallpaper is having my animal scritch all the plastic off my LED MONITOR! Can we choose a different wallpaper? I cannot expect the scratches and whu not? Let's end the mouse games over here.\footnote{\url{https://bugzilla.xfce.org/show_bug.cgi?id=12117}}
@@ -540,6 +577,14 @@ Metamorphic relations (MRs) are necessary properties of the intended functionali
   \item Strict Input Challenge
   \item State Space Challenge
   \end{itemize}
+  \begin{figure}
+  \begin{center}
+      \includegraphics[width=.6\textwidth]{images/architecture.pdf}
+  \end{center}
+  \caption{Architecture of Gazebo}
+  \label{fig:}
+  \end{figure}
+  
 \end{itemize}
 \end{frame}
 
@@ -581,14 +626,14 @@ name: "model"'
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Our Approach: GzFuzz}
-\begin{center}
-\includegraphics[width=0.9\textwidth]{example-image}
-\end{center}
+\begin{frame}[t]{Our Approach: GzFuzz}
 \begin{itemize}
 \item Syntax-aware Feasible Command Generation
 \item Learning-based Command Generator Selection
 \end{itemize}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{images/workflow.pdf}
+\end{center}
 \end{frame}
 
 \begin{frame}{Syntax-aware Feasible Command Generation}
