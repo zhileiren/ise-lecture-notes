@@ -25,6 +25,7 @@
 \usepackage{verbatim}
 \usepackage{subfig}
 \usepackage{tikz}
+\usepackage{listings}
 \bibliography{cite}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
@@ -37,7 +38,7 @@
 
 \title[Intelligent Software Engineering] 
 {Intelligent Software Engineering}
-\subtitle{\small{When Software Meets Artificial Intelligence}}
+\subtitle{\small{When Software Engineering Meets Artificial Intelligence}}
 
 \author[Zhilei Ren] 
 {Zhilei Ren}
@@ -83,7 +84,6 @@ Dalian University of Technology
 
 \begin{document}
 
-\section{Introduction}
 \begin{frame}
   \titlepage
 \end{frame}
@@ -95,7 +95,7 @@ Dalian University of Technology
 ]
 \end{frame}
 
-\AtBeginSubsection[]
+\AtBeginSection[]
 {
   \begin{frame}<beamer>{Outline}
     \tableofcontents[currentsection,currentsubsection]
@@ -136,8 +136,25 @@ Dalian University of Technology
 \end{block}
 \end{frame}
 
+\begin{frame}[t]{What Will be Discussed}
+    \begin{block}{Contents}
+        \begin{itemize}
+            \item Introduction to Software Engineering and Artificial Intelligence
+            \item Requirements Engineering
+            \item Design and Implementation
+            \item Software Testing 
+            \item A Case Study of Software Engineering Research
+        \end{itemize}
+    \end{block}
+\end{frame}
+
 \section{Brief History of Software Engineering}
 \subsection{Pioneering Thoughts}
+
+\begin{frame}{Pioneering Thoughts}
+    \Huge
+    Who is the first programmer?
+\end{frame}
 
 % 第一页：Ada Lovelace 简介
 \begin{frame}[t]{1843: Ada Lovelace - The First Programmer}
@@ -177,7 +194,7 @@ Dalian University of Technology
 
 \begin{frame}[t]{1843: Ada Lovelace - The First Programmer}
         \begin{itemize}
-            \item She ranslated an Italian article on the engine, adding her own extensive \textbf{Notes}
+            \item She translated an Italian article on the engine, adding her own extensive \textbf{Notes}
             \item \textbf{Note G} contained what is considered the first computer program
         \end{itemize}
         \begin{figure}[b]
@@ -219,6 +236,169 @@ Dalian University of Technology
     \end{tabular}
 \end{center}
 \end{frame}
+
+\begin{frame}[t]
+\frametitle{The Dawn of High-Level Programming}
+\begin{itemize}
+    \item \textbf{1950s Context}: Programming in machine code/assembly was tedious and error-prone
+    \item \textbf{The Vision}: Create languages that were more human-readable and machine-independent
+    \item \textbf{Two Paths Emerged}:
+    \begin{itemize}
+        \item \textbf{Fortran (1957)}: Designed for scientific computing - \textit{imperative} approach
+        \item \textbf{Lisp (1958)}: Designed for AI research - \textit{functional} approach
+    \end{itemize}
+    \item Both languages are still actively used today, demonstrating remarkable longevity
+\end{itemize}
+
+\begin{center}
+    \includegraphics[width=0.3\textwidth]{example-image}
+    \quad
+    \includegraphics[width=0.3\textwidth]{example-image}
+    \\\scriptsize{Left: Early Fortran manual; Right: John McCarthy, Lisp creator}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Fortran: The First High-Level Language}
+\begin{itemize}
+    \item \textbf{Name}: FORmula TRANslating system
+    \item \textbf{Created}: 1957 by John Backus at IBM
+    \item \textbf{Primary Goal}: Make scientific computing easier and more efficient
+    \item \textbf{Key Innovations}:
+    \begin{itemize}
+        \item First compiler ever created
+        \item Mathematical notation similar to algebra
+        \item Array operations and complex numbers
+        \item Surprisingly efficient code generation
+    \end{itemize}
+    \item \textbf{Impact}: Revolutionized scientific and engineering computing
+\end{itemize}
+
+% \begin{block}{Backus' Insight}
+% "Much of my work has come from being lazy. I didn't like writing programs, and so, when I was working on the IBM 701, I started work on a programming system to make it easier to write programs."
+% \end{block}
+\end{frame}
+
+\begin{frame}[fragile,t]
+\frametitle{Fortran Code Example}
+\begin{lstlisting}[language=Fortran, caption=Fortran 77 Style]
+\scriptsize
+C AREA OF A TRIANGLE WITH HERON'S FORMULA
+      PROGRAM TRIANGLE
+      REAL A, B, C, AREA, S
+      
+      READ *, A, B, C
+      S = (A + B + C) / 2.0
+      AREA = SQRT(S * (S - A) * (S - B) * (S - C))
+      
+      PRINT *, 'AREA = ', AREA
+      END PROGRAM
+\end{lstlisting}
+
+\begin{itemize}
+    \item \textbf{Imperative style}: Explicit sequence of operations
+    \item \textbf{Mathematical focus}: Direct translation of formulas
+    \item \textbf{Simple data flow}: Variables are modified in place
+    \item \textbf{Fixed format}: Early versions required specific column positions
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Lisp: The Second High-Level Language}
+\begin{itemize}
+    \item \textbf{Name}: LISt Processing
+    \item \textbf{Created}: 1958 by John McCarthy at MIT
+    \item \textbf{Primary Goal}: Artificial Intelligence research
+    \item \textbf{Key Innovations}:
+    \begin{itemize}
+        \item Functional programming paradigm
+        \item Linked list as fundamental data structure
+        \item Garbage collection
+        \item Homoiconicity: Code is data, data is code
+        \item Recursion as primary control structure
+    \end{itemize}
+    \item \textbf{Impact}: Foundation for AI research and functional programming
+\end{itemize}
+
+% \begin{block}{McCarthy's Vision}
+% "Lisp was a discovery, not an invention. It was there, in the nature of recursive functions of symbolic expressions."
+% \end{block}
+\end{frame}
+
+\begin{frame}[fragile,t]
+\frametitle{Lisp Code Example}
+\scriptsize
+\begin{lstlisting}[language=Lisp, caption=Common Lisp Style]
+;; Calculate factorial using recursion
+(defun factorial (n)
+  (if (<= n 1)
+      1
+      (* n (factorial (- n 1)))))
+
+;; Map a function over a list
+(defun square-list (numbers)
+  (mapcar #'(lambda (x) (* x x)) numbers))
+
+;; Using higher-order functions
+(let ((numbers '(1 2 3 4 5)))
+  (print (factorial 5))
+  (print (square-list numbers)))
+\end{lstlisting}
+
+\begin{itemize}
+    \item \textbf{Functional style}: Emphasizes expressions over statements
+    \item \textbf{Recursive thinking}: Problems broken down recursively
+    \item \textbf{List manipulation}: Built-in operations for list processing
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Paradigm Comparison: Imperative vs Functional}
+\begin{itemize}
+    \item \textbf{Fortran (Imperative Paradigm)}:
+    \begin{itemize}
+        \item \textit{Philosophy}: "How to compute" - sequence of steps
+        \item \textit{State changes}: Variables are modified
+        \item \textit{Control structures}: Loops, conditionals, goto
+        \item \textit{Primary abstraction}: Procedures and subroutines
+        \item \textit{Memory management}: Manual/stack-based
+    \end{itemize}
+    
+    \item \textbf{Lisp (Functional Paradigm)}:
+    \begin{itemize}
+        \item \textit{Philosophy}: "What to compute" - expressions and transformations
+        \item \textit{Immutability}: Avoid changing state when possible
+        \item \textit{Control structures}: Recursion, function composition
+        \item \textit{Primary abstraction}: Functions as first-class citizens
+        \item \textit{Memory management}: Automatic garbage collection
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Design Philosophy Comparison}
+\begin{itemize}
+    \item \textbf{Fortran's Practical Focus}:
+    \begin{itemize}
+        \item Designed for numerical computation efficiency
+        \item Close mapping to mathematical notation
+        \item Optimized for array operations and linear algebra
+        \item Minimal syntax, maximum computational power
+        \item Target user: Scientists and engineers
+    \end{itemize}
+    
+    \item \textbf{Lisp's Theoretical Foundation}:
+    \begin{itemize}
+        \item Based on lambda calculus and recursive function theory
+        \item Embraced symbolic computation and AI problems
+        \item Powerful metaprogramming through macros
+        \item Interactive development with REPL (Read-Eval-Print Loop)
+        \item Target user: AI researchers and computer scientists
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
 \subsection{The Origins}
 
 \begin{frame}[t]{The Dawn of Software Engineering}
@@ -629,21 +809,14 @@ Git enabled workflows like \textbf{feature branching} and \textbf{pull requests}
 \subsection{LLM Era}
 
 \begin{frame}[t]{2020s: The LLM Revolution}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
-        \begin{itemize}
-            \item \textbf{Large Language Models transform software engineering}
-            \item GitHub Copilot (2021) and similar tools
-            \item AI-assisted code generation and review
-            \item Automated testing and documentation
-            \item Shift in developer roles and skills
-        \end{itemize}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        % Add appropriate image
-        % \includegraphics[width=\textwidth]{images/llm-coding.png}
-    \end{column}
-\end{columns}
+    \begin{itemize}
+        \item \textbf{Large Language Models transform software engineering}
+        \item GitHub Copilot (2021) and similar tools
+    \end{itemize}
+    \begin{figure}
+        \includegraphics[width=0.5\textwidth]{images/timeline.jpg}
+        \caption{Timemline for LLMs}
+    \end{figure}
 \end{frame}
 
 \begin{frame}[t]{LLM Impact on Software Engineering}
@@ -670,9 +843,8 @@ Git enabled workflows like \textbf{feature branching} and \textbf{pull requests}
 \begin{itemize}
     \item Continuous evolution from disciplined engineering to AI augmentation
     \item Increasing emphasis on automation and intelligence
-    \item Software engineering becoming more accessible
-    \item New challenges in ethics, security, and quality assurance
     \item The human element remains crucial in system design and oversight
+    \item AI is powerful, but it is neither a silver bullet nor an elixir
 \end{itemize}
 \begin{center}
     \textbf{The journey continues...}
@@ -681,17 +853,17 @@ Git enabled workflows like \textbf{feature branching} and \textbf{pull requests}
 \section{Brief History of Artificial Intelligence}
 \subsection{Pioneering Thoughts}
 \begin{frame}[t]{The Seeds of an Idea}
-\begin{itemize}
-    \item \textbf{Ancient Myths}: Stories of artificial beings endowed with intelligence (e.g., Talos, Golems).
-    \item \textbf{Philosophical Foundations}: Descartes' mind-body problem, Hobbes' view of reasoning as calculation.
-    \item \textbf{Ada Lovelace (1843)}: Questioned whether machines could originate ideas, or only do what we command.
-    \item \textbf{Early 20th Century}: Karel Čapek's play "R.U.R." (1920) coins the term "robot".
-\end{itemize}
-\begin{center}
-    % \includegraphics[width=0.3\textwidth]{images/talos_robot.jpg}
-    \quad
-    % \includegraphics[width=0.3\textwidth]{images/rur_play.jpg}
-\end{center}
+    \begin{itemize}
+            % \item \textbf{Ancient Myths}: Stories of artificial beings endowed with intelligence (e.g., Talos, Golems).
+            % \item \textbf{Philosophical Foundations}: Descartes' mind-body problem, Hobbes' view of reasoning as calculation.
+        \item \textbf{Ada Lovelace (1843)}: Questioned whether machines could originate ideas, or only do what we command.
+        \item \textbf{Early 20th Century}: Karel Čapek's play "R.U.R." (1920) coins the term "robot".
+    \end{itemize}
+
+    \begin{figure}
+        \includegraphics[width=0.3\textwidth]{images/Capek_RUR.jpg}
+        \caption{Capek's play R.U.R}
+    \end{figure}
 \end{frame}
 \subsection{1950s: The Birth of a Field}
 
@@ -762,49 +934,44 @@ Git enabled workflows like \textbf{feature branching} and \textbf{pull requests}
 
 \begin{frame}[t]{1990s-2000s: A New Paradigm}
 \begin{itemize}
-    \item \textbf{Shift from Logic to Statistics}: Instead of programming logical rules, researchers focused on creating systems that could \textbf{learn from data}.
-    \item \textbf{The Rise of Machine Learning}:
-        \begin{itemize}
-            \item \textbf{Support Vector Machines (SVMs)} and other statistical models became powerful tools.
-            \item \textbf{The Web} provided vast amounts of data for training.
-        \end{itemize}
-    \item \textbf{Practical Successes}:
-        \begin{itemize}
-            \item \textbf{Spam Filters} using Naive Bayes classifiers.
-            \item \textbf{Recommendation Systems} (e.g., Amazon, Netflix).
-            \item \textbf{Search Engines} (e.g., Google's PageRank algorithm).
-        \end{itemize}
+    \item \textbf{Shift from Logic to Statistics}: Instead of programming logical rules, researchers focused on creating systems (e.g., SVM, Random Forests) that could \textbf{learn from data}.
+    % \item \textbf{The Rise of Machine Learning}:
+    %     \begin{itemize}
+    %         \item \textbf{Support Vector Machines (SVMs)} and other statistical models became powerful tools.
+    %         \item \textbf{The Web} provided vast amounts of data for training.
+    %     \end{itemize}
+    % \item \textbf{Practical Successes}:
+    %     \begin{itemize}
+    %         \item \textbf{Spam Filters} using Naive Bayes classifiers.
+    %         \item \textbf{Recommendation Systems} (e.g., Amazon, Netflix).
+    %         \item \textbf{Search Engines} (e.g., Google's PageRank algorithm).
+    %     \end{itemize}
     \item \textbf{IBM Deep Blue (1997)}: Defeated world chess champion Garry Kasparov, a landmark symbolic achievement powered largely by search and evaluation functions.
 \end{itemize}
-\begin{center}
-    % \includegraphics[width=0.2\textwidth]{images/svm_diagram.png}
-    \quad
-    % \includegraphics[width=0.2\textwidth]{images/deep_blue.jpg}
-\end{center}
+    \begin{figure}
+        \includegraphics[width=0.5\textwidth]{images/Garry-Kasparov-Deep-Blue-IBM-computer.jpg}
+        \caption{Deep Blue vs. Garry Kasparov}
+    \end{figure}
 \end{frame}
 
 \subsection{2010s: The Deep Learning Revolution}
 
 \begin{frame}[t]{2010s: Deep Learning Unleashed}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
         \textbf{The Breakthrough}
         \begin{itemize}
             \item \textbf{Key Enablers}: Massive datasets (Big Data) and powerful parallel processing (GPUs).
-            \item \textbf{ImageNet Competition (2012)}: A deep neural network (AlexNet) drastically reduced error rates, shocking the research community. This was the "big bang" moment for modern AI.
+            % \item \textbf{ImageNet Competition (2012)}: A deep neural network (AlexNet) drastically reduced error rates, shocking the research community. This was the "big bang" moment for modern AI.
             \item \textbf{The Technique}: \textbf{Deep Learning} uses neural networks with many layers to automatically learn hierarchical features from raw data.
         \end{itemize}
         \textbf{Landmark Achievements}
         \begin{itemize}
             \item \textbf{AlphaGo (2016)}: Defeated the world champion in Go, a game considered far more complex than chess.
-            \item Rapid progress in \textbf{computer vision}, \textbf{speech recognition}, and \textbf{machine translation}.
         \end{itemize}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        % \includegraphics[width=0.95\textwidth]{images/imagenet_error_rate.png}
-        \\\scriptsize{ImageNet Error Rates Plummet with Deep Learning}
-    \end{column}
-\end{columns}
+        \begin{figure}
+            \includegraphics[width=0.5\textwidth]{images/alphago.jpg}
+            \caption{AlphaGo vs. Lee Sedol}
+        \end{figure}
+
 \end{frame}
 
 \subsection{2020s: The Era of Large Language Models}
@@ -852,7 +1019,9 @@ Symbolic AI (Rules) $\rightarrow$ Statistical ML (Data) $\rightarrow$ Deep Learn
 
 \section{Topics Combining the Two Disciplines}
 \begin{frame}[t]{Search-Based Software Engineering}
-    Search-based software engineering (SBSE) applies metaheuristic search techniques such as genetic algorithms, simulated annealing and tabu search to software engineering problems. Many activities in software engineering can be stated as optimization problems. Optimization techniques of operations research such as linear programming or dynamic programming are often impractical for large scale software engineering problems because of their computational complexity or their assumptions on the problem structure. Researchers and practitioners use metaheuristic search techniques, which impose little assumptions on the problem structure, to find near-optimal or ``good-enough'' solutions\footnote{\url{https://en.wikipedia.org/wiki/Search-based_software_engineering}}.
+    % Search-based software engineering (SBSE) applies metaheuristic search techniques such as genetic algorithms, simulated annealing and tabu search to software engineering problems. 
+    Many activities in software engineering can be stated as optimization problems. % Optimization techniques of operations research such as linear programming or dynamic programming are often impractical for large scale software engineering problems because of their computational complexity or their assumptions on the problem structure. 
+    Researchers and practitioners use metaheuristic search techniques, which impose little assumptions on the problem structure, to find near-optimal or ``good-enough'' solutions\footnote{\url{https://en.wikipedia.org/wiki/Search-based_software_engineering}}.
 \end{frame}
 
 \begin{frame}[t]{Mining Software Repositories}
@@ -860,7 +1029,7 @@ Within software engineering, the mining software repositories (MSR) field analyz
 \end{frame}
 
 \begin{frame}[t]{Empirical Software Engineering}
-Empirical software engineering (ESE) is a subfield of software engineering (SE) research that uses empirical research methods to study and evaluate an SE phenomenon of interest. The phenomenon may refer to software development tools/technology, practices, processes, policies, or other human and organizational aspects\footnote{\url{https://en.wikipedia.org/wiki/Empirical_software_engineering}}. Common research methods used in ESE for primary and secondary research are the following:
+Empirical software engineering (ESE) is a subfield of software engineering (SE) research that uses empirical research methods to study and evaluate an SE phenomenon of interest. The phenomenon may refer to software development tools/technology, practices, processes, policies, or other human and organizational aspects\footnote{\url{https://en.wikipedia.org/wiki/Empirical_software_engineering}}. % Common research methods used in ESE for primary and secondary research are the following:
 
 \begin{enumerate}
     \item Primary research (experimentation, case study research, survey research, simulations in particular software Process simulation)
