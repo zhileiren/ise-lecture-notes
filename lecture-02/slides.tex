@@ -118,7 +118,7 @@ Dalian University of Technology
   \titlepage
 \end{frame}
 
-%\begin{frame}{Outline}
+%\begin{frame}[t]{Outline}
 %  \tableofcontents[currentsection,currentsubsection, 
 %    hideothersubsections, 
 %    sectionstyle=show,
@@ -168,14 +168,23 @@ Dalian University of Technology
     \includegraphics[width=.4\textwidth]{treeswing_computer_book_cover.jpg}
 \end{frame}
 
-\begin{frame}[t]{bug or feature?}
-    \includegraphics[width=.5\textwidth]{bugfeature.jpg}
+\begin{frame}[t]{Bug or Feature?}
+    \begin{figure}
+        \includegraphics[width=.5\textwidth]{bugfeature.jpg}
+        \caption{Features = Bugs in Tux}
+    \end{figure}
 \end{frame}
 \begin{frame}[t]{The First Computer Bug}
-    \includegraphics[width=.5\textwidth]{computer-bug.jpg}  
+    \begin{figure}
+        \includegraphics[width=.5\textwidth]{computer-bug.jpg}  
+        \caption{The First Computer Bug}
+    \end{figure}
 \end{frame}
 \begin{frame}[t]{The First Computer Bug}
-    \includegraphics[width=.5\textwidth]{telebug.jpg}  
+    \begin{figure}
+        \includegraphics[width=.5\textwidth]{telebug.jpg}  
+        \caption{Bugs Before Computer Age}
+    \end{figure}
 \end{frame}
 \begin{frame}[t]{Combo in Fighting Games was originally a Bug}
     Combos were a design accident; lead producer Noritaka Funamizu noticed that extra strikes were possible during a bug check on the car-smashing bonus stage. He thought that the timing required was too difficult to make it a useful game feature, but left it in as a hidden one\footnote{\url{https://en.wikipedia.org/wiki/Combo_(video_games)}}.
@@ -190,7 +199,7 @@ Dalian University of Technology
 
 \end{frame}
 
-\begin{frame}{Hidden Features aka Easter Egg}
+\begin{frame}[t]{Hidden Features aka Easter Egg}
     \begin{figure}
     \begin{center}
         \includegraphics[width=.5\textwidth]{images/1280px-Konami_Code.svg.png}
@@ -208,7 +217,7 @@ Dalian University of Technology
     \end{textblock}
 \end{frame}
 
-\begin{frame}{Be Careful with Putting Easter Egg in Software}
+\begin{frame}[t]{Be Careful with Putting Easter Egg in Software}
         \begin{figure}[b]
         \centering
         \subfloat[Test Failure due to man]{\includegraphics[width=5cm]{images/test_failure.png}}\qquad    
@@ -225,7 +234,7 @@ Dalian University of Technology
 
 \section{Assisting Requirements Engineering with LLM}
 
-\begin{frame}{What is Requirements Engineering?}
+\begin{frame}[t]{What is Requirements Engineering?}
     \begin{block}{Definition}
         Requirements Engineering (RE) is the process of defining, documenting, and maintaining requirements in the engineering design process.
     \end{block}
@@ -239,7 +248,7 @@ Dalian University of Technology
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Traditional RE Challenges}
+\begin{frame}[t]{Traditional RE Challenges}
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \textbf{Common Issues:}
@@ -253,13 +262,16 @@ Dalian University of Technology
         \end{column}
         \begin{column}{0.5\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{images/162-user-story.png} % Placeholder
+            \begin{figure}
+                \includegraphics[width=\textwidth]{images/162-user-story.png} % Placeholder
+                \caption{Expectation vs. Reality}
+            \end{figure}
         \end{column}
     \end{columns}
 \end{frame}
 
 % Slide 1: What is PlantUML?
-\begin{frame}{What is PlantUML?}
+\begin{frame}[t]{What is PlantUML?}
     \begin{itemize}
         \item \textbf{Core Idea:} Uses simple, human-readable Domain Specific Language (DSL)
         \item \textbf{Foundation:} Java-based tool for layout
@@ -272,7 +284,7 @@ Dalian University of Technology
 \end{frame}
 
 % Slide 2: Key Advantages
-\begin{frame}{Key Advantages}
+\begin{frame}[t]{Key Advantages}
     \begin{table}
     \small
     \begin{tabular}{p{0.4\textwidth} p{0.55\textwidth}}
@@ -287,7 +299,7 @@ Dalian University of Technology
 \end{frame}
 
 % Slide 3: UML Diagrams Supported
-\begin{frame}{UML Diagrams Supported}
+\begin{frame}[t]{UML Diagrams Supported}
     \begin{columns}
     \begin{column}{0.4\textwidth}
         \begin{itemize}
@@ -315,7 +327,7 @@ Dalian University of Technology
 \end{frame}
 
 % Slide 4: Beyond UML
-\begin{frame}{Beyond UML Diagrams}
+\begin{frame}[t]{Beyond UML Diagrams}
     \begin{itemize}
         \item Architectural Diagrams (C4 model)
         \item Entity Relationship Diagrams (ERD)
@@ -328,7 +340,7 @@ Dalian University of Technology
 \end{frame}
 
 % Slide 5: How It Works
-\begin{frame}{How PlantUML Works}
+\begin{frame}[t]{How PlantUML Works}
     \begin{enumerate}
         \item \textbf{Write:} Create text file (.puml) with PlantUML syntax
         \item \textbf{Process:} Java processor parses text
@@ -428,7 +440,7 @@ User --> Search
 \end{frame}
 
 % Slide 8: Getting Started
-\begin{frame}{Getting Started with PlantUML}
+\begin{frame}[t]{Getting Started with PlantUML}
     \textbf{Online Servers (Quick Start):}
     \begin{itemize}
         \item Official server: \href{http://plantuml.com}{plantuml.com}
@@ -446,7 +458,7 @@ User --> Search
 \end{frame}
 
 % Slide 9: Summary
-\begin{frame}{Summary \& Key Takeaways}
+\begin{frame}[t]{Summary \& Key Takeaways}
     \begin{itemize}
         \item \textbf{Why PlantUML?} Version control, automation, efficiency
         \item \textbf{Text-Based:} Simple, readable language for diagrams
@@ -459,7 +471,7 @@ User --> Search
     \textbf{Embrace efficient diagram creation and maintenance!}
 \end{frame}
 
-\begin{frame}{What is Prompt Engineering?}
+\begin{frame}[t]{What is Prompt Engineering?}
     \begin{block}{Definition}
         Prompt Engineering is the practice of designing and optimizing inputs (prompts) to effectively communicate with AI models to generate desired outputs.
     \end{block}
@@ -473,7 +485,7 @@ User --> Search
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Prompt Engineering Techniques}
+\begin{frame}[t]{Prompt Engineering Techniques}
     \begin{columns}
         \begin{column}{0.6\textwidth}
             \textbf{Key Techniques:}
@@ -556,7 +568,7 @@ Now create for "password reset"
     \end{columns}
 \end{frame}
 
-\begin{frame}{Chain-of-Thought Reasoning}
+\begin{frame}[t]{Chain-of-Thought Reasoning}
     \begin{block}{Definition}
         Breaking down complex problems into intermediate reasoning steps, mimicking human problem-solving
     \end{block}
@@ -606,7 +618,7 @@ for the payment processing component...
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Role-playing Scenarios}
+\begin{frame}[t]{Role-playing Scenarios}
     \begin{block}{Concept}
         Asking the AI to adopt a specific persona or role to generate more context-appropriate responses
     \end{block}
@@ -660,13 +672,14 @@ Role: Accessibility Specialist
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Template-based Prompts}
-    \begin{block}{Definition}
+\begin{frame}[t]{Template-based Prompts}
+    \begin{block}{}
         Using structured templates to ensure consistent, comprehensive outputs across different requirements
     \end{block}
     
     \textbf{Common RE Templates:}
     \begin{itemize}
+        \scriptsize
         \item Use Case Template
         \item User Story Template
         \item Functional Requirement Template
@@ -674,12 +687,13 @@ Role: Accessibility Specialist
         \item Acceptance Criteria Template
     \end{itemize}
     
-    \begin{exampleblock}{Benefits}
+    \begin{exampleblock}{\textbf{Benefits}}
         \begin{itemize}
+            \scriptsize
             \item Standardized format across the project
-        \item Easier validation and review
-        \item Better integration with RE tools
-        \item Consistent quality of generated content
+            \item Easier validation and review
+            \item Better integration with RE tools
+            \item Consistent quality of generated content
         \end{itemize}
     \end{exampleblock}
 \end{frame}
@@ -747,13 +761,14 @@ Status: [Proposed/Approved/Implemented]
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Iterative Refinement}
-    \begin{block}{Concept}
+\begin{frame}[t]{Iterative Refinement}
+    \begin{block}{}
         Starting with broad requirements and progressively refining them through multiple iterations of feedback and clarification
     \end{block}
     
     \textbf{Iterative Process:}
     \begin{enumerate}
+        \scriptsize
         \item \textbf{First Pass}: High-level requirements and scope
         \item \textbf{Second Pass}: Detailed functional requirements
         \item \textbf{Third Pass}: Non-functional requirements and constraints
@@ -762,6 +777,7 @@ Status: [Proposed/Approved/Implemented]
     
     \begin{exampleblock}{RE Application}
         \begin{itemize}
+            \scriptsize
             \item Start with epic-level user stories
             \item Break down into features
             \item Refine into detailed user stories
@@ -836,7 +852,7 @@ failed authentication attempts
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Technique Selection Guide}
+\begin{frame}[t]{Technique Selection Guide}
     \begin{table}
         \scriptsize
         \centering
@@ -863,7 +879,7 @@ failed authentication attempts
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Case Study: Applying Multiple Techniques}
+\begin{frame}[t]{Case Study: Applying Multiple Techniques}
     \begin{block}{Scenario: Healthcare Patient Portal}
         Developing requirements for a secure patient portal with medical records access
     \end{block}
@@ -886,7 +902,7 @@ failed authentication attempts
     % \end{itemize}
 \end{frame}
 
-\begin{frame}{Summary: Prompt Engineering for RE}
+\begin{frame}[t]{Summary: Prompt Engineering for RE}
             \textbf{Key Takeaways:}
             \begin{itemize}
                 \item Different techniques serve different RE needs
@@ -908,7 +924,7 @@ failed authentication attempts
 
 \section{Bridging RE and Prompt Engineering}
 
-\begin{frame}{Parallels Between RE and Prompt Engineering}
+\begin{frame}[t]{Parallels Between RE and Prompt Engineering}
     \begin{table}
         \centering
         \begin{tabular}{p{0.45\textwidth}|p{0.45\textwidth}}
@@ -925,7 +941,7 @@ failed authentication attempts
     \end{table}
 \end{frame}
 
-\begin{frame}{AI-Assisted Requirements Engineering}
+\begin{frame}[t]{AI-Assisted Requirements Engineering}
     \begin{block}{The New Paradigm}
         Using prompt engineering techniques to enhance traditional requirements engineering processes
     \end{block}
@@ -993,7 +1009,7 @@ UC1 .> UC4 : <<include>>
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Expected Use Case Diagram Output}
+\begin{frame}[t]{Expected Use Case Diagram Output}
     \begin{center}
         \includegraphics[width=0.4\textwidth]{images/uc.png} % Placeholder for PlantUML diagram
     \end{center}
@@ -1140,7 +1156,7 @@ Testing: Load testing, security penetration testing
 
 \section{Best Practices and Methodology}
 
-\begin{frame}{Prompt Engineering Patterns for RE}
+\begin{frame}[t]{Prompt Engineering Patterns for RE}
             \textbf{Effective Patterns:}
             \begin{itemize}
                 \scriptsize
@@ -1221,7 +1237,7 @@ endif
 \end{frame}
 %%%%% \section{Case Study and Tools}
 
-%%%%% \begin{frame}{Tool Integration}
+%%%%% \begin{frame}[t]{Tool Integration}
 %%%%%     \begin{columns}
 %%%%%         \begin{column}{0.6\textwidth}
 %%%%%             \textbf{Supported Tools:}
@@ -1268,7 +1284,7 @@ endif
 %%%%%     \end{lstlisting}
 %%%%% \end{frame}
 %%%%% 
-%%%%% \begin{frame}{Case Study: E-commerce System}
+%%%%% \begin{frame}[t]{Case Study: E-commerce System}
 %%%%%     \begin{block}{Project Overview}
 %%%%%         Developing an e-commerce platform using AI-assisted requirements engineering
 %%%%%     \end{block}
@@ -1291,7 +1307,7 @@ endif
 
 \section{Conclusion and Future Directions}
 
-\begin{frame}{Key Takeaways}
+\begin{frame}[t]{Key Takeaways}
     \begin{itemize}
         \item \textbf{Synergy}: Prompt Engineering enhances traditional Requirements Engineering
         \item \textbf{Efficiency}: AI can accelerate requirements development and validation
@@ -1345,7 +1361,7 @@ endif
 %%%%% \end{frame}
 
 
-\begin{frame}{References and Further Reading}
+\begin{frame}[t]{References and Further Reading}
     \begin{thebibliography}{10}
         \bibitem{1} Sommerville, I. (2011) \emph{Software Engineering}
         \bibitem{2} Wiegers, K. \& Beatty, J. (2013) \emph{Software Requirements}
