@@ -25,6 +25,7 @@
 \usepackage{verbatim}
 \usepackage{listings}
 \usepackage{subfig}
+\usepackage[absolute,overlay]{textpos}
 \bibliography{cite}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
@@ -198,7 +199,13 @@ Dalian University of Technology
     \label{fig:konami}
     \end{figure}
 
+    \pause
     Finding the game too difficult to play through during testing, he (Konami developer) created the cheat code, which gives the player a full set of power-ups\ldots The code was meant to be removed prior to publishing, but this was overlooked and only discovered as the game was being prepared for mass production. The developers decided to leave it there, as removing it could result in new bugs and glitches\footnote{\url{https://en.wikipedia.org/wiki/Konami_Code}}. 
+    \begin{textblock}{3}(12,3)
+        \only<2>{
+            \includegraphics[width=\textwidth]{images/gradius.png}
+        }
+    \end{textblock}
 \end{frame}
 
 \begin{frame}{Be Careful with Putting Easter Egg in Software}
@@ -246,7 +253,7 @@ Dalian University of Technology
         \end{column}
         \begin{column}{0.5\textwidth}
             \centering
-            \includegraphics[width=0.8\textwidth]{example-image} % Placeholder
+            \includegraphics[width=\textwidth]{images/162-user-story.png} % Placeholder
         \end{column}
     \end{columns}
 \end{frame}
@@ -282,7 +289,7 @@ Dalian University of Technology
 % Slide 3: UML Diagrams Supported
 \begin{frame}{UML Diagrams Supported}
     \begin{columns}
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.4\textwidth}
         \begin{itemize}
             \item Sequence Diagram
             \item Use Case Diagram
@@ -294,11 +301,15 @@ Dalian University of Technology
             \item Object Diagram
         \end{itemize}
     \end{column}
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.6\textwidth}
         \centering
-        \textbf{Visual Example:}\\
-        \textcolor{gray}{\scriptsize[Diagram placeholder]}
-        \vspace{2cm}
+        \begin{figure}
+        \begin{center}
+            \includegraphics[width=\textwidth]{images/component.png}
+        \end{center}
+        \caption{Component Diagram Example}
+        \end{figure}
+        
     \end{column}
     \end{columns}
 \end{frame}
@@ -476,12 +487,12 @@ User --> Search
         \end{column}
         \begin{column}{0.4\textwidth}
             \centering
-            \includegraphics[width=0.8\textwidth]{example-image} % Placeholder
+            \includegraphics[width=\textwidth]{images/prompt.jpeg} % Placeholder
         \end{column}
     \end{columns}
 \end{frame}
 
-\begin{frame}{Zero-shot vs. Few-shot Prompting}
+\begin{frame}[t]{Zero-shot vs. Few-shot Prompting}
     \begin{block}{Zero-shot Prompting}
         Providing no examples - the model must understand and respond based solely on the instruction
     \end{block}
@@ -490,6 +501,9 @@ User --> Search
         \texttt{"Generate functional requirements for a user login system"}
     \end{exampleblock}
     
+\end{frame}
+
+\begin{frame}[t]{Zero-shot vs. Few-shot Prompting}
     \begin{block}{Few-shot Prompting}
         Providing several examples to demonstrate the desired pattern or format
     \end{block}
@@ -499,7 +513,7 @@ User --> Search
     \end{exampleblock}
 \end{frame}
 
-\begin{frame}[fragile]{Zero-shot vs. Few-shot: Practical Examples}
+\begin{frame}[fragile,t]{Zero-shot vs. Few-shot: Practical Examples}
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \textbf{Zero-shot Example:}
@@ -507,15 +521,8 @@ User --> Search
 Create a use case for 
 "password reset" functionality
             \end{lstlisting}
+            \vspace{.7cm}
             
-            \textbf{Pros:}
-            \begin{itemize}
-                \item Quick and simple
-                \item Good for straightforward tasks
-                \item Less context needed
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.5\textwidth}
             \textbf{Few-shot Example:}
             \begin{lstlisting}[style=code]
 Example 1: Use case for login
@@ -530,7 +537,15 @@ Example 2: Use case for logout
 
 Now create for "password reset"
             \end{lstlisting}
+        \end{column}
+        \begin{column}{0.5\textwidth}
             
+            \textbf{Pros:}
+            \begin{itemize}
+                \item Quick and simple
+                \item Good for straightforward tasks
+                \item Less context needed
+            \end{itemize}
             \textbf{Pros:}
             \begin{itemize}
                 \item Better quality output
@@ -548,6 +563,7 @@ Now create for "password reset"
     
     \begin{exampleblock}{RE Application}
         Instead of asking for complete requirements, guide the AI through logical steps:
+        \scriptsize
         \begin{enumerate}
             \item Identify stakeholders
             \item Define high-level goals
@@ -557,16 +573,17 @@ Now create for "password reset"
         \end{enumerate}
     \end{exampleblock}
     
+\end{frame}
+
+\begin{frame}[t, fragile]{Chain-of-Thought: Requirements Example}
     \textbf{Benefits for Requirements Engineering:}
+    \scriptsize
     \begin{itemize}
         \item Reduces ambiguity in complex domains
         \item Ensures logical consistency
         \item Helps identify missing requirements
         \item Improves traceability
     \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Chain-of-Thought: Requirements Example}
     \begin{lstlisting}[style=code, caption={Chain-of-Thought for Payment System}]
 Let's design requirements for an online payment system:
 
@@ -861,13 +878,13 @@ failed authentication attempts
         \item \textbf{Iterative refinement}: Multiple rounds of stakeholder review
     \end{enumerate}
     
-    \textbf{Results:}
-    \begin{itemize}
-        \item 30\% more comprehensive security requirements
-        \item Early identification of compliance gaps
-        \item Consistent documentation format
-        \item Higher stakeholder satisfaction
-    \end{itemize}
+    % \textbf{Results:}
+    % \begin{itemize}
+    %     \item 30\% more comprehensive security requirements
+    %     \item Early identification of compliance gaps
+    %     \item Consistent documentation format
+    %     \item Higher stakeholder satisfaction
+    % \end{itemize}
 \end{frame}
 
 \begin{frame}{Summary: Prompt Engineering for RE}
@@ -1125,28 +1142,24 @@ Testing: Load testing, security penetration testing
 \section{Best Practices and Methodology}
 
 \begin{frame}{Prompt Engineering Patterns for RE}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
             \textbf{Effective Patterns:}
             \begin{itemize}
+                \scriptsize
                 \item \textbf{Template-based}: Use structured templates
                 \item \textbf{Iterative refinement}: Build complexity gradually
                 \item \textbf{Context provision}: Include domain knowledge
                 \item \textbf{Example-driven}: Provide similar examples
                 \item \textbf{Validation requests}: Ask for verification
             \end{itemize}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \textbf{Avoid:}
+            \textbf{Antipatterns:}
             \begin{itemize}
+                \scriptsize
                 \item Vague or ambiguous terms
                 \item Overly complex single prompts
                 \item Assumed domain knowledge
                 \item Open-ended without constraints
                 \item Inconsistent terminology
             \end{itemize}
-        \end{column}
-    \end{columns}
 \end{frame}
 
 \begin{frame}[fragile]{Effective Prompt Template}
@@ -1207,7 +1220,7 @@ endif
     \centering
     \includegraphics[width=0.3\textwidth]{images/re-pe.png} % Placeholder for PlantUML diagram
 \end{frame}
-\section{Case Study and Tools}
+%%%%% \section{Case Study and Tools}
 
 %%%%% \begin{frame}{Tool Integration}
 %%%%%     \begin{columns}
@@ -1228,54 +1241,54 @@ endif
 %%%%%     \end{columns}
 %%%%% \end{frame}
 
-\begin{frame}[fragile]{Prompt Version Control Example}
-    \lstset{style=code}
-    \begin{lstlisting}[caption={Version-Controlled Prompt Template}]
-# Prompt Template v2.1 - Use Case Generation
-# Date: 2024-01-15 | Author: RE Team
-# Changelog: Added validation criteria
-
-SYSTEM_PROMPT: """
-You are an experienced requirements engineer 
-specializing in [DOMAIN]. Your task is to create 
-comprehensive use case specifications.
-"""
-
-USER_PROMPT: """
-Generate a use case for [FEATURE] in [SYSTEM] with:
-
-1. PRIMARY_ACTOR: [actor role]
-2. PRECONDITIONS: [system state requirements]
-3. MAIN_SCENARIO: [step-by-step flow]
-4. ALTERNATIVE_FLOWS: [error handling paths]
-5. POSTCONDITIONS: [end state conditions]
-6. VALIDATION: [acceptance criteria]
-
-Format: Structured text with clear sections.
-"""
-    \end{lstlisting}
-\end{frame}
-
-\begin{frame}{Case Study: E-commerce System}
-    \begin{block}{Project Overview}
-        Developing an e-commerce platform using AI-assisted requirements engineering
-    \end{block}
-    
-    \textbf{Results:}
-    \begin{itemize}
-        \item 40\% reduction in initial requirements gathering time
-        \item 25\% fewer requirements defects identified during testing
-        \item Improved stakeholder satisfaction with visual models
-        \item Better traceability through structured prompts
-    \end{itemize}
-    
-    \textbf{Challenges:}
-    \begin{itemize}
-        \item Training team on effective prompt engineering
-        \item Integrating AI outputs with existing workflows
-        \item Ensuring consistency across multiple AI sessions
-    \end{itemize}
-\end{frame}
+%%%%% \begin{frame}[fragile]{Prompt Version Control Example}
+%%%%%     \lstset{style=code}
+%%%%%     \begin{lstlisting}[caption={Version-Controlled Prompt Template}]
+%%%%% # Prompt Template v2.1 - Use Case Generation
+%%%%% # Date: 2024-01-15 | Author: RE Team
+%%%%% # Changelog: Added validation criteria
+%%%%% 
+%%%%% SYSTEM_PROMPT: """
+%%%%% You are an experienced requirements engineer 
+%%%%% specializing in [DOMAIN]. Your task is to create 
+%%%%% comprehensive use case specifications.
+%%%%% """
+%%%%% 
+%%%%% USER_PROMPT: """
+%%%%% Generate a use case for [FEATURE] in [SYSTEM] with:
+%%%%% 
+%%%%% 1. PRIMARY_ACTOR: [actor role]
+%%%%% 2. PRECONDITIONS: [system state requirements]
+%%%%% 3. MAIN_SCENARIO: [step-by-step flow]
+%%%%% 4. ALTERNATIVE_FLOWS: [error handling paths]
+%%%%% 5. POSTCONDITIONS: [end state conditions]
+%%%%% 6. VALIDATION: [acceptance criteria]
+%%%%% 
+%%%%% Format: Structured text with clear sections.
+%%%%% """
+%%%%%     \end{lstlisting}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}{Case Study: E-commerce System}
+%%%%%     \begin{block}{Project Overview}
+%%%%%         Developing an e-commerce platform using AI-assisted requirements engineering
+%%%%%     \end{block}
+%%%%%     
+%%%%%     \textbf{Results:}
+%%%%%     \begin{itemize}
+%%%%%         \item 40\% reduction in initial requirements gathering time
+%%%%%         \item 25\% fewer requirements defects identified during testing
+%%%%%         \item Improved stakeholder satisfaction with visual models
+%%%%%         \item Better traceability through structured prompts
+%%%%%     \end{itemize}
+%%%%%     
+%%%%%     \textbf{Challenges:}
+%%%%%     \begin{itemize}
+%%%%%         \item Training team on effective prompt engineering
+%%%%%         \item Integrating AI outputs with existing workflows
+%%%%%         \item Ensuring consistency across multiple AI sessions
+%%%%%     \end{itemize}
+%%%%% \end{frame}
 
 \section{Conclusion and Future Directions}
 

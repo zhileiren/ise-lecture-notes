@@ -1,26 +1,3 @@
-\frametitle{Prompt Version Control Example}
-\lstset{style=code}
-    \begin{lstlisting}[caption={Version-Controlled Prompt Template}]
-# Prompt Template v2.1 - Use Case Generation
-# Date: 2024-01-15 | Author: RE Team
-# Changelog: Added validation criteria
-
-SYSTEM_PROMPT: """
-You are an experienced requirements engineer
-specializing in [DOMAIN]. Your task is to create
-comprehensive use case specifications.
-"""
-
-USER_PROMPT: """
-Generate a use case for [FEATURE] in [SYSTEM] with:
-
-1. PRIMARY_ACTOR: [actor role]
-2. PRECONDITIONS: [system state requirements]
-3. MAIN_SCENARIO: [step-by-step flow]
-4. ALTERNATIVE_FLOWS: [error handling paths]
-5. POSTCONDITIONS: [end state conditions]
-6. VALIDATION: [acceptance criteria]
-
-Format: Structured text with clear sections.
-"""
-    \end{lstlisting}
+\frametitle{RE-PE Integration Workflow}
+\centering
+    \includegraphics[width=0.3\textwidth]{images/re-pe.png} % Placeholder for PlantUML diagram
