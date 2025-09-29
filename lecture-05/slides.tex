@@ -34,8 +34,8 @@
 \renewcommand*{\footnotesize}{\oldfootnotesize\tiny}
 
 \title[Intelligent Software Engineering] 
-{Intelligent Software Engineering}
-\subtitle{Introduction to Artificial Intelligence}
+{Case Study of Software Engineering Research}
+\subtitle{What We Talk About, When We Talk About Reproducible Builds}
 
 \author[Zhilei Ren] 
 {Zhilei Ren}
@@ -98,7 +98,324 @@ Dalian University of Technology
  \tableofcontents[currentsection]
  \end{frame}
 }
-\begin{frame}[t]{bug or feature?}
+
+\begin{frame}{Checksum is important for software security}
+\begin{itemize}
+\item Checksum provides a linkage between user downloaded software and the one provided by the repositories
+\item Build environments can be compromised!
+\end{itemize}
+\end{frame}
+
+\begin{frame}{XcodeGhost Case}
+\begin{itemize}
+\item A counterfeit version of Xcode infected 4,000 iOS apps in 2015
+\item More than 200 enterprises influenced
+\item Injecting malicious code during compiling time
+\item \url{https://www.fireeye.com/blog/executive-perspective/2015/09/protecting_our_custo.html}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{For open-source software, will it be easier?}
+\begin{itemize}
+\item Solution: verify compiled binaries under diverse environments
+\item Attacks may elude detection due to unexpected factors
+\item There is still gap between source and binary
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Yet another case of unreproducible build}
+\begin{itemize}
+\item libical-dev 1.0-1.1 in Debian
+\item Severity classified as "Release Critical"
+\item Packages depending on libical-dev may break when rebuilt
+\item Unreproducible due to non-deterministic hash table traversal
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Now, many distros validate package reproducibility!}
+\begin{itemize}
+\item Many open-source distributions have initiated validation processes
+\item Debian, Guix, ArchLinux, and Bitcoin
+\item As of May 2018, over 90\% of Debian's packages can be reproducibly built
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The unreproducible build problem}
+\begin{block}{Definition}
+A build is reproducible if given the same source code, build environment and build instructions, any party can recreate bit-by-bit identical copies of all specified artifacts.
+\end{block}
+\begin{itemize}
+\item Manual work! Could it be automated?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Highlights: RepLoc}
+\begin{itemize}
+\item An automated localization approach
+\item 79.28\% top-10 accuracy ratio over 671 packages
+\item We fixed 6 packages from Debian and Guix
+\item 4 are accepted by the open-source community
+\item Dataset publicly available: \url{https://reploc.bitbucket.io}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Challenges}
+\begin{block}{Challenge 1: Insufficient information}
+\begin{itemize}
+\item Information may not be sufficient for linking diff log with problematic files
+\item No enough bug reports/test cases
+\item Diff logs are not always well informative
+\end{itemize}
+\end{block}
+
+\begin{block}{Challenge 2: Diverse causes}
+\begin{itemize}
+\item Debian rules (29.82\%) 
+\item Auxiliary files (17.21\%)
+\item Scripts (14.60\%)
+\item Makefiles (11.68\%)
+\item C/C++ files (5.94\%)
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{The RepLoc framework}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{example-image}
+\end{center}
+\begin{itemize}
+\item Query Augmentation
+\item File Ranking
+\item Heuristic Filtering
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Query augmentation}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{example-image}
+\end{center}
+\begin{itemize}
+\item Basic query → Enhanced query
+\item Build Command Retrieval
+\item Source File Retrieval
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Heuristic filtering}
+\begin{itemize}
+\item Manually learn notes from Debian documentation
+\item Capture issues as 14 Perl Compatible Regular Expression (PCRE) rules
+\end{itemize}
+\end{frame}
+
+\begin{frame}{File ranking}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{example-image}
+\end{center}
+\begin{itemize}
+\item Combining Query Augmentation and Heuristic Filtering
+\item More accurate localization of problematic files
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Empirical results: Experimental environment}
+\begin{itemize}
+\item Intel Core i7 4.20 GHz CPU
+\item 16 GB RAM
+\item GNU/Linux kernel 4.9.0
+\item Perl 5.24, Java 1.8
+\item 671 packages from Debian's BTS
+\item 4 categories: Timestamps, Locale, Randomness, File-ordering
+\end{itemize}
+\end{frame}
+
+\begin{frame}{RQ1: Is RepLoc sensitive to weighting parameter α?}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{example-image}
+\end{center}
+\begin{itemize}
+\item RepLoc is not very sensitive to α
+\item Assigned value: 0.3
+\end{itemize}
+\end{frame}
+
+\begin{frame}{RQ2: How effective is RepLoc?}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{example-image}
+\end{center}
+\begin{itemize}
+\item Achieves 79.28\% top-10 accuracy ratio
+\end{itemize}
+\end{frame}
+
+\begin{frame}{RQ3: How efficient is RepLoc?}
+\begin{itemize}
+\item Median execution time: 5.14 seconds
+\end{itemize}
+\end{frame}
+
+\begin{frame}{RQ4: Is RepLoc helpful in localizing unfixed packages?}
+\begin{itemize}
+\item Fixed 6 packages from Debian and Guix:
+\begin{itemize}
+\item regina-rexx
+\item manpages-tr
+\item fonts-uralic
+\item skalibs
+\item djvulibre
+\item libjpeg-turbo
+\end{itemize}
+\item 4 patches accepted (1 for Debian, 3 for Guix)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A case of fixed issue for djvulibre for Guix}
+\begin{itemize}
+\item \url{https://debbugs.gnu.org/cgi/bugreport.cgi?bug=28015}
+\item Patch modifies djvu.scm to add reproducible phase
+\item Guix maintainer's response: pushed with cosmetic changes
+\item Issue with .svgz files not handled by new phase
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusions and future work}
+\begin{block}{Contributions}
+\begin{itemize}
+\item First work to address localization task for unreproducible builds
+\item Effective framework integrating heuristic filtering and query augmentation
+\item Fixed six previously unfixed packages
+\item Dataset available at \url{https://reploc.bitbucket.io}
+\end{itemize}
+\end{block}
+
+\begin{block}{Future work}
+\begin{itemize}
+\item More accurate approaches using static analysis or dynamic file tracking
+\item Generalize knowledge to other repositories
+\item Automated fixing of unreproducible issues
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Acknowledgements}
+\begin{itemize}
+\item Debian reproducible builds team: Holger Levsen, Chris Lamb, Ximin Luo, ...
+\item Guix distribution: Ludovic Courtès, ...
+\item OSCAR Lab: \url{http://oscar-lab.org}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ideas currently working on}
+\begin{itemize}
+\item Why RepLoc works:
+\begin{itemize}
+\item Heuristic rules for frequent patterns (static)
+\item Build log for inconsistent-files-related commands (dynamic)
+\end{itemize}
+\item Why RepLoc is not good enough:
+\begin{itemize}
+\item Heuristic rules treat all files uniformly
+\item Not all build commands captured by build logs
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{System call interposition approach}
+\begin{itemize}
+\item Improve localization by analyzing system calls during build process
+\item Use strace to monitor interactions between processes and kernel
+\item Track dependency types: read/write operations, rename operations
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Process tree and dependency graph}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{example-image}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{System call trace example}
+\begin{scriptsize}
+\begin{verbatim}
+2608 2607 2608 1532307317.518497 execve("/bin/date", ["date"], [...])
+2608 2607 2608 1532307317.526037 write(1<pipe:[55019]>, "2018...", 43) = 43
+2607 2603 2607 1532307317.515482 read(3<pipe:[55019]>, "2018...", 128) = 43
+2607 2603 2607 1532307317.535603 write(1</home/.../b.txt>, "bb2018...", 45) = 45
+\end{verbatim}
+\end{scriptsize}
+\end{frame}
+
+\begin{frame}{REPTRACE Framework}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{example-image}
+\end{center}
+\end{frame}
+
+\begin{frame}{Dependency Graph Generation and Augmentation}
+\begin{itemize}
+\item Difference-induced dependency (DID)
+\item Runtime-value-induced dependency (RID)
+\item Filter noisy dependencies
+\item Establish dependencies based on text similarity
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Graph-Traversal-based Causality Analysis}
+\begin{itemize}
+\item Root-cause localization starting from inconsistent artifacts
+\item File-level localization for scripts and build commands
+\item Use CLOEXEC flags to classify files
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Evaluation Results}
+\begin{itemize}
+\item RQ1: Command-level localization effective (A@1 0.6611, A@10 0.9000)
+\item RQ2: DID reduces search scope, RID adds acceptable edges
+\item RQ3: Not sensitive to parameter, best around [0.30; 0.70]
+\item RQ4: Higher accuracy than RepLoc (Top-1 Accuracy 0.667)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{RepFix: Automated Patching}
+\begin{itemize}
+\item First study to generate patches for unreproducible builds automatically
+\item Tracing-based fine-grained localization
+\item History-based patch generation
+\item Patch validation criteria
+\end{itemize}
+\end{frame}
+
+\begin{frame}{RepFix Framework}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{example-image}
+\end{center}
+\end{frame}
+
+\begin{frame}{RepFix Evaluation}
+\begin{itemize}
+\item RQ1: Fixed 64 out of 116 packages
+\item RQ2: Fine-grained localization and token-based patch generation effective
+\item RQ3: Validation most time-consuming (avg 364.40s)
+\item RQ4: Effectively solves real-world unreproducible build issues
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusions}
+\begin{itemize}
+\item REPTRACE: Effective framework for root cause identification
+\item RepFix: Automated patching for unreproducible builds
+\item Both show promising results on real-world packages
+\item Future work: More accurate dependency identification, automatic patching
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\centering
+\Huge{Thank you!}
+\par
+\vspace{1cm}
+\large{Q\&A}
 \end{frame}
 
 \end{document}

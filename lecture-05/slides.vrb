@@ -1,0 +1,9 @@
+\frametitle{System call trace example}
+\begin{scriptsize}
+\begin{verbatim}
+2608 2607 2608 1532307317.518497 execve("/bin/date", ["date"], [...])
+2608 2607 2608 1532307317.526037 write(1<pipe:[55019]>, "2018...", 43) = 43
+2607 2603 2607 1532307317.515482 read(3<pipe:[55019]>, "2018...", 128) = 43
+2607 2603 2607 1532307317.535603 write(1</home/.../b.txt>, "bb2018...", 45) = 45
+\end{verbatim}
+\end{scriptsize}
