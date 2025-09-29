@@ -88,7 +88,7 @@ Dalian University of Technology
   \titlepage
 \end{frame}
 
-\begin{frame}{Outline}
+\begin{frame}[t]{Outline}
   \tableofcontents[currentsection,currentsubsection, 
     sectionstyle=show,
     subsectionstyle=show,
@@ -151,7 +151,7 @@ Dalian University of Technology
 \section{Brief History of Software Engineering}
 \subsection{Pioneering Thoughts}
 
-\begin{frame}{Pioneering Thoughts}
+\begin{frame}[t]{Pioneering Thoughts}
     \Huge
     Who is the first programmer?
 \end{frame}
@@ -601,7 +601,7 @@ The Netscape-to-Firefox story shows that a well-managed \textbf{Bazaar} model ca
     \end{figure}
 \end{frame}
 
-\begin{frame}{1990s: CVS - Concurrent Versions System}
+\begin{frame}[t]{1990s: CVS - Concurrent Versions System}
 \begin{columns}
     \begin{column}{0.6\textwidth}
         \begin{itemize}
@@ -622,17 +622,17 @@ The Netscape-to-Firefox story shows that a well-managed \textbf{Bazaar} model ca
                 \end{itemize}
         \end{itemize}
     \end{column}
-    % \begin{column}{0.4\textwidth}
-    %     \includegraphics[width=0.9\textwidth]{images/cvs_architecture.png}
-    %     \\\scriptsize{CVS Centralized Architecture}
-    % \end{column}
+    \begin{column}{0.4\textwidth}
+        \includegraphics[width=0.9\textwidth]{images/cvs.jpg}
+        \\\scriptsize{CVS Centralized Architecture}
+    \end{column}
 \end{columns}
 \begin{block}{}
 CVS brought version control to the masses, but collaboration was sequential and cautious.
 \end{block}
 \end{frame}
 
-\begin{frame}{2000: Subversion - "CVS Done Right"}
+\begin{frame}[t]{2000: Subversion - "CVS Done Right"}
 \begin{itemize}
     \item \textbf{Created in 2000} by CollabNet to fix CVS limitations
     \item \textbf{Improvements over CVS}:
@@ -652,9 +652,7 @@ CVS brought version control to the masses, but collaboration was sequential and 
 \end{frame}
 
 
-\begin{frame}{2002-2005: The BitKeeper Controversy}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
+\begin{frame}[t]{2002-2005: The BitKeeper Controversy}
         \begin{itemize}
             \item \textbf{Linux kernel development} outgrew patch-based workflow
             \item \textbf{BitKeeper}: Proprietary distributed version control system
@@ -668,18 +666,11 @@ CVS brought version control to the masses, but collaboration was sequential and 
             \item \textbf{Controversy (2005)}: License disputes led to BitKeeper withdrawal
             \item \textbf{Catalyst}: Forced Linux community to create their own solution
         \end{itemize}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        % \includegraphics[width=0.9\textwidth]{images/linus_torvalds.jpg}
-        % \\\scriptsize{Linus Torvalds, creator of Linux and Git}
-    \end{column}
-\end{columns}
 \end{frame}
 
-\begin{frame}{2005: Git - The Linux Community's Answer}
+\begin{frame}[t]{2005: Git - The Linux Community's Answer}
 \begin{itemize}
     \item \textbf{Created by Linus Torvalds in 2005} after BitKeeper controversy
-    \item \textbf{Design goals}:
         \begin{itemize}
             \item Distributed and peer-to-peer
             \item Strong cryptographic integrity
@@ -694,12 +685,12 @@ CVS brought version control to the masses, but collaboration was sequential and 
             \item Three-stage thinking (working directory, staging area, repository)
         \end{itemize}
 \end{itemize}
-% \begin{center}
-%     \includegraphics[width=0.3\textwidth]{images/git_logo.png}
-% \end{center}
+\begin{center}
+    \includegraphics[width=0.3\textwidth]{images/git-dist.png}
+\end{center}
 \end{frame}
 
-\begin{frame}{Why Git Won: Distributed Workflows}
+\begin{frame}[t]{Why Git Won: Distributed Workflows}
 \begin{columns}
     \begin{column}{0.5\textwidth}
         \textbf{Centralized (CVS/SVN)}
@@ -729,7 +720,7 @@ Git enabled workflows like \textbf{feature branching} and \textbf{pull requests}
 \end{frame}
 
 
-\begin{frame}{GitHub and the Social Coding Revolution (2008)}
+\begin{frame}[t]{GitHub and the Social Coding Revolution (2008)}
 \begin{itemize}
     \item \textbf{GitHub launched 2008}: Added social layer to Git
     \item \textbf{Key innovations}:
@@ -747,7 +738,7 @@ Git enabled workflows like \textbf{feature branching} and \textbf{pull requests}
 % \end{center}
 \end{frame}
 
-\begin{frame}{Git-Enabled CI/CD: The Automation Revolution}
+\begin{frame}[t]{Git-Enabled CI/CD: The Automation Revolution}
 \begin{itemize}
     \item \textbf{Continuous Integration (CI)}: Automatically build and test every commit
     \item \textbf{Continuous Deployment/Delivery (CD)}: Automatically deploy passing code
@@ -766,7 +757,7 @@ Git enabled workflows like \textbf{feature branching} and \textbf{pull requests}
 % \end{center}
 \end{frame}
 
-\begin{frame}{The Evolution Timeline}
+\begin{frame}[t]{The Evolution Timeline}
 \begin{center}
     \begin{tikzpicture}[scale=0.8]
         \draw[->] (0,0) -- (10,0);
