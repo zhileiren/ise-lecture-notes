@@ -220,6 +220,45 @@ debtree package-name | dot -Tpng > deps.png
 \end{figure}
 \end{frame}
 
+\begin{frame}[t,fragile]
+    \frametitle{Dependency for nano}
+
+    \tiny
+    \begin{verbatim}
+digraph "nano" {
+        rankdir=LR;
+        node [shape=box];
+        "nano" -> "libncursesw6" [color=blue,label="(>= 6)"];
+        "libncursesw6" -> "libtinfo6" [color=blue,label="(= 6.4+20240113-1ubuntu2)"];
+        "libncursesw6" -> "libgpm2";
+        "nano" -> "libtinfo6" [color=blue,label="(>= 6)"];
+        "nano" -> "pico" [color=red];
+        "nano" [style="setlinewidth(2)"]
+        "pico" [style=filled,fillcolor=oldlace];
+}
+\end{verbatim}
+    
+    \begin{figure}
+    \begin{center}
+        \includegraphics[width=.5\textwidth]{images/nano.pdf}
+    \end{center}
+    \caption{debtree nano | dot -T pdf > nano.pdf}
+    \end{figure}
+    
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Dependency for vim}
+
+    
+    \begin{figure}
+    \begin{center}
+        \includegraphics[width=.8\textwidth]{images/vim.pdf}
+    \end{center}
+    \caption{debtree vim | dot -T pdf > vim.pdf}
+    \end{figure}
+    
+\end{frame}
 \subsection{Dependency Resolution}
 
 \begin{frame}[t]{Dependency Resolution Challenges}
@@ -238,7 +277,7 @@ Dependency resolution is a \textbf{complex constraint satisfaction problem} that
 
 \bigskip
 
-Modern package managers use \textbf{SAT solvers} to efficiently resolve these constraints.
+Modern package managers use \textbf{SAT/SMT/ILP solvers} to efficiently resolve these constraints.
 \end{frame}
 
 \begin{frame}[t]{Introduction to Z3 Theorem Prover}
@@ -254,6 +293,7 @@ Z3 is a \textbf{high-performance theorem prover} developed by Microsoft Research
 
 \textbf{Key features}:
 \begin{itemize}
+\scriptsize
 \item Supports \textbf{multiple theories} (arithmetic, arrays, bit-vectors, etc.)
 \item Provides \textbf{Python, C++, Java, and .NET APIs}
 \item Used in production by Microsoft, Amazon, NASA, and others
@@ -262,10 +302,20 @@ Z3 is a \textbf{high-performance theorem prover} developed by Microsoft Research
 \end{frame}
 
 \begin{frame}[t]{Classic Example: Chicken-Rabbit Problem}
-The \textbf{Chicken-Rabbit problem} is a classic constraint problem from ancient Chinese mathematics:
 
+% \begin{block}{Problem Statement}
+%     \begin{itemize}
+%         \item 今有雉兔同笼，上有三十五头，下有九十四足，问雉兔各几何？
+%         \item There are chickens and rabbits in the same cage. The total number of heads is 35, and the total number of feet is 94. How many chickens and rabbits are there?
+%         \item From 孙子算经 (Sunzi Suanjing, 3rd to 5th centuries CE)
+%     \begin{itemize}
+% \end{block}
 \begin{block}{Problem Statement}
-"There are chickens and rabbits in the same cage. The total number of heads is 35, and the total number of feet is 94. How many chickens and rabbits are there?"
+\begin{itemize}
+    \item 今有雉兔同笼，上有三十五头，下有九十四足，问雉兔各几何？
+    \item There are chickens and rabbits in the same cage. The total number of heads is 35, and the total number of feet is 94. How many chickens and rabbits are there?
+    \item From 孙子算经 (Sunzi Suanjing, around the 3rd-5th century AD)
+\end{itemize}
 \end{block}
 
 \textbf{Mathematical formulation}:
@@ -275,48 +325,42 @@ The \textbf{Chicken-Rabbit problem} is a classic constraint problem from ancient
 \item Domain: $c \geq 0$, $r \geq 0$, integers
 \end{itemize}
 
-This problem demonstrates how Z3 can solve \textbf{systems of constraints} similar to dependency resolution.
+\end{frame}
+
+\begin{frame}[t,fragile]{Classic Example: Chicken-Rabbit Problem}
+
+\begin{block}{Imperative Problem Solving}
+\begin{itemize}
+    \item 上置三十五头，下置九十四足。半其足，得四十七。以少减多。
+    \item Place 35 heads above and 94 feet below.  Take half of the feet, which is 47.  Then subtract the smaller number from the larger one.
+\end{itemize}
+
+\end{block}
+
+\scriptsize
+\begin{verbatim}
+num_heads = 35
+num_feet = 94
+num_feet_half = num_feet // 2
+num_rabbits = num_feet_half - num_heads
+num_chicken = num_heads - num_rabbits
+\end{verbatim}
+
 \end{frame}
 
 \begin{frame}[fragile,t]{Solving Chicken-Rabbit Problem with Z3}
-\begin{verbatim}
-from z3 import *
-
-def solve_chicken_rabbit():
-    # Create integer variables for chickens and rabbits
-    chickens = Int('chickens')
-    rabbits = Int('rabbits')
-    
-    # Create solver instance
-    s = Solver()
-    
-    # Add constraints
-    s.add(chickens >= 0)           # Non-negative chickens
-    s.add(rabbits >= 0)            # Non-negative rabbits
-    s.add(chickens + rabbits == 35) # Total heads
-    s.add(2*chickens + 4*rabbits == 94) # Total feet
-    
-    # Check satisfiability
-    if s.check() == sat:
-        m = s.model()
-        return m[chickens].as_long(), m[rabbits].as_long()
-    else:
-        return None, None
-
-# Solve the problem
-c, r = solve_chicken_rabbit()
-print(f"Chickens: {c}, Rabbits: {r}")
+\scriptsize
+    \begin{verbatim}
+import z3
+chicken, rabbits = z3.Ints('chicken rabbits')
+z3.solve(chicken >= 1,   # number of chicken
+      rabbits >= 1,      # number of rabbits
+      chicken + rabbits == 35,
+      chicken * 2 + rabbits * 4 == 94)
 \end{verbatim}
 \end{frame}
 
 \begin{frame}[t]{Z3 Solution and Historical Context}
-\textbf{Solution}: The Z3 solver finds \textbf{23 chickens and 12 rabbits}.
-
-\bigskip
-
-\textbf{Historical origin}: This problem appears in the ancient Chinese mathematical text \textbf{"Sunzi Suanjing"} (孙子算经, The Mathematical Classic of Master Sun) from around the 3rd-5th century AD.
-
-\bigskip
 
 \textbf{Connection to dependency resolution}:
 \begin{itemize}
@@ -402,8 +446,8 @@ Modern software projects often have \textbf{complex dependency graphs} with hund
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{example-image}
-\caption{Complex dependency graph of a modern web application}
+\includegraphics[width=0.4\textwidth]{images/52-npm-delivery.png}
+\caption{Complex dependency for modern web application}
 \end{figure}
 \end{frame}
 
@@ -420,15 +464,15 @@ Dependencies can introduce \textbf{security vulnerabilities} that affect your ap
 \item License compliance violations
 \end{itemize}
 
-\bigskip
-
-\textbf{Mitigation strategies}:
-\begin{itemize}
-\item Regular \textbf{dependency scanning} (Snyk, Dependabot)
-\item \textbf{Software Bill of Materials} (SBOM) generation
-\item \textbf{Pinpoint versioning} and regular updates
-\item \textbf{Vulnerability databases} monitoring
-\end{itemize}
+% \bigskip
+% 
+% \textbf{Mitigation strategies}:
+% \begin{itemize}
+% \item Regular \textbf{dependency scanning} (Snyk, Dependabot)
+% \item \textbf{Software Bill of Materials} (SBOM) generation
+% \item \textbf{Pinpoint versioning} and regular updates
+% \item \textbf{Vulnerability databases} monitoring
+% \end{itemize}
 \end{frame}
 
 \subsection{Best Practices}
@@ -444,13 +488,13 @@ Dependencies can introduce \textbf{security vulnerabilities} that affect your ap
 
 \bigskip
 
-\textbf{Security practices}:
-\begin{itemize}
-\item Regular \textbf{dependency updates}
-\item \textbf{Automated vulnerability scanning}
-\item \textbf{Minimal dependency principle}
-\item \textbf{Multi-factor authentication} for package publishing
-\end{itemize}
+% \textbf{Security practices}:
+% \begin{itemize}
+% \item Regular \textbf{dependency updates}
+% \item \textbf{Automated vulnerability scanning}
+% \item \textbf{Minimal dependency principle}
+% \item \textbf{Multi-factor authentication} for package publishing
+% \end{itemize}
 
 \bigskip
 
@@ -463,13 +507,13 @@ Dependencies can introduce \textbf{security vulnerabilities} that affect your ap
 \end{frame}
 
 \begin{frame}[t]{Modern Tools and Techniques}
-\textbf{Emerging approaches}:
-\begin{itemize}
-\item \textbf{Dependabot}: Automated dependency updates
-\item \textbf{Renovate}: Multi-language dependency management
-\item \textbf{Software Composition Analysis} (SCA) tools
-\item \textbf{SBOM standards} (SPDX, CycloneDX)
-\end{itemize}
+% \textbf{Emerging approaches}:
+% \begin{itemize}
+% \item \textbf{Dependabot}: Automated dependency updates
+% \item \textbf{Renovate}: Multi-language dependency management
+% \item \textbf{Software Composition Analysis} (SCA) tools
+% \item \textbf{SBOM standards} (SPDX, CycloneDX)
+% \end{itemize}
 
 \bigskip
 
@@ -513,7 +557,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
 
 \begin{frame}[t]{The Illusion of AI Productivity}
     \centering
-\includegraphics[width=.5\textwidth]{before_ai.jpeg} 
+\includegraphics[width=.5\textwidth]{images/before_ai.jpeg} 
 \end{frame}
 
 \section{Introduction}
