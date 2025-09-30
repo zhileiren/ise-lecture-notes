@@ -1,5 +1,6 @@
 \documentclass{beamer}
-
+% Tests as Prompt: A Test-Driven-Development Benchmark for LLM Code Generation
+% https://blog.yfzhou.fyi/posts/tdd-llm/
 
 \mode<presentation>
 {
@@ -634,242 +635,249 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
 \end{itemize}
 \end{frame}
 
-\section{Intelligent Methods Overview}
-\begin{frame}[t]{Spectrum of Intelligent Approaches}
-\begin{itemize}
-\item \textbf{LLM-based Methods}: Natural language understanding and generation
-\item \textbf{Search-based Optimization}: Evolutionary algorithms and local search
-\item \textbf{Constraint Solving}: Formal methods and SAT solving
-\item \textbf{Hybrid Approaches}: Combining multiple intelligent techniques
-\item \textbf{Specialized AI}: Domain-specific machine learning models
-\end{itemize}
-\begin{figure}
-\includegraphics[width=0.6\textwidth]{example-image}
-\caption{Intelligent methods landscape in software engineering}
-\end{figure}
+\begin{frame}[t]{Intelligent Software Engineering}
+
+    \begin{figure}
+        \includegraphics[width=.8\textwidth]{images/col-llm.pdf}
+        \caption{Test-Driven Development with LLMs}
+    \end{figure}
 \end{frame}
+%%%%% \section{Intelligent Methods Overview}
+%%%%% \begin{frame}[t]{Spectrum of Intelligent Approaches}
+%%%%% \begin{itemize}
+%%%%% \item \textbf{LLM-based Methods}: Natural language understanding and generation
+%%%%% \item \textbf{Search-based Optimization}: Evolutionary algorithms and local search
+%%%%% \item \textbf{Constraint Solving}: Formal methods and SAT solving
+%%%%% \item \textbf{Hybrid Approaches}: Combining multiple intelligent techniques
+%%%%% \item \textbf{Specialized AI}: Domain-specific machine learning models
+%%%%% \end{itemize}
+%%%%% \begin{figure}
+%%%%% \includegraphics[width=0.6\textwidth]{example-image}
+%%%%% \caption{Intelligent methods landscape in software engineering}
+%%%%% \end{figure}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \section{Large Language Models (LLMs)}
+%%%%% \begin{frame}[t]{LLM-based Approaches}
+%%%%% \begin{itemize}
+%%%%% \item \textbf{Foundation}: Transformer architecture trained on massive text/code corpora
+%%%%% \item \textbf{Strengths}: Natural language understanding, code generation, documentation
+%%%%% \item \textbf{Applications}: Code completion, architecture design, API generation
+%%%%% \item \textbf{Examples}: GitHub Copilot, ChatGPT, CodeLlama
+%%%%% \item \textbf{Limitations}: Hallucinations, lack of formal guarantees
+%%%%% \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[fragile,t]{LLM Code Implementation Example}
+%%%%% \begin{verbatim}
+%%%%% // Prompt: "Implement a thread-safe LRU cache in Java"
+%%%%% public class LRUCache<K, V> {
+%%%%%     private final int capacity;
+%%%%%     private final LinkedHashMap<K, V> cache;
+%%%%%     
+%%%%%     public LRUCache(int capacity) {
+%%%%%         this.capacity = capacity;
+%%%%%         this.cache = new LinkedHashMap<K, V>(
+%%%%%             capacity, 0.75f, true) {
+%%%%%             protected boolean removeEldestEntry(
+%%%%%                 Map.Entry<K, V> eldest) {
+%%%%%                 return size() > capacity;
+%%%%%             }
+%%%%%         };
+%%%%%     }
+%%%%%     // Additional methods implemented by LLM...
+%%%%% }
+%%%%% \end{verbatim}
+%%%%% \end{frame}
 
-\section{Large Language Models (LLMs)}
-\begin{frame}[t]{LLM-based Approaches}
-\begin{itemize}
-\item \textbf{Foundation}: Transformer architecture trained on massive text/code corpora
-\item \textbf{Strengths}: Natural language understanding, code generation, documentation
-\item \textbf{Applications}: Code completion, architecture design, API generation
-\item \textbf{Examples}: GitHub Copilot, ChatGPT, CodeLlama
-\item \textbf{Limitations}: Hallucinations, lack of formal guarantees
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile,t]{LLM Code Implementation Example}
-\begin{verbatim}
-// Prompt: "Implement a thread-safe LRU cache in Java"
-public class LRUCache<K, V> {
-    private final int capacity;
-    private final LinkedHashMap<K, V> cache;
-    
-    public LRUCache(int capacity) {
-        this.capacity = capacity;
-        this.cache = new LinkedHashMap<K, V>(
-            capacity, 0.75f, true) {
-            protected boolean removeEldestEntry(
-                Map.Entry<K, V> eldest) {
-                return size() > capacity;
-            }
-        };
-    }
-    // Additional methods implemented by LLM...
-}
-\end{verbatim}
-\end{frame}
-
-\section{Search-Based Software Engineering}
-\begin{frame}[t]{SBSE for Software Design and Implementation}
-\begin{itemize}
-\item \textbf{Foundation}: Treat software design as search problem in solution space
-\item \textbf{Strengths}: Finding optimal or near-optimal design solutions
-\item \textbf{Applications}: Algorithm selection, data structure optimization, code synthesis
-\item \textbf{Key Insight}: Software design decisions can be optimized systematically
-\end{itemize}
-\end{frame}
-
-\begin{frame}[t]{SBSE for Algorithm Selection and Implementation}
-\begin{itemize}
-\item \textbf{Problem}: Choose optimal algorithm for specific problem constraints
-\item \textbf{Search Space}: Different algorithms and their parameterizations
-\item \textbf{Fitness Function}: Runtime complexity, memory usage, implementation complexity
-\item \textbf{Method}: Genetic algorithm exploring algorithm combinations
-\item \textbf{Result}: Best algorithm choice with optimized parameters
-\end{itemize}
-\begin{figure}
-\includegraphics[width=0.4\textwidth]{example-image}
-\caption{Algorithm selection search space}
-\end{figure}
-\end{frame}
-
-\begin{frame}[fragile,t]{SBSE for Data Structure Optimization}
-\begin{verbatim}
-// Problem: Optimize data structure for frequent insertions and rare lookups
-// Search-based approach explores different data structure implementations
-
-// Candidate solutions explored:
-Solution 1: ArrayList with binary search (O(n) insert, O(log n) lookup)
-Solution 2: LinkedList (O(1) insert, O(n) lookup)  
-Solution 3: Balanced BST (O(log n) insert, O(log n) lookup)
-Solution 4: Hash table with lazy deletion (O(1) insert, O(1) lookup)
-
-// Fitness evaluation based on actual usage patterns
-// Optimal solution selected: LinkedList for 90% insert-heavy workload
-\end{verbatim}
-\end{frame}
-
-\begin{frame}[t]{SBSE for Code Synthesis and Completion}
-\begin{itemize}
-\item \textbf{Challenge}: Automatically complete partial code implementations
-\item \textbf{Approach}: Genetic programming with code fragments as building blocks
-\item \textbf{Fitness}: Type correctness, test case passing, code quality metrics
-\item \textbf{Application}: Auto-completing complex algorithmic implementations
-\item \textbf{Example}: Synthesizing efficient matrix operations from specifications
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile,t]{SBSE for API Implementation Completion}
-\begin{verbatim}
-// Partial implementation provided by developer
-public interface DataProcessor {
-    Data process(Input input);
-    // Additional methods to be completed...
-}
-
-// SBSE generates complete implementation based on usage patterns
-public class EfficientDataProcessor implements DataProcessor {
-    public Data process(Input input) { /* optimized */ }
-    public void validate(Data data) { /* auto-generated */ }
-    public Result batchProcess(List<Input> inputs) { /* synthesized */ }
-    // Additional methods synthesized by search-based approach
-}
-\end{verbatim}
-\end{frame}
-
-\section{Constraint-Based Methods}
-\begin{frame}[t]{Constraint Solving for Software Design}
-\begin{itemize}
-\item \textbf{Foundation}: Encode design constraints as logical formulas
-\item \textbf{Strengths}: Guaranteed satisfaction of specified properties
-\item \textbf{Applications}: Type-driven synthesis, interface conformance, design patterns
-\item \textbf{Key Benefit}: Formal verification of design decisions
-\end{itemize}
-\end{frame}
-
-\begin{frame}[t]{Constraint-Based API Design and Implementation}
-\begin{itemize}
-\item \textbf{Problem}: Ensure API consistency and completeness
-\item \textbf{Constraints}: Method preconditions, postconditions, invariants
-\item \textbf{Method}: Enforce constraints during API evolution
-\item \textbf{Application}: Automated checking of API design rules
-\item \textbf{Benefit}: Early detection of design violations
-\end{itemize}
-\begin{figure}
-\includegraphics[width=0.5\textwidth]{example-image}
-\caption{Constraint-based API verification}
-\end{figure}
-\end{frame}
-
-\begin{frame}[fragile,t]{Constraint-Based Code Completion}
-\begin{verbatim}
-// Partial code with type constraints
-public <T> T process(List<T> items) {
-    // Constraint solver infers missing operations
-    // Constraints: T must support comparison, serialization
-    // Based on usage context and method signatures
-    
-    // Solution generated by constraint solver:
-    Collections.sort(items);  // T must implement Comparable
-    return serializer.serialize(items); // T must be serializable
-}
-
-// Constraint solver ensures type safety and API consistency
-\end{verbatim}
-\end{frame}
-
-\begin{frame}[t]{Constraint-Based Design Pattern Implementation}
-\begin{itemize}
-\item \textbf{Objective}: Correctly implement design patterns with formal guarantees
-\item \textbf{Constraints}: Pattern-specific rules (Observer: subject-observer relationships)
-\item \textbf{Method}: Encode pattern constraints as logical formulas
-\item \textbf{Verification}: Check implementation against pattern constraints
-\item \textbf{Completion}: Suggest missing pattern elements
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile,t]{Constraint-Based Singleton Pattern Enforcement}
-\begin{verbatim}
-// Constraint: Singleton class must have private constructor
-// and static getInstance method
-
-class DatabaseConnection {
-    private static DatabaseConnection instance;
-    
-    // Constraint solver verifies:
-    // ✓ Constructor is private
-    // ✓ getInstance method exists and is static
-    // ✓ Instance variable is static
-    
-    private DatabaseConnection() {}  // Verified: private
-    public static DatabaseConnection getInstance() { // Verified: static
-        if (instance == null) {
-            instance = new DatabaseConnection();
-        }
-        return instance;
-    }
-}
-\end{verbatim}
-\end{frame}
-
-\section{Natural Language Processing}
-\begin{frame}[t]{NLP for Design Specification Processing}
-\begin{itemize}
-\item \textbf{Foundation}: Extract design intent from natural language
-\item \textbf{Strengths}: Bridging requirement documents and implementation
-\item \textbf{Applications}: Design pattern recognition, architecture extraction
-\item \textbf{Evolution}: From manual analysis to automated understanding
-\end{itemize}
-\end{frame}
-
-\section{Hybrid Approaches}
-\begin{frame}[t]{Combining Methods for Design and Implementation}
-\begin{itemize}
-\item \textbf{LLM + Constraints}: Generate code with formal verification
-\item \textbf{SBSE + Constraints}: Search with guaranteed constraint satisfaction
-\item \textbf{NLP + SBSE}: Extract design constraints for optimization
-\item \textbf{Multi-method Integration}: Comprehensive design assistance
-\end{itemize}
-\begin{figure}
-\includegraphics[width=0.5\textwidth]{example-image}
-\caption{Hybrid intelligent design system}
-\end{figure}
-\end{frame}
-
-\begin{frame}[fragile,t]{Hybrid Example: Intelligent Code Completion}
-\begin{verbatim}
-// Developer writes partial method:
-public String processData(String input) {
-    // Step 1: LLM suggests initial completion
-    if (input == null) return "";
-    String result = input.trim();
-    
-    // Step 2: Constraint solver verifies null safety
-    // ✓ input checked for null, ✓ return value not null
-    
-    // Step 3: SBSE optimizes string operations
-    // Replaces inefficient concatenation with StringBuilder
-    
-    // Step 4: Final verified and optimized code
-    StringBuilder sb = new StringBuilder();
-    sb.append(result.toLowerCase());
-    return sb.toString();
-}
-\end{verbatim}
-\end{frame}
+%%%%% \section{Search-Based Software Engineering}
+%%%%% \begin{frame}[t]{SBSE for Software Design and Implementation}
+%%%%% \begin{itemize}
+%%%%% \item \textbf{Foundation}: Treat software design as search problem in solution space
+%%%%% \item \textbf{Strengths}: Finding optimal or near-optimal design solutions
+%%%%% \item \textbf{Applications}: Algorithm selection, data structure optimization, code synthesis
+%%%%% \item \textbf{Key Insight}: Software design decisions can be optimized systematically
+%%%%% \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{SBSE for Algorithm Selection and Implementation}
+%%%%% \begin{itemize}
+%%%%% \item \textbf{Problem}: Choose optimal algorithm for specific problem constraints
+%%%%% \item \textbf{Search Space}: Different algorithms and their parameterizations
+%%%%% \item \textbf{Fitness Function}: Runtime complexity, memory usage, implementation complexity
+%%%%% \item \textbf{Method}: Genetic algorithm exploring algorithm combinations
+%%%%% \item \textbf{Result}: Best algorithm choice with optimized parameters
+%%%%% \end{itemize}
+%%%%% \begin{figure}
+%%%%% \includegraphics[width=0.4\textwidth]{example-image}
+%%%%% \caption{Algorithm selection search space}
+%%%%% \end{figure}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[fragile,t]{SBSE for Data Structure Optimization}
+%%%%% \begin{verbatim}
+%%%%% // Problem: Optimize data structure for frequent insertions and rare lookups
+%%%%% // Search-based approach explores different data structure implementations
+%%%%% 
+%%%%% // Candidate solutions explored:
+%%%%% Solution 1: ArrayList with binary search (O(n) insert, O(log n) lookup)
+%%%%% Solution 2: LinkedList (O(1) insert, O(n) lookup)  
+%%%%% Solution 3: Balanced BST (O(log n) insert, O(log n) lookup)
+%%%%% Solution 4: Hash table with lazy deletion (O(1) insert, O(1) lookup)
+%%%%% 
+%%%%% // Fitness evaluation based on actual usage patterns
+%%%%% // Optimal solution selected: LinkedList for 90% insert-heavy workload
+%%%%% \end{verbatim}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{SBSE for Code Synthesis and Completion}
+%%%%% \begin{itemize}
+%%%%% \item \textbf{Challenge}: Automatically complete partial code implementations
+%%%%% \item \textbf{Approach}: Genetic programming with code fragments as building blocks
+%%%%% \item \textbf{Fitness}: Type correctness, test case passing, code quality metrics
+%%%%% \item \textbf{Application}: Auto-completing complex algorithmic implementations
+%%%%% \item \textbf{Example}: Synthesizing efficient matrix operations from specifications
+%%%%% \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[fragile,t]{SBSE for API Implementation Completion}
+%%%%% \begin{verbatim}
+%%%%% // Partial implementation provided by developer
+%%%%% public interface DataProcessor {
+%%%%%     Data process(Input input);
+%%%%%     // Additional methods to be completed...
+%%%%% }
+%%%%% 
+%%%%% // SBSE generates complete implementation based on usage patterns
+%%%%% public class EfficientDataProcessor implements DataProcessor {
+%%%%%     public Data process(Input input) { /* optimized */ }
+%%%%%     public void validate(Data data) { /* auto-generated */ }
+%%%%%     public Result batchProcess(List<Input> inputs) { /* synthesized */ }
+%%%%%     // Additional methods synthesized by search-based approach
+%%%%% }
+%%%%% \end{verbatim}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \section{Constraint-Based Methods}
+%%%%% \begin{frame}[t]{Constraint Solving for Software Design}
+%%%%% \begin{itemize}
+%%%%% \item \textbf{Foundation}: Encode design constraints as logical formulas
+%%%%% \item \textbf{Strengths}: Guaranteed satisfaction of specified properties
+%%%%% \item \textbf{Applications}: Type-driven synthesis, interface conformance, design patterns
+%%%%% \item \textbf{Key Benefit}: Formal verification of design decisions
+%%%%% \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{Constraint-Based API Design and Implementation}
+%%%%% \begin{itemize}
+%%%%% \item \textbf{Problem}: Ensure API consistency and completeness
+%%%%% \item \textbf{Constraints}: Method preconditions, postconditions, invariants
+%%%%% \item \textbf{Method}: Enforce constraints during API evolution
+%%%%% \item \textbf{Application}: Automated checking of API design rules
+%%%%% \item \textbf{Benefit}: Early detection of design violations
+%%%%% \end{itemize}
+%%%%% \begin{figure}
+%%%%% \includegraphics[width=0.5\textwidth]{example-image}
+%%%%% \caption{Constraint-based API verification}
+%%%%% \end{figure}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[fragile,t]{Constraint-Based Code Completion}
+%%%%% \begin{verbatim}
+%%%%% // Partial code with type constraints
+%%%%% public <T> T process(List<T> items) {
+%%%%%     // Constraint solver infers missing operations
+%%%%%     // Constraints: T must support comparison, serialization
+%%%%%     // Based on usage context and method signatures
+%%%%%     
+%%%%%     // Solution generated by constraint solver:
+%%%%%     Collections.sort(items);  // T must implement Comparable
+%%%%%     return serializer.serialize(items); // T must be serializable
+%%%%% }
+%%%%% 
+%%%%% // Constraint solver ensures type safety and API consistency
+%%%%% \end{verbatim}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{Constraint-Based Design Pattern Implementation}
+%%%%% \begin{itemize}
+%%%%% \item \textbf{Objective}: Correctly implement design patterns with formal guarantees
+%%%%% \item \textbf{Constraints}: Pattern-specific rules (Observer: subject-observer relationships)
+%%%%% \item \textbf{Method}: Encode pattern constraints as logical formulas
+%%%%% \item \textbf{Verification}: Check implementation against pattern constraints
+%%%%% \item \textbf{Completion}: Suggest missing pattern elements
+%%%%% \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[fragile,t]{Constraint-Based Singleton Pattern Enforcement}
+%%%%% \begin{verbatim}
+%%%%% // Constraint: Singleton class must have private constructor
+%%%%% // and static getInstance method
+%%%%% 
+%%%%% class DatabaseConnection {
+%%%%%     private static DatabaseConnection instance;
+%%%%%     
+%%%%%     // Constraint solver verifies:
+%%%%%     // ✓ Constructor is private
+%%%%%     // ✓ getInstance method exists and is static
+%%%%%     // ✓ Instance variable is static
+%%%%%     
+%%%%%     private DatabaseConnection() {}  // Verified: private
+%%%%%     public static DatabaseConnection getInstance() { // Verified: static
+%%%%%         if (instance == null) {
+%%%%%             instance = new DatabaseConnection();
+%%%%%         }
+%%%%%         return instance;
+%%%%%     }
+%%%%% }
+%%%%% \end{verbatim}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \section{Natural Language Processing}
+%%%%% \begin{frame}[t]{NLP for Design Specification Processing}
+%%%%% \begin{itemize}
+%%%%% \item \textbf{Foundation}: Extract design intent from natural language
+%%%%% \item \textbf{Strengths}: Bridging requirement documents and implementation
+%%%%% \item \textbf{Applications}: Design pattern recognition, architecture extraction
+%%%%% \item \textbf{Evolution}: From manual analysis to automated understanding
+%%%%% \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \section{Hybrid Approaches}
+%%%%% \begin{frame}[t]{Combining Methods for Design and Implementation}
+%%%%% \begin{itemize}
+%%%%% \item \textbf{LLM + Constraints}: Generate code with formal verification
+%%%%% \item \textbf{SBSE + Constraints}: Search with guaranteed constraint satisfaction
+%%%%% \item \textbf{NLP + SBSE}: Extract design constraints for optimization
+%%%%% \item \textbf{Multi-method Integration}: Comprehensive design assistance
+%%%%% \end{itemize}
+%%%%% \begin{figure}
+%%%%% \includegraphics[width=0.5\textwidth]{example-image}
+%%%%% \caption{Hybrid intelligent design system}
+%%%%% \end{figure}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[fragile,t]{Hybrid Example: Intelligent Code Completion}
+%%%%% \begin{verbatim}
+%%%%% // Developer writes partial method:
+%%%%% public String processData(String input) {
+%%%%%     // Step 1: LLM suggests initial completion
+%%%%%     if (input == null) return "";
+%%%%%     String result = input.trim();
+%%%%%     
+%%%%%     // Step 2: Constraint solver verifies null safety
+%%%%%     // ✓ input checked for null, ✓ return value not null
+%%%%%     
+%%%%%     // Step 3: SBSE optimizes string operations
+%%%%%     // Replaces inefficient concatenation with StringBuilder
+%%%%%     
+%%%%%     // Step 4: Final verified and optimized code
+%%%%%     StringBuilder sb = new StringBuilder();
+%%%%%     sb.append(result.toLowerCase());
+%%%%%     return sb.toString();
+%%%%% }
+%%%%% \end{verbatim}
+%%%%% \end{frame}
 
 \section{Application Domains}
 \begin{frame}[t]{Software Design and Implementation}
@@ -899,44 +907,44 @@ public String processData(String input) {
 \end{itemize}
 \end{frame}
 
-\section{Comparative Analysis}
-\begin{frame}[t]{Method Comparison for Design/Implementation}
-\begin{center}
-\begin{tabular}{lccc}
-\textbf{Method} & \textbf{Correctness Guarantees} & \textbf{Creativity} & \textbf{Speed} \\
-\hline
-LLM-based & Low & High & Fast \\
-SBSE & Medium & Medium & Medium \\
-Constraint-based & High & Low & Slow \\
-Hybrid & High & High & Medium \\
-\end{tabular}
-\end{center}
-
-\begin{itemize}
-\item \textbf{Correctness Guarantees}: Formal verification capabilities
-\item \textbf{Creativity}: Novel solution generation
-\item \textbf{Speed}: Response time for practical use
-\end{itemize}
-\end{frame}
-
-\begin{frame}[t]{Strengths for Design and Implementation}
-\begin{itemize}
-\item \textbf{LLMs}: Excellent for exploratory design and rapid prototyping
-\item \textbf{SBSE}: Superior for optimization problems and algorithm selection
-\item \textbf{Constraint-based}: Unmatched for correctness-critical components
-\item \textbf{Hybrid}: Balanced approach for complex design challenges
-\end{itemize}
-\end{frame}
-
-\section{Tools and Frameworks}
-\begin{frame}[t]{Design and Implementation Tools}
-\begin{itemize}
-\item \textbf{LLM-based}: GitHub Copilot, Amazon CodeWhisperer, Tabnine
-\item \textbf{SBSE}: Program synthesis tools (SKETCH, Rosette)
-\item \textbf{Constraint-based}: Z3 for program verification, Alloy for design
-\item \textbf{Hybrid}: Intelligent IDEs with multiple AI assistants
-\end{itemize}
-\end{frame}
+%%%%% \section{Comparative Analysis}
+%%%%% \begin{frame}[t]{Method Comparison for Design/Implementation}
+%%%%% \begin{center}
+%%%%% \begin{tabular}{lccc}
+%%%%% \textbf{Method} & \textbf{Correctness Guarantees} & \textbf{Creativity} & \textbf{Speed} \\
+%%%%% \hline
+%%%%% LLM-based & Low & High & Fast \\
+%%%%% SBSE & Medium & Medium & Medium \\
+%%%%% Constraint-based & High & Low & Slow \\
+%%%%% Hybrid & High & High & Medium \\
+%%%%% \end{tabular}
+%%%%% \end{center}
+%%%%% 
+%%%%% \begin{itemize}
+%%%%% \item \textbf{Correctness Guarantees}: Formal verification capabilities
+%%%%% \item \textbf{Creativity}: Novel solution generation
+%%%%% \item \textbf{Speed}: Response time for practical use
+%%%%% \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{Strengths for Design and Implementation}
+%%%%% \begin{itemize}
+%%%%% \item \textbf{LLMs}: Excellent for exploratory design and rapid prototyping
+%%%%% \item \textbf{SBSE}: Superior for optimization problems and algorithm selection
+%%%%% \item \textbf{Constraint-based}: Unmatched for correctness-critical components
+%%%%% \item \textbf{Hybrid}: Balanced approach for complex design challenges
+%%%%% \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \section{Tools and Frameworks}
+%%%%% \begin{frame}[t]{Design and Implementation Tools}
+%%%%% \begin{itemize}
+%%%%% \item \textbf{LLM-based}: GitHub Copilot, Amazon CodeWhisperer, Tabnine
+%%%%% \item \textbf{SBSE}: Program synthesis tools (SKETCH, Rosette)
+%%%%% \item \textbf{Constraint-based}: Z3 for program verification, Alloy for design
+%%%%% \item \textbf{Hybrid}: Intelligent IDEs with multiple AI assistants
+%%%%% \end{itemize}
+%%%%% \end{frame}
 
 \section{AI Pair Programming}
 
@@ -1025,432 +1033,432 @@ Hybrid & High & High & Medium \\
     \end{columns}
 \end{frame}
 
-\begin{frame}[t,fragile]{AI Pair Programming Workflow}
-    \begin{lstlisting}[style=code, caption={Typical AI Pair Programming Interaction}]
-// Developer: Write function signature
-function calculateTax(income: number, deductions: number): number {
-    // Developer: Add comment describing requirements
-    // Calculate tax based on income and deductions
-    // Use progressive tax brackets
-    
-    // AI Assistant: Auto-generates implementation
-    const taxableIncome = income - deductions;
-    
-    if (taxableIncome <= 0) return 0;
-    
-    const brackets = [
-        { limit: 10000, rate: 0.1 },
-        { limit: 40000, rate: 0.2 },
-        { limit: Infinity, rate: 0.3 }
-    ];
-    
-    let tax = 0;
-    let previousLimit = 0;
-    
-    for (const bracket of brackets) {
-        if (taxableIncome > previousLimit) {
-            const amountInBracket = Math.min(
-                taxableIncome - previousLimit, 
-                bracket.limit - previousLimit
-            );
-            tax += amountInBracket * bracket.rate;
-            previousLimit = bracket.limit;
-        }
-    }
-    
-    return tax;
-}
-    \end{lstlisting}
-\end{frame}
-
-\begin{frame}[t]{AI Pair Programming in Requirements Engineering}
-    \begin{block}{Bridging Requirements and Code}
-        AI Pair Programming helps transform requirements specifications directly into executable code
-    \end{block}
-    
-    \textbf{Specific Applications:}
-    \begin{itemize}
-        \item \textbf{Requirements Prototyping}: Quick conversion of requirements to working prototypes
-        \item \textbf{Specification Validation}: Verify requirement feasibility through code
-        \item \textbf{Test Case Generation}: Auto-generate test code from requirements
-        \item \textbf{API Design}: Generate code frameworks from interface requirements
-        \item \textbf{Database Design}: Convert data requirements to SQL schemas
-    \end{itemize}
-    
-    \begin{exampleblock}{Example Workflow}
-        Requirements Document → AI Understanding → Code Framework → Iterative Refinement → Final Implementation
-    \end{exampleblock}
-\end{frame}
-
-\begin{frame}[t,fragile]{Requirements-to-Code Transformation Example}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            \textbf{Requirements Specification:}
-            \begin{lstlisting}[style=code]
-User Requirements:
-- User registration
-- Email verification
-- Password strength check
-- Welcome email sending
-
-Business Rules:
-- Password minimum 8 chars
-- Mixed case and numbers
-- Unique email required
-- Verification code valid 10min
-            \end{lstlisting}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \textbf{AI-Generated Code Framework:}
-            \begin{lstlisting}[style=code]
-// User registration service
-class UserService {
-    async register(userData) {
-        // Validate email uniqueness
-        // Check password strength
-        // Create user record
-        // Send verification email
-        // Return success response
-    }
-    
-    isStrongPassword(password) {
-        // Check length >= 8
-        // Check uppercase/lowercase
-        // Check contains number
-    }
-}
-            \end{lstlisting}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}[t]{Best Practices for Students}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            \textbf{Effective Patterns:}
-            \begin{enumerate}
-                \item \textbf{Clear Intent}: Write descriptive comments
-                \item \textbf{Incremental Development}: Small steps, frequent validation
-                \item \textbf{Code Review}: Critically evaluate AI suggestions
-                \item \textbf{Test-Driven}: Write tests first, then generate code
-                \item \textbf{Security First}: Validate security and edge cases
-            \end{enumerate}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \textbf{Pitfalls to Avoid:}
-            \begin{itemize}
-                \item \textbf{Blind Acceptance}: Not reviewing AI-generated code
-                \item \textbf{Over-reliance}: Losing programming thinking skills
-                \item \textbf{Security Risks}: Ignoring security reviews
-                \item \textbf{Copyright Issues}: Using protected code
-                \item \textbf{Performance Neglect}: Skipping performance testing
-            \end{itemize}
-        \end{column}
-    \end{columns}
-    
-    \vspace{0.5cm}
-    \textbf{Quality Assurance Process:}
-    \begin{enumerate}
-        \item AI suggests code → 2. Student reviews → 3. Run tests → 4. Integrate to codebase
-    \end{enumerate}
-\end{frame}
-
-\begin{frame}[t,fragile]{Test-Driven AI Pair Programming}
-    \begin{block}{Test-First Development}
-        Write test cases first, then use AI to generate implementation code that passes the tests
-    \end{block}
-    
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            \textbf{Test Cases Example:}
-            \begin{lstlisting}[style=code]
-// Write tests first
-describe('Tax Calculator', () => {
-    test('calculates tax correctly', () => {
-        expect(calculateTax(50000, 5000))
-            .toBe(8500);
-    });
-    
-    test('handles zero income', () => {
-        expect(calculateTax(0, 1000))
-            .toBe(0);
-    });
-});
-            \end{lstlisting}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \textbf{AI Generates Implementation:}
-            \begin{lstlisting}[style=code]
-// AI implements based on tests
-function calculateTax(income, deductions) {
-    // Implementation logic...
-    // Must pass all test cases
-}
-            \end{lstlisting}
-        \end{column}
-    \end{columns}
-    
-    \textbf{Benefits for Learning:}
-    \begin{itemize}
-        \item Ensures code meets requirements
-        \item Automatic validation of correctness
-        \item Facilitates regression testing
-        \item Improves code quality awareness
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[t,fragile]{Effective Prompt Engineering for Students}
-    \begin{lstlisting}[style=code, caption={Structured Prompt Template}]
-// Poor prompt:
-"write a sorting function"
-
-// Effective prompt:
-"""
-Act as an experienced JavaScript developer. 
-Help me implement a quicksort function.
-
-Requirements:
-- Function name: quickSort
-- Parameters: array (numbers)
-- Returns: new sorted array
-- Use recursive implementation with comments
-
-Example input: [3, 1, 4, 1, 5, 9, 2, 6]
-Expected output: [1, 1, 2, 3, 4, 5, 6, 9]
-
-Please explain the algorithm approach first, 
-then provide the code implementation.
-"""
-    \end{lstlisting}
-    
-    \textbf{Prompt Engineering Tips:}
-    \begin{itemize}
-        \item Specify role and context clearly
-        \item Include specific technical requirements
-        \item Provide input/output examples
-        \item Define code standards and constraints
-        \item Request step-by-step explanations
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[t]{Learning Benefits for Students}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            \textbf{Technical Skills:}
-            \begin{itemize}
-                \item \textbf{Faster Learning}: 2-3x acceleration in skill acquisition
-                \item \textbf{Best Practices}: Exposure to professional coding standards
-                \item \textbf{Pattern Recognition}: Learn common algorithms and patterns
-                \item \textbf{Debugging Skills}: See how AI approaches problem-solving
-                \item \textbf{Code Quality}: Understand what makes code maintainable
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \textbf{Professional Development:}
-            \begin{itemize}
-                \item \textbf{Confidence Building}: Quick success with complex tasks
-                \item \textbf{Portfolio Growth}: Ability to complete more projects
-                \item \textbf{Industry Preparation}: Learn tools used in professional environments
-                \item \textbf{Collaboration Skills}: Practice code review and collaboration
-                \item \textbf{Problem Decomposition}: Learn to break down complex problems
-            \end{itemize}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}[t]{Common Challenges for Student Developers}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            \textbf{Technical Challenges:}
-            \begin{itemize}
-                \item \textbf{Understanding Limitations}: When AI suggestions are wrong
-                \item \textbf{Over-complex Solutions}: AI may suggest advanced patterns
-                \item \textbf{Dependency Management}: Handling library recommendations
-                \item \textbf{Debugging AI Code}: Tracing issues in generated code
-                \item \textbf{Performance Awareness}: Recognizing inefficient solutions
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \textbf{Learning Challenges:}
-            \begin{itemize}
-                \item \textbf{Skill Dependency}: Risk of relying too much on AI
-                \item \textbf{Conceptual Gaps}: Missing fundamental understanding
-                \item \textbf{Critical Thinking}: Need to evaluate AI suggestions
-                \item \textbf{Academic Integrity}: Proper use in coursework
-                \item \textbf{Balance Finding}: When to use AI vs. manual coding
-            \end{itemize}
-        \end{column}
-    \end{columns}
-    
-    \vspace{0.5cm}
-    \textbf{Strategies for Success:}
-    \begin{itemize}
-        \item Use AI for learning, not just completing assignments
-        \item Always review and understand AI-generated code
-        \item Practice manual coding regularly
-        \item Discuss AI suggestions with instructors
-        \item Document what you learn from each interaction
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[t]{Academic Integrity Considerations}
-    \begin{block}{Responsible Use in Education}
-        AI Pair Programming should enhance learning, not replace it
-    \end{block}
-    
-    \textbf{Institutional Guidelines:}
-    \begin{itemize}
-        \item \textbf{Check Course Policies}: Understand what's allowed in each course
-        \item \textbf{Transparency}: Disclose AI assistance in submissions
-        \item \textbf{Learning Focus}: Use AI to understand, not just complete work
-        \item \textbf{Proper Attribution}: Credit AI contributions appropriately
-    \end{itemize}
-    
-    \textbf{Recommended Practices:}
-    \begin{itemize}
-        \item Use AI for learning concepts, not assignment completion
-        \item Document your learning process with AI
-        \item Show both AI suggestions and your modifications
-        \item Discuss AI interactions in code comments
-        \item Focus on understanding the underlying concepts
-    \end{itemize}
-    
-    \begin{alertblock}{Important}
-        Always follow your institution's academic integrity policies regarding AI tool usage
-    \end{alertblock}
-\end{frame}
-
-\begin{frame}[t]{Practical Exercise: Student Project Workflow}
-    \textbf{Step-by-Step Learning Approach:}
-    
-    \begin{enumerate}
-        \item \textbf{Requirements Analysis}: Use AI to understand project requirements
-        \item \textbf{Design Phase}: Get AI suggestions for architecture and patterns
-        \item \textbf{Implementation}: Use AI for code generation with active learning
-        \item \textbf{Testing}: Generate test cases and learn testing strategies
-        \item \textbf{Review}: Use AI for code review and optimization suggestions
-        \item \textbf{Reflection}: Document what you learned from the AI interactions
-    \end{enumerate}
-    
-    \textbf{Learning Objectives:}
-    \begin{itemize}
-        \item Understand how to translate requirements to code
-        \item Learn professional coding standards and patterns
-        \item Develop critical evaluation skills for code quality
-        \item Practice iterative development and refinement
-        \item Build confidence in tackling complex programming tasks
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[t,fragile]{Sample Student Project: Todo List Application}
-    \begin{columns}
-        \begin{column}{0.5\textwidth}
-            \textbf{Requirements:}
-            \begin{lstlisting}[style=code]
-Create a todo list app with:
-- Add new tasks
-- Mark tasks complete
-- Delete tasks
-- Filter tasks (all/active/completed)
-- Local storage persistence
-- Responsive design
-            \end{lstlisting}
-        \end{column}
-        \begin{column}{0.5\textwidth}
-            \textbf{AI-Assisted Learning:}
-            \begin{itemize}
-                \item Get HTML/CSS structure suggestions
-                \item Learn JavaScript event handling
-                \item Understand local storage API
-                \item Study responsive design patterns
-                \item Practice code organization
-            \end{itemize}
-        \end{column}
-    \end{columns}
-    
-    \vspace{0.5cm}
-    \textbf{Learning Outcomes:}
-    \begin{itemize}
-        \item DOM manipulation techniques
-        \item State management patterns
-        \item Data persistence methods
-        \item UI/UX design considerations
-        \item Problem decomposition skills
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[t]{Future Career Preparation}
-    \begin{block}{Industry Relevance}
-        AI Pair Programming skills are increasingly valuable in professional software development
-    \end{block}
-    
-    \textbf{Career Benefits:}
-    \begin{itemize}
-        \item \textbf{Technical Adaptability}: Experience with modern development tools
-        \item \textbf{Efficiency Skills}: Ability to work effectively with AI assistants
-        \item \textbf{Quality Mindset}: Understanding of code quality standards
-        \item \textbf{Collaboration Experience}: Practice with AI-human teamwork
-        \item \textbf{Continuous Learning}: Comfort with evolving technology tools
-    \end{itemize}
-    
-    \textbf{Industry Trends:}
-    \begin{itemize}
-        \item AI assistance becoming standard in development environments
-        \item Growing demand for developers who can work effectively with AI
-        \item Increased focus on code quality and maintainability
-        \item Emphasis on rapid prototyping and iteration
-        \item Importance of clear communication and requirements understanding
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[t]{Getting Started: Student Action Plan}
-    \textbf{Immediate Steps:}
-    \begin{enumerate}
-        \item \textbf{Choose a Tool}: Start with GitHub Copilot (student discount available)
-        \item \textbf{Small Projects}: Begin with simple coding exercises
-        \item \textbf{Active Learning}: Always understand the code AI generates
-        \item \textbf{Document Learning}: Keep notes on patterns and techniques learned
-        \item \textbf{Seek Feedback}: Discuss AI interactions with instructors and peers
-    \end{enumerate}
-    
-    \textbf{Learning Resources:}
-    \begin{itemize}
-        \item GitHub Education Pack (free access to developer tools)
-        \item Online tutorials on effective prompt engineering
-        \item University coding clubs and workshops
-        \item Open source projects for practice
-        \item Peer programming sessions with AI discussion
-    \end{itemize}
-    
-    \begin{exampleblock}{Call to Action}
-        Start experimenting with AI Pair Programming in your next coding project! Focus on using it as a learning tool to enhance your understanding, not just complete assignments.
-    \end{exampleblock}
-\end{frame}
-
-\begin{frame}[t]{Summary: AI as Learning Partner}
-    \begin{columns}
-        \begin{column}{0.6\textwidth}
-            \textbf{Key Takeaways:}
-            \begin{itemize}
-                \item AI Pair Programming accelerates learning when used intentionally
-                \item Critical thinking and code review skills remain essential
-                \item Balance AI assistance with fundamental skill development
-                \item Focus on understanding concepts, not just completing work
-                \item Document and reflect on your learning journey
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.4\textwidth}
-            \centering
-            \includegraphics[width=0.9\textwidth]{images/ai-learning-partner.png}
-            % \captionof{figure}{AI as Learning Enhancement}
-        \end{column}
-    \end{columns}
-    
-    \vspace{0.5cm}
-    \begin{block}{Successful Approach}
-        The most effective students use AI as a tutor and collaborator, not a crutch. They maintain active engagement, ask questions, and focus on deep understanding.
-    \end{block}
-\end{frame}
+%%%%% \begin{frame}[t,fragile]{AI Pair Programming Workflow}
+%%%%%     \begin{lstlisting}[style=code, caption={Typical AI Pair Programming Interaction}]
+%%%%% // Developer: Write function signature
+%%%%% function calculateTax(income: number, deductions: number): number {
+%%%%%     // Developer: Add comment describing requirements
+%%%%%     // Calculate tax based on income and deductions
+%%%%%     // Use progressive tax brackets
+%%%%%     
+%%%%%     // AI Assistant: Auto-generates implementation
+%%%%%     const taxableIncome = income - deductions;
+%%%%%     
+%%%%%     if (taxableIncome <= 0) return 0;
+%%%%%     
+%%%%%     const brackets = [
+%%%%%         { limit: 10000, rate: 0.1 },
+%%%%%         { limit: 40000, rate: 0.2 },
+%%%%%         { limit: Infinity, rate: 0.3 }
+%%%%%     ];
+%%%%%     
+%%%%%     let tax = 0;
+%%%%%     let previousLimit = 0;
+%%%%%     
+%%%%%     for (const bracket of brackets) {
+%%%%%         if (taxableIncome > previousLimit) {
+%%%%%             const amountInBracket = Math.min(
+%%%%%                 taxableIncome - previousLimit, 
+%%%%%                 bracket.limit - previousLimit
+%%%%%             );
+%%%%%             tax += amountInBracket * bracket.rate;
+%%%%%             previousLimit = bracket.limit;
+%%%%%         }
+%%%%%     }
+%%%%%     
+%%%%%     return tax;
+%%%%% }
+%%%%%     \end{lstlisting}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{AI Pair Programming in Requirements Engineering}
+%%%%%     \begin{block}{Bridging Requirements and Code}
+%%%%%         AI Pair Programming helps transform requirements specifications directly into executable code
+%%%%%     \end{block}
+%%%%%     
+%%%%%     \textbf{Specific Applications:}
+%%%%%     \begin{itemize}
+%%%%%         \item \textbf{Requirements Prototyping}: Quick conversion of requirements to working prototypes
+%%%%%         \item \textbf{Specification Validation}: Verify requirement feasibility through code
+%%%%%         \item \textbf{Test Case Generation}: Auto-generate test code from requirements
+%%%%%         \item \textbf{API Design}: Generate code frameworks from interface requirements
+%%%%%         \item \textbf{Database Design}: Convert data requirements to SQL schemas
+%%%%%     \end{itemize}
+%%%%%     
+%%%%%     \begin{exampleblock}{Example Workflow}
+%%%%%         Requirements Document → AI Understanding → Code Framework → Iterative Refinement → Final Implementation
+%%%%%     \end{exampleblock}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t,fragile]{Requirements-to-Code Transformation Example}
+%%%%%     \begin{columns}
+%%%%%         \begin{column}{0.5\textwidth}
+%%%%%             \textbf{Requirements Specification:}
+%%%%%             \begin{lstlisting}[style=code]
+%%%%% User Requirements:
+%%%%% - User registration
+%%%%% - Email verification
+%%%%% - Password strength check
+%%%%% - Welcome email sending
+%%%%% 
+%%%%% Business Rules:
+%%%%% - Password minimum 8 chars
+%%%%% - Mixed case and numbers
+%%%%% - Unique email required
+%%%%% - Verification code valid 10min
+%%%%%             \end{lstlisting}
+%%%%%         \end{column}
+%%%%%         \begin{column}{0.5\textwidth}
+%%%%%             \textbf{AI-Generated Code Framework:}
+%%%%%             \begin{lstlisting}[style=code]
+%%%%% // User registration service
+%%%%% class UserService {
+%%%%%     async register(userData) {
+%%%%%         // Validate email uniqueness
+%%%%%         // Check password strength
+%%%%%         // Create user record
+%%%%%         // Send verification email
+%%%%%         // Return success response
+%%%%%     }
+%%%%%     
+%%%%%     isStrongPassword(password) {
+%%%%%         // Check length >= 8
+%%%%%         // Check uppercase/lowercase
+%%%%%         // Check contains number
+%%%%%     }
+%%%%% }
+%%%%%             \end{lstlisting}
+%%%%%         \end{column}
+%%%%%     \end{columns}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{Best Practices for Students}
+%%%%%     \begin{columns}
+%%%%%         \begin{column}{0.5\textwidth}
+%%%%%             \textbf{Effective Patterns:}
+%%%%%             \begin{enumerate}
+%%%%%                 \item \textbf{Clear Intent}: Write descriptive comments
+%%%%%                 \item \textbf{Incremental Development}: Small steps, frequent validation
+%%%%%                 \item \textbf{Code Review}: Critically evaluate AI suggestions
+%%%%%                 \item \textbf{Test-Driven}: Write tests first, then generate code
+%%%%%                 \item \textbf{Security First}: Validate security and edge cases
+%%%%%             \end{enumerate}
+%%%%%         \end{column}
+%%%%%         \begin{column}{0.5\textwidth}
+%%%%%             \textbf{Pitfalls to Avoid:}
+%%%%%             \begin{itemize}
+%%%%%                 \item \textbf{Blind Acceptance}: Not reviewing AI-generated code
+%%%%%                 \item \textbf{Over-reliance}: Losing programming thinking skills
+%%%%%                 \item \textbf{Security Risks}: Ignoring security reviews
+%%%%%                 \item \textbf{Copyright Issues}: Using protected code
+%%%%%                 \item \textbf{Performance Neglect}: Skipping performance testing
+%%%%%             \end{itemize}
+%%%%%         \end{column}
+%%%%%     \end{columns}
+%%%%%     
+%%%%%     \vspace{0.5cm}
+%%%%%     \textbf{Quality Assurance Process:}
+%%%%%     \begin{enumerate}
+%%%%%         \item AI suggests code → 2. Student reviews → 3. Run tests → 4. Integrate to codebase
+%%%%%     \end{enumerate}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t,fragile]{Test-Driven AI Pair Programming}
+%%%%%     \begin{block}{Test-First Development}
+%%%%%         Write test cases first, then use AI to generate implementation code that passes the tests
+%%%%%     \end{block}
+%%%%%     
+%%%%%     \begin{columns}
+%%%%%         \begin{column}{0.5\textwidth}
+%%%%%             \textbf{Test Cases Example:}
+%%%%%             \begin{lstlisting}[style=code]
+%%%%% // Write tests first
+%%%%% describe('Tax Calculator', () => {
+%%%%%     test('calculates tax correctly', () => {
+%%%%%         expect(calculateTax(50000, 5000))
+%%%%%             .toBe(8500);
+%%%%%     });
+%%%%%     
+%%%%%     test('handles zero income', () => {
+%%%%%         expect(calculateTax(0, 1000))
+%%%%%             .toBe(0);
+%%%%%     });
+%%%%% });
+%%%%%             \end{lstlisting}
+%%%%%         \end{column}
+%%%%%         \begin{column}{0.5\textwidth}
+%%%%%             \textbf{AI Generates Implementation:}
+%%%%%             \begin{lstlisting}[style=code]
+%%%%% // AI implements based on tests
+%%%%% function calculateTax(income, deductions) {
+%%%%%     // Implementation logic...
+%%%%%     // Must pass all test cases
+%%%%% }
+%%%%%             \end{lstlisting}
+%%%%%         \end{column}
+%%%%%     \end{columns}
+%%%%%     
+%%%%%     \textbf{Benefits for Learning:}
+%%%%%     \begin{itemize}
+%%%%%         \item Ensures code meets requirements
+%%%%%         \item Automatic validation of correctness
+%%%%%         \item Facilitates regression testing
+%%%%%         \item Improves code quality awareness
+%%%%%     \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t,fragile]{Effective Prompt Engineering for Students}
+%%%%%     \begin{lstlisting}[style=code, caption={Structured Prompt Template}]
+%%%%% // Poor prompt:
+%%%%% "write a sorting function"
+%%%%% 
+%%%%% // Effective prompt:
+%%%%% """
+%%%%% Act as an experienced JavaScript developer. 
+%%%%% Help me implement a quicksort function.
+%%%%% 
+%%%%% Requirements:
+%%%%% - Function name: quickSort
+%%%%% - Parameters: array (numbers)
+%%%%% - Returns: new sorted array
+%%%%% - Use recursive implementation with comments
+%%%%% 
+%%%%% Example input: [3, 1, 4, 1, 5, 9, 2, 6]
+%%%%% Expected output: [1, 1, 2, 3, 4, 5, 6, 9]
+%%%%% 
+%%%%% Please explain the algorithm approach first, 
+%%%%% then provide the code implementation.
+%%%%% """
+%%%%%     \end{lstlisting}
+%%%%%     
+%%%%%     \textbf{Prompt Engineering Tips:}
+%%%%%     \begin{itemize}
+%%%%%         \item Specify role and context clearly
+%%%%%         \item Include specific technical requirements
+%%%%%         \item Provide input/output examples
+%%%%%         \item Define code standards and constraints
+%%%%%         \item Request step-by-step explanations
+%%%%%     \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{Learning Benefits for Students}
+%%%%%     \begin{columns}
+%%%%%         \begin{column}{0.5\textwidth}
+%%%%%             \textbf{Technical Skills:}
+%%%%%             \begin{itemize}
+%%%%%                 \item \textbf{Faster Learning}: 2-3x acceleration in skill acquisition
+%%%%%                 \item \textbf{Best Practices}: Exposure to professional coding standards
+%%%%%                 \item \textbf{Pattern Recognition}: Learn common algorithms and patterns
+%%%%%                 \item \textbf{Debugging Skills}: See how AI approaches problem-solving
+%%%%%                 \item \textbf{Code Quality}: Understand what makes code maintainable
+%%%%%             \end{itemize}
+%%%%%         \end{column}
+%%%%%         \begin{column}{0.5\textwidth}
+%%%%%             \textbf{Professional Development:}
+%%%%%             \begin{itemize}
+%%%%%                 \item \textbf{Confidence Building}: Quick success with complex tasks
+%%%%%                 \item \textbf{Portfolio Growth}: Ability to complete more projects
+%%%%%                 \item \textbf{Industry Preparation}: Learn tools used in professional environments
+%%%%%                 \item \textbf{Collaboration Skills}: Practice code review and collaboration
+%%%%%                 \item \textbf{Problem Decomposition}: Learn to break down complex problems
+%%%%%             \end{itemize}
+%%%%%         \end{column}
+%%%%%     \end{columns}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{Common Challenges for Student Developers}
+%%%%%     \begin{columns}
+%%%%%         \begin{column}{0.5\textwidth}
+%%%%%             \textbf{Technical Challenges:}
+%%%%%             \begin{itemize}
+%%%%%                 \item \textbf{Understanding Limitations}: When AI suggestions are wrong
+%%%%%                 \item \textbf{Over-complex Solutions}: AI may suggest advanced patterns
+%%%%%                 \item \textbf{Dependency Management}: Handling library recommendations
+%%%%%                 \item \textbf{Debugging AI Code}: Tracing issues in generated code
+%%%%%                 \item \textbf{Performance Awareness}: Recognizing inefficient solutions
+%%%%%             \end{itemize}
+%%%%%         \end{column}
+%%%%%         \begin{column}{0.5\textwidth}
+%%%%%             \textbf{Learning Challenges:}
+%%%%%             \begin{itemize}
+%%%%%                 \item \textbf{Skill Dependency}: Risk of relying too much on AI
+%%%%%                 \item \textbf{Conceptual Gaps}: Missing fundamental understanding
+%%%%%                 \item \textbf{Critical Thinking}: Need to evaluate AI suggestions
+%%%%%                 \item \textbf{Academic Integrity}: Proper use in coursework
+%%%%%                 \item \textbf{Balance Finding}: When to use AI vs. manual coding
+%%%%%             \end{itemize}
+%%%%%         \end{column}
+%%%%%     \end{columns}
+%%%%%     
+%%%%%     \vspace{0.5cm}
+%%%%%     \textbf{Strategies for Success:}
+%%%%%     \begin{itemize}
+%%%%%         \item Use AI for learning, not just completing assignments
+%%%%%         \item Always review and understand AI-generated code
+%%%%%         \item Practice manual coding regularly
+%%%%%         \item Discuss AI suggestions with instructors
+%%%%%         \item Document what you learn from each interaction
+%%%%%     \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{Academic Integrity Considerations}
+%%%%%     \begin{block}{Responsible Use in Education}
+%%%%%         AI Pair Programming should enhance learning, not replace it
+%%%%%     \end{block}
+%%%%%     
+%%%%%     \textbf{Institutional Guidelines:}
+%%%%%     \begin{itemize}
+%%%%%         \item \textbf{Check Course Policies}: Understand what's allowed in each course
+%%%%%         \item \textbf{Transparency}: Disclose AI assistance in submissions
+%%%%%         \item \textbf{Learning Focus}: Use AI to understand, not just complete work
+%%%%%         \item \textbf{Proper Attribution}: Credit AI contributions appropriately
+%%%%%     \end{itemize}
+%%%%%     
+%%%%%     \textbf{Recommended Practices:}
+%%%%%     \begin{itemize}
+%%%%%         \item Use AI for learning concepts, not assignment completion
+%%%%%         \item Document your learning process with AI
+%%%%%         \item Show both AI suggestions and your modifications
+%%%%%         \item Discuss AI interactions in code comments
+%%%%%         \item Focus on understanding the underlying concepts
+%%%%%     \end{itemize}
+%%%%%     
+%%%%%     \begin{alertblock}{Important}
+%%%%%         Always follow your institution's academic integrity policies regarding AI tool usage
+%%%%%     \end{alertblock}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{Practical Exercise: Student Project Workflow}
+%%%%%     \textbf{Step-by-Step Learning Approach:}
+%%%%%     
+%%%%%     \begin{enumerate}
+%%%%%         \item \textbf{Requirements Analysis}: Use AI to understand project requirements
+%%%%%         \item \textbf{Design Phase}: Get AI suggestions for architecture and patterns
+%%%%%         \item \textbf{Implementation}: Use AI for code generation with active learning
+%%%%%         \item \textbf{Testing}: Generate test cases and learn testing strategies
+%%%%%         \item \textbf{Review}: Use AI for code review and optimization suggestions
+%%%%%         \item \textbf{Reflection}: Document what you learned from the AI interactions
+%%%%%     \end{enumerate}
+%%%%%     
+%%%%%     \textbf{Learning Objectives:}
+%%%%%     \begin{itemize}
+%%%%%         \item Understand how to translate requirements to code
+%%%%%         \item Learn professional coding standards and patterns
+%%%%%         \item Develop critical evaluation skills for code quality
+%%%%%         \item Practice iterative development and refinement
+%%%%%         \item Build confidence in tackling complex programming tasks
+%%%%%     \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t,fragile]{Sample Student Project: Todo List Application}
+%%%%%     \begin{columns}
+%%%%%         \begin{column}{0.5\textwidth}
+%%%%%             \textbf{Requirements:}
+%%%%%             \begin{lstlisting}[style=code]
+%%%%% Create a todo list app with:
+%%%%% - Add new tasks
+%%%%% - Mark tasks complete
+%%%%% - Delete tasks
+%%%%% - Filter tasks (all/active/completed)
+%%%%% - Local storage persistence
+%%%%% - Responsive design
+%%%%%             \end{lstlisting}
+%%%%%         \end{column}
+%%%%%         \begin{column}{0.5\textwidth}
+%%%%%             \textbf{AI-Assisted Learning:}
+%%%%%             \begin{itemize}
+%%%%%                 \item Get HTML/CSS structure suggestions
+%%%%%                 \item Learn JavaScript event handling
+%%%%%                 \item Understand local storage API
+%%%%%                 \item Study responsive design patterns
+%%%%%                 \item Practice code organization
+%%%%%             \end{itemize}
+%%%%%         \end{column}
+%%%%%     \end{columns}
+%%%%%     
+%%%%%     \vspace{0.5cm}
+%%%%%     \textbf{Learning Outcomes:}
+%%%%%     \begin{itemize}
+%%%%%         \item DOM manipulation techniques
+%%%%%         \item State management patterns
+%%%%%         \item Data persistence methods
+%%%%%         \item UI/UX design considerations
+%%%%%         \item Problem decomposition skills
+%%%%%     \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{Future Career Preparation}
+%%%%%     \begin{block}{Industry Relevance}
+%%%%%         AI Pair Programming skills are increasingly valuable in professional software development
+%%%%%     \end{block}
+%%%%%     
+%%%%%     \textbf{Career Benefits:}
+%%%%%     \begin{itemize}
+%%%%%         \item \textbf{Technical Adaptability}: Experience with modern development tools
+%%%%%         \item \textbf{Efficiency Skills}: Ability to work effectively with AI assistants
+%%%%%         \item \textbf{Quality Mindset}: Understanding of code quality standards
+%%%%%         \item \textbf{Collaboration Experience}: Practice with AI-human teamwork
+%%%%%         \item \textbf{Continuous Learning}: Comfort with evolving technology tools
+%%%%%     \end{itemize}
+%%%%%     
+%%%%%     \textbf{Industry Trends:}
+%%%%%     \begin{itemize}
+%%%%%         \item AI assistance becoming standard in development environments
+%%%%%         \item Growing demand for developers who can work effectively with AI
+%%%%%         \item Increased focus on code quality and maintainability
+%%%%%         \item Emphasis on rapid prototyping and iteration
+%%%%%         \item Importance of clear communication and requirements understanding
+%%%%%     \end{itemize}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{Getting Started: Student Action Plan}
+%%%%%     \textbf{Immediate Steps:}
+%%%%%     \begin{enumerate}
+%%%%%         \item \textbf{Choose a Tool}: Start with GitHub Copilot (student discount available)
+%%%%%         \item \textbf{Small Projects}: Begin with simple coding exercises
+%%%%%         \item \textbf{Active Learning}: Always understand the code AI generates
+%%%%%         \item \textbf{Document Learning}: Keep notes on patterns and techniques learned
+%%%%%         \item \textbf{Seek Feedback}: Discuss AI interactions with instructors and peers
+%%%%%     \end{enumerate}
+%%%%%     
+%%%%%     \textbf{Learning Resources:}
+%%%%%     \begin{itemize}
+%%%%%         \item GitHub Education Pack (free access to developer tools)
+%%%%%         \item Online tutorials on effective prompt engineering
+%%%%%         \item University coding clubs and workshops
+%%%%%         \item Open source projects for practice
+%%%%%         \item Peer programming sessions with AI discussion
+%%%%%     \end{itemize}
+%%%%%     
+%%%%%     \begin{exampleblock}{Call to Action}
+%%%%%         Start experimenting with AI Pair Programming in your next coding project! Focus on using it as a learning tool to enhance your understanding, not just complete assignments.
+%%%%%     \end{exampleblock}
+%%%%% \end{frame}
+%%%%% 
+%%%%% \begin{frame}[t]{Summary: AI as Learning Partner}
+%%%%%     \begin{columns}
+%%%%%         \begin{column}{0.6\textwidth}
+%%%%%             \textbf{Key Takeaways:}
+%%%%%             \begin{itemize}
+%%%%%                 \item AI Pair Programming accelerates learning when used intentionally
+%%%%%                 \item Critical thinking and code review skills remain essential
+%%%%%                 \item Balance AI assistance with fundamental skill development
+%%%%%                 \item Focus on understanding concepts, not just completing work
+%%%%%                 \item Document and reflect on your learning journey
+%%%%%             \end{itemize}
+%%%%%         \end{column}
+%%%%%         \begin{column}{0.4\textwidth}
+%%%%%             \centering
+%%%%%             \includegraphics[width=0.9\textwidth]{images/ai-learning-partner.png}
+%%%%%             % \captionof{figure}{AI as Learning Enhancement}
+%%%%%         \end{column}
+%%%%%     \end{columns}
+%%%%%     
+%%%%%     \vspace{0.5cm}
+%%%%%     \begin{block}{Successful Approach}
+%%%%%         The most effective students use AI as a tutor and collaborator, not a crutch. They maintain active engagement, ask questions, and focus on deep understanding.
+%%%%%     \end{block}
+%%%%% \end{frame}
 
 \section{How AI-Assisted Programming Works Under the Hood}
 
