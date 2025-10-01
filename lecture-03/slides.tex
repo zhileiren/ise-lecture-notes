@@ -1319,46 +1319,47 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
     
     \begin{block}{Layered Architecture}
         \begin{enumerate}
+            \scriptsize
             \item \textbf{Brain \& Cognitive Core}: Powerful LLMs (GPT-4, Claude, Gemini) for code generation and reasoning
             \item \textbf{Agentic Frameworks}: Systems for planning, tool use, and self-correction
             \item \textbf{Execution Environment}: Safe sandboxed environments for code execution
             \item \textbf{Knowledge Base}: RAG systems for project-specific context
         \end{enumerate}
     \end{block}
-    
+    % https://venturebeat.com/ai/agentic-ai-a-deep-dive-into-the-future-of-automation 
     \begin{figure}
-        \includegraphics[width=0.5\linewidth]{example-image}
+        \includegraphics[width=0.5\linewidth]{images/agentic.png}
         \caption{AI-Assisted Programming System Architecture}
     \end{figure}
     
 \end{frame}
 
 % Slide 3: The Agentic Workflow - Planning and Execution
-\begin{frame}[t]
-    \frametitle{The Agentic Workflow: Planning and Execution}
-    
-    \begin{block}{AI Agent = LLM + Planning + Tools}
-        \begin{itemize}
-            \item \textbf{LLM}: The cognitive core for understanding and reasoning
-            \item \textbf{Planning}: Decomposing complex goals into manageable steps
-            \item \textbf{Tools}: External APIs and functions the AI can use
-        \end{itemize}
-    \end{block}
-    
-    \begin{exampleblock}{ReAct Pattern: Reason + Act}
-        AI agents follow an iterative loop:
-        \begin{enumerate}
-            \item \textbf{Reason}: Analyze what to do next
-            \item \textbf{Act}: Execute chosen action (code, call API, etc.)
-            \item \textbf{Observe}: Analyze results and repeat
-        \end{enumerate}
-    \end{exampleblock}
-    
-    \begin{alertblock}{Tool Use Capabilities}
-        Agents can interact with file systems, version control, APIs, browsers, and execution environments.
-    \end{alertblock}
-    
-\end{frame}
+% \begin{frame}[t]
+%     \frametitle{The Agentic Workflow: Planning and Execution}
+%     
+%     \begin{block}{AI Agent = LLM + Planning + Tools}
+%         \begin{itemize}
+%             \item \textbf{LLM}: The cognitive core for understanding and reasoning
+%             \item \textbf{Planning}: Decomposing complex goals into manageable steps
+%             \item \textbf{Tools}: External APIs and functions the AI can use
+%         \end{itemize}
+%     \end{block}
+%     
+%     \begin{exampleblock}{ReAct Pattern: Reason + Act}
+%         AI agents follow an iterative loop:
+%         \begin{enumerate}
+%             \item \textbf{Reason}: Analyze what to do next
+%             \item \textbf{Act}: Execute chosen action (code, call API, etc.)
+%             \item \textbf{Observe}: Analyze results and repeat
+%         \end{enumerate}
+%     \end{exampleblock}
+%     
+%     \begin{alertblock}{Tool Use Capabilities}
+%         Agents can interact with file systems, version control, APIs, browsers, and execution environments.
+%     \end{alertblock}
+%     
+% \end{frame}
 
 % Slide 4: Human-AI Collaboration in Practice
 \begin{frame}[t]
@@ -1386,6 +1387,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
     
     \begin{block}{Key Challenges}
         \begin{itemize}
+            \scriptsize
             \item \textbf{AI Hallucinations}: Confident but incorrect outputs
             \item \textbf{Security \& Privacy}: Potential vulnerabilities in generated code
             \item \textbf{Intellectual Property}: Copyright concerns with training data
@@ -1395,6 +1397,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
     
     \begin{exampleblock}{Best Practices}
         \begin{itemize}
+            \scriptsize
             \item \textbf{Trust but Verify}: Never blindly trust AI-generated code
             \item \textbf{Iterate and Review}: Treat AI output as drafts requiring human review
             \item \textbf{Maintain Oversight}: Humans must remain ``in the loop'' for critical decisions
@@ -1484,6 +1487,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
 % 
 \begin{frame}[t]{Limitations and Challenges}
     \begin{block}{Current Technical Limitations}
+        \scriptsize
         Understanding limitations helps use AI programming tools effectively.
     \end{block}
     
@@ -1491,6 +1495,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
         \begin{column}{0.5\textwidth}
             \textbf{Technical Challenges:}
             \begin{itemize}
+                \scriptsize
                 \item \textbf{Context Length}: Limited understanding of large codebases
                 \item \textbf{Reasoning Depth}: Difficulty with complex logic chains
                 \item \textbf{API Knowledge}: May not know latest libraries
@@ -1501,6 +1506,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
         \begin{column}{0.5\textwidth}
             \textbf{Fundamental Limitations:}
             \begin{itemize}
+                \scriptsize
                 \item \textbf{No True Understanding}: Pattern matching, not reasoning
                 \item \textbf{Training Data Bias}: Reflects biases in training data
                 \item \textbf{Lack of Creativity}: Cannot invent truly novel solutions
@@ -1510,8 +1516,8 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
         \end{column}
     \end{columns}
     
-    \vspace{0.3cm}
     \begin{alertblock}{Important Distinction}
+        \scriptsize
         AI programming assistants are powerful tools, but they lack true understanding of code semantics and requirements.
     \end{alertblock}
 \end{frame}
@@ -1523,6 +1529,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
     
     \textbf{Research Frontiers:}
     \begin{itemize}
+            \scriptsize
         \item \textbf{Larger Context Windows}: Handling entire codebases
         \item \textbf{Better Reasoning}: Improved logical reasoning capabilities
         \item \textbf{Multimodal Understanding}: Combining code, docs, and diagrams
@@ -1534,6 +1541,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
         \begin{column}{0.5\textwidth}
             \textbf{Architecture Innovations:}
             \begin{itemize}
+                    \scriptsize
                 \item \textbf{Retrieval-Augmented Generation}: Combining with code search
                 \item \textbf{Program Synthesis}: Generating code from specifications
                 \item \textbf{Neuro-symbolic Approaches}: Combining neural and symbolic AI
@@ -1542,6 +1550,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
         \begin{column}{0.5\textwidth}
             \textbf{Application Areas:}
             \begin{itemize}
+                    \scriptsize
                 \item \textbf{Automated Refactoring}: Intelligent code improvement
                 \item \textbf{Code Migration}: Porting between languages/frameworks
                 \item \textbf{Accessibility}: Helping developers with disabilities
