@@ -1,38 +1,38 @@
-\frametitle{MCP in Action: Programming Workflow}
-\begin{block}{Practical MCP Implementation}
-        MCP enables sophisticated AI programming assistants with tool integration.
+\frametitle{Example: Function Calling for Code Refactoring}
+\begin{block}{Real-world Workflow}
+        Function calling enables complex multi-step programming tasks.
     \end{block}
 
     \begin{lstlisting}[style=code, basicstyle=\ttfamily\tiny]
-// MCP Tool Registration
+// User request: "Refactor this function to be more efficient"
+
+// Step 1: AI analyzes the code and decides to call analysis functions
 {
-    "name": "code-analyzer",
-    "version": "1.0.0",
-    "capabilities": {
-        "functions": [
-            {
-                "name": "staticAnalysis",
-                "description": "Perform static code analysis",
-                "parameters": {
-                    "code": {"type": "string"},
-                    "ruleset": {"type": "string", "optional": true}
-                }
-            },
-            {
-                "name": "complexityMetrics",
-                "description": "Calculate code complexity metrics",
-                "parameters": {
-                    "code": {"type": "string"},
-                    "metrics": {"type": "array"}
-                }
-            }
-        ]
+    "function_call": {
+        "name": "analyzeComplexity",
+        "parameters": {
+            "code": "function processData(data) {...}",
+            "metrics": ["cyclomatic", "cognitive"]
+        }
     }
 }
 
-// AI Model using MCP
-const response = await mcpClient.request("code-analyzer/staticAnalysis", {
-    code: userCode,
-    ruleset: "strict"
-});
+// Step 2: System returns complexity analysis
+{
+    "cyclomatic_complexity": 8,
+    "cognitive_complexity": 12,
+    "suggestions": ["Extract helper functions", "Simplify conditionals"]
+}
+
+// Step 3: AI generates refactored code and calls validation
+{
+    "function_call": {
+        "name": "validateRefactoring",
+        "parameters": {
+            "original": "function processData(data) {...}",
+            "refactored": "function processData(data) {...}",
+            "tests": "existing_test_suite"
+        }
+    }
+}
     \end{lstlisting}
