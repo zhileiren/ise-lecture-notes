@@ -169,6 +169,7 @@ Dalian University of Technology
     \end{figure}
 \end{frame}
 
+
 \begin{frame}[t]{Code Generation: The Implementation Path}
 \begin{itemize}
 \item \textbf{Challenge}: Efficiently writing and maintaining custom code
@@ -503,7 +504,7 @@ Modern software projects often have \textbf{complex dependency graphs} with hund
 \begin{itemize}
 \item Average npm package: 75+ dependencies
 \item Typical web application: 1000+ transitive dependencies
-\item Linux distribution: 50,000+ packages with complex inter-dependencies
+\item Debian: 50,000+ packages with complex inter-dependencies
 \end{itemize}
 
 \bigskip
@@ -539,6 +540,23 @@ Dependencies can introduce \textbf{security vulnerabilities} that affect your ap
 % \end{itemize}
 \end{frame}
 
+\begin{frame}[t]
+\frametitle{The Log4Shell Vulnerability (CVE-2021-44228)}
+
+\begin{alertblock}{What is Log4Shell?}
+\begin{itemize}
+        \scriptsize
+    \item A critical zero-day vulnerability discovered in December 2021.
+    \item Affects Log4j, a popular, ubiquitous Java logging library.
+    \item Affected thousands of applications and services globally, including those from major cloud providers and enterprise software vendors.
+\end{itemize}
+\end{alertblock}
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{images/log4j.png}
+    \caption{How Log4Shell Works}
+\end{figure}
+
+\end{frame}
 \subsection{Best Practices}
 
 \begin{frame}[t]{Dependency Management Best Practices}
@@ -635,15 +653,6 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
 \end{itemize}
 \end{frame}
 
-\begin{frame}[t]{Intelligent Software Engineering}
-
-    \begin{figure}
-        \includegraphics[width=.8\textwidth]{images/col-llm.pdf}
-        \caption{Test-Driven Development with LLMs}
-    \end{figure}
-\end{frame}
-
-
 \subsection{AI Pair Programming}
 
 \begin{frame}[t]{What is AI Pair Programming?}
@@ -692,6 +701,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
     
     \textbf{Five Core Values}
     \begin{itemize}
+            \scriptsize
         \item \textbf{Communication}: Constant flow of information within the team and with the customer.
         \item \textbf{Simplicity}: Focus on the simplest solution that works today.
         \item \textbf{Feedback}: Rapid feedback loops from the system, customer, and team.
@@ -702,6 +712,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
     \vspace{0.5cm}
     \textbf{Selected Core Practices}
     \begin{itemize}
+            \scriptsize
         \item \textbf{Test-Driven Development (TDD)}: Write tests before code.
         \item \textbf{Pair Programming}: Two programmers work together at one workstation.
         \item \textbf{Continuous Integration}: Integrate and test code multiple times a day.
@@ -1392,6 +1403,15 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
     \end{exampleblock}
     
 \end{frame}
+
+\begin{frame}[t]{Challenges and Best Practices}
+
+    \begin{figure}
+        \includegraphics[width=.8\textwidth]{images/col-llm.pdf}
+        \caption{Test-Driven Development with LLMs}
+    \end{figure}
+\end{frame}
+
 
 % \begin{frame}[t]{Code Embeddings: Representing Code Semantically}
 %     \begin{block}{Learning Code Representations}
