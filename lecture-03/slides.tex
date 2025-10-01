@@ -1560,7 +1560,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
     \end{columns}
 \end{frame}
 
-\subsection{Advanced Components: Function Calling and MCP}
+\subsection{Advanced Components: Function Calling}
 
 \begin{frame}[t]{Function Calling: Structured AI Interactions}
     \begin{block}{Beyond Text Generation}
@@ -1569,6 +1569,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
     
     \textbf{What is Function Calling?}
     \begin{itemize}
+        \scriptsize
         \item Standardized way for models to request execution of specific functions
         \item Returns structured data instead of unstructured text
         \item Enables tool usage, API calls, and code execution
@@ -1579,6 +1580,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
         \begin{column}{0.5\textwidth}
             \textbf{Traditional Approach:}
             \begin{itemize}
+                \scriptsize
                 \item Model generates text instructions
                 \item Human interprets and executes
                 \item Error-prone and slow
@@ -1587,6 +1589,7 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
         \begin{column}{0.5\textwidth}
             \textbf{Function Calling Approach:}
             \begin{itemize}
+                \scriptsize
                 \item Model requests specific function
                 \item System executes automatically
                 \item Structured, reliable results
@@ -1595,48 +1598,38 @@ Every dependency is a \textbf{potential point of failure} - choose and manage th
     \end{columns}
 \end{frame}
 
-\begin{frame}[t,fragile]{Function Calling in AI Programming Assistants}
-    \begin{block}{Practical Applications}
-        Function calling enables sophisticated programming workflows beyond simple code generation.
-    \end{block}
-    
-    \begin{lstlisting}[style=code, basicstyle=\ttfamily\scriptsize]
-// Example: Function calling for code analysis
-const availableFunctions = {
-    analyzeSyntax: {
-        description: "Analyze code syntax and structure",
-        parameters: {
-            code: "string",
-            language: "string"
-        }
-    },
-    runTests: {
-        description: "Execute test cases on code",
-        parameters: {
-            code: "string",
-            testCases: "array"
-        }
-    },
-    checkStyle: {
-        description: "Validate code style and conventions",
-        parameters: {
-            code: "string",
-            styleGuide: "string"
-        }
-    }
-};
+\begin{frame}[fragile, t]
+  \frametitle{Python + Ollama Example}
+  \tiny
+\begin{verbatim}
+import ollama
 
-// AI model can choose to call these functions
-// based on user requests and context
-    \end{lstlisting}
-    
-    \textbf{Use Cases:}
-    \begin{itemize}
-        \item Code analysis and linting
-        \item Test execution and validation
-        \item Dependency management
-        \item Performance benchmarking
-    \end{itemize}
+def add_two_numbers(a: int, b: int) -> int:
+    """
+    Add two numbers
+    Args:
+      a: The first integer number
+      b: The second integer number
+    Returns:
+      int: The sum of the two numbers
+    """
+    return a + b
+
+response = ollama.chat(
+  'llama3.1',
+  messages=[{'role': 'user', 'content': 'What is 10 + 10?'}],
+  tools=[add_two_numbers], # Actual function reference
+)
+
+available_functions = { 'add_two_numbers': add_two_numbers }
+
+for tool in response.message.tool_calls or []:
+    function_to_call = available_functions.get(tool.function.name)
+    if function_to_call:
+        print('Function output:', function_to_call(**tool.function.arguments))
+    else:
+        print('Function not found:', tool.function.name)
+\end{verbatim}
 \end{frame}
 
 \begin{frame}[t]{How Function Calling Works Technically}
@@ -1646,17 +1639,23 @@ const availableFunctions = {
     
     \textbf{Technical Flow:}
     \begin{enumerate}
+        \scriptsize
         \item \textbf{Function Registration}: Available functions are defined with schemas
         \item \textbf{Model Decision}: AI decides when to call functions based on context
         \item \textbf{Structured Request}: Model outputs function call with parameters
         \item \textbf{Execution}: System executes the function with provided parameters
         \item \textbf{Result Integration}: Function results are fed back to the model
     \end{enumerate}
+
+\end{frame}
+
     
+\begin{frame}[t]{How Function Calling Works Technically}
     \begin{columns}[t]
         \begin{column}{0.5\textwidth}
             \textbf{Benefits:}
             \begin{itemize}
+                \scriptsize
                 \item \textbf{Reliability}: Structured data reduces errors
                 \item \textbf{Safety}: Controlled execution environment
                 \item \textbf{Efficiency}: Automated tool usage
@@ -1666,6 +1665,7 @@ const availableFunctions = {
         \begin{column}{0.5\textwidth}
             \textbf{Challenges:}
             \begin{itemize}
+                \scriptsize
                 \item \textbf{Security}: Managing execution permissions
                 \item \textbf{Error Handling}: Dealing with function failures
                 \item \textbf{Latency}: Additional execution time
@@ -1675,45 +1675,55 @@ const availableFunctions = {
     \end{columns}
 \end{frame}
 
-\begin{frame}[t,fragile]{Example: Function Calling for Code Refactoring}
-    \begin{block}{Real-world Workflow}
-        Function calling enables complex multi-step programming tasks.
-    \end{block}
-    
-    \begin{lstlisting}[style=code, basicstyle=\ttfamily\tiny]
-// User request: "Refactor this function to be more efficient"
-
-// Step 1: AI analyzes the code and decides to call analysis functions
-{
-    "function_call": {
-        "name": "analyzeComplexity",
-        "parameters": {
-            "code": "function processData(data) {...}",
-            "metrics": ["cyclomatic", "cognitive"]
-        }
-    }
-}
-
-// Step 2: System returns complexity analysis
-{
-    "cyclomatic_complexity": 8,
-    "cognitive_complexity": 12,
-    "suggestions": ["Extract helper functions", "Simplify conditionals"]
-}
-
-// Step 3: AI generates refactored code and calls validation
-{
-    "function_call": {
-        "name": "validateRefactoring",
-        "parameters": {
-            "original": "function processData(data) {...}",
-            "refactored": "function processData(data) {...}",
-            "tests": "existing_test_suite"
-        }
-    }
-}
-    \end{lstlisting}
+\begin{frame}[t]
+  \frametitle{Key Takeaways}
+  \begin{itemize}
+    \item LLM function calling bridges reasoning and execution.
+    \item Ollama allows defining functions and passing them at runtime.
+    \item Python integrates easily: capture function call → execute → return results.
+    \item Extendable to databases, APIs, or custom tools.
+  \end{itemize}
 \end{frame}
+
+% \begin{frame}[t,fragile]{Example: Function Calling for Code Refactoring}
+%     \begin{block}{Real-world Workflow}
+%         Function calling enables complex multi-step programming tasks.
+%     \end{block}
+%     
+%     \begin{lstlisting}[style=code, basicstyle=\ttfamily\tiny]
+% // User request: "Refactor this function to be more efficient"
+% 
+% // Step 1: AI analyzes the code and decides to call analysis functions
+% {
+%     "function_call": {
+%         "name": "analyzeComplexity",
+%         "parameters": {
+%             "code": "function processData(data) {...}",
+%             "metrics": ["cyclomatic", "cognitive"]
+%         }
+%     }
+% }
+% 
+% // Step 2: System returns complexity analysis
+% {
+%     "cyclomatic_complexity": 8,
+%     "cognitive_complexity": 12,
+%     "suggestions": ["Extract helper functions", "Simplify conditionals"]
+% }
+% 
+% // Step 3: AI generates refactored code and calls validation
+% {
+%     "function_call": {
+%         "name": "validateRefactoring",
+%         "parameters": {
+%             "original": "function processData(data) {...}",
+%             "refactored": "function processData(data) {...}",
+%             "tests": "existing_test_suite"
+%         }
+%     }
+% }
+%     \end{lstlisting}
+% \end{frame}
 
 % \begin{frame}[t]{Introduction to Model Context Protocol (MCP)}
 %     \begin{block}{Standardizing AI-Tool Interactions}
