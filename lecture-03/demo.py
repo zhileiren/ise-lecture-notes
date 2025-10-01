@@ -83,3 +83,25 @@ def main():
 if __name__ == "__main__":
     main()
 
+## #!/usr/bin/python
+## # coding: utf-8
+## from pyflakes import reporter,api
+## import io
+## 
+## def check_code(code):
+##     stream = io.StringIO()
+##     rep = reporter.Reporter(stream, stream)
+##     num = api.check(code, "<code>", rep)
+##     if num:
+##         issues = stream.getvalue().strip()
+##     else:
+##         issues = ""
+##     return num, issues
+## 
+## 
+## num, issues = check_code("print(a)")
+## print(num, issues)
+## 
+## num, issues = check_code("print(1)")
+## print(num, issues)
+
