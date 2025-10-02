@@ -1,0 +1,35 @@
+@startuml
+skinparam handwritten true
+title Ollama Function Calling Sequence Diagram
+
+actor User
+participant Application as App
+participant OllamaModel as Ollama
+
+User -> App: 1. Query (e.g., "What is the stock price of Google?")
+
+group Function Calling Loop
+
+    App -> Ollama: 2. Request (Query + Tool/Function Schemas)
+    note right of Ollama: Model receives query and available functions\n(e.g., `get_stock_price(ticker)`)
+
+    Ollama --> App: 3. **Tool Call** (LLM response indicating a function to run)
+    note left of App: Returns JSON: `{"name": "get_stock_price", "args": {"ticker": "GOOG"}}`
+
+    App -> App: 4. Map and Validate Tool Call
+    App -> App: 5. Execute Real-World Function
+    note right of App: Call actual stock API / Python function
+
+    App --> App: 6. Receive **Tool Output/Result**
+    note right of App: Result: "The stock price is $175.50"
+
+    App -> Ollama: 7. Follow-up Request (Original Query + Tool Output)
+    note right of Ollama: Model now has the data required to answer.
+
+    Ollama --> App: 8. **Final Answer** (Natural Language Response)
+
+end
+
+App -> User: 9. Final Answer (e.g., "The stock price of Google is $175.50.")
+
+@enduml
