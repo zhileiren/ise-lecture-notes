@@ -464,7 +464,6 @@ Program testing can be used to show the presence of bugs, but never to show thei
     \begin{column}{0.4\textwidth}
         \begin{figure}
             \includegraphics[width=0.6\textwidth]{images/tao.jpg}
-            \caption{The Tao of Programming}
         \end{figure}
     \end{column}
 \end{columns}
@@ -814,6 +813,13 @@ CVS brought version control to the masses, but collaboration was sequential and 
 \begin{center}
     \includegraphics[width=0.3\textwidth]{images/git-dist.png}
 \end{center}
+\end{frame}
+
+\begin{frame}[t]{xkcd on Git}
+    \begin{figure}
+        \includegraphics[width=0.3\textwidth]{images/git.png}
+        \caption{Git}
+    \end{figure}
 \end{frame}
 
 \begin{frame}[t]{Why Git Won: Distributed Workflows}
@@ -1166,6 +1172,52 @@ Within software engineering, the mining software repositories (MSR) field analyz
     \end{center}
     \caption{Typical MSR Workflow}
     \end{figure}
+    
+\end{frame}
+
+\begin{frame}[t]{When Do Changes Induce Fixes?}
+    \begin{figure}
+        \subfloat[Link Transactions to Bug Reports]{\includegraphics[height=4cm]{images/friday-1.png}}\qquad
+        \subfloat[Distribution of Fixes and Fix-inducing Changes]{\includegraphics[height=4cm]{images/friday-2.png}}
+        \caption{On Friday}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}[t]{Why not Code on Friday (by Gemini)}
+\begin{block}{Reason 1: The Weekend is Sacred}
+\begin{itemize}
+    \scriptsize
+    \item \textbf{Risk of Production Failures:} A bug deployed on Friday afternoon can mean a weekend of emergency fixes.
+    \item \textbf{The \"Domino Effect\":} A seemingly small issue can cascade, requiring multiple people to solve.
+    \item \textbf{Stress and Burnout:} Constant weekend work is a primary cause of developer burnout.
+\end{itemize}
+\end{block}
+
+\begin{block}{Reason 2: The Human Element}
+\begin{itemize}
+    \scriptsize
+    \item \textbf{Lower Staff Availability:} Key personnel (Devs, QA, Ops, Support) are not fully available.
+    \item \textbf{Slower Response Times:} It takes longer to assemble the right team to tackle a problem.
+    \item \textbf{End-of-Week Fatigue:} Mental focus is naturally lower on a Friday, increasing the likelihood of errors.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{A Proactive Solution: Read-Only Fridays}
+\begin{itemize}
+    \item Shift focus from deploying new features to planning and preparation.
+    \item \textbf{Activities include:}
+    \begin{itemize}
+        \scriptsize
+        \item Code reviews
+        \item Writing documentation
+        \item Planning the next sprint/week
+        \item Learning and professional development
+    \end{itemize}
+    \item \textbf{Goal:} Keep the production environment stable and predictable heading into the weekend.
+\end{itemize}
 \end{frame}
 
 \begin{frame}[t]{Empirical Software Engineering}
@@ -1178,8 +1230,25 @@ Empirical software engineering (ESE) is a subfield of software engineering (SE) 
 % Sketches and Diagrams in Practice
 % UML in Practice
 \end{frame}
+
+\begin{frame}[t]{UML in Practice}
+    \begin{figure}
+        \subfloat[Declared Current UML Use]{\includegraphics[height=2.2cm]{images/uml1.png}}\qquad
+        \subfloat[UML used by the 11 `Selective' Users]{\includegraphics[height=2.2cm]{images/uml2.png}}
+        \caption{UML in Practice (ICSE 2013)}
+    \end{figure}
+    \begin{block}{Sketches and Diagrams in Practice (FSE 2014)}
+        \scriptsize
+        The majority of sketches and diagrams were informal.
+        Whereas 40\% of them contained no UML elements at
+        all, 48\% contained at least some, and only 9\% consisted solely of UML elements. Respondents' remarks
+        indicate that if UML is used, it is often not used strictly
+        as defined in the standard.
+    \end{block}
+\end{frame}
 \begin{frame}[t]{References}
 \begin{thebibliography}{10}
+\tiny
 \bibitem{nato1968} NATO Software Engineering Conference (1968)
 \bibitem{dijkstra1968} Dijkstra, E. W. (1968). Go To Statement Considered Harmful
 \bibitem{brooks1975} Brooks, F. P. (1975). \textit{The Mythical Man-Month}. Addison-Wesley. % Added reference
@@ -1187,6 +1256,9 @@ Empirical software engineering (ESE) is a subfield of software engineering (SE) 
 \bibitem{stallman1983} Stallman, R. (1983). GNU Manifesto
 \bibitem{beck2001} Beck, K. (2001). Agile Manifesto
 \bibitem{llm2023} Chen, M. et al. (2023). Evaluating Large Language Models Trained on Code
+\bibitem{fix} Śliwerski J, Zimmermann T, Zeller A. When do changes induce fixes?. ACM SIGSOFT software engineering notes. 2005 May 17;30(4):1-5
+\bibitem{uml} Petre M. UML in practice. In2013 35th international conference on software engineering (icse) 2013 May 18 (pp. 722-731). IEEE.
+\bibitem{sketch} Baltes S, Diehl S. Sketches and diagrams in practice. InProceedings of the 22nd ACM SIGSOFT International Symposium on Foundations of Software Engineering 2014 Nov 11 (pp. 530-541).
 \end{thebibliography}
 \end{frame}
 
