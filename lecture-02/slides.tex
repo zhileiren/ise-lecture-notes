@@ -232,21 +232,7 @@ Dalian University of Technology
     
 \end{frame}
 
-\section{Assisting Requirements Engineering with LLM}
-
-\begin{frame}[t]{What is Requirements Engineering?}
-    \begin{block}{Definition}
-        Requirements Engineering (RE) is the process of defining, documenting, and maintaining requirements in the engineering design process.
-    \end{block}
-    
-    \begin{itemize}
-        \item \textbf{Elicitation}: Discovering requirements from stakeholders
-        \item \textbf{Analysis}: Refining and modeling requirements
-        \item \textbf{Specification}: Documenting requirements unambiguously
-        \item \textbf{Validation}: Ensuring requirements meet stakeholder needs
-        \item \textbf{Management}: Managing requirements changes throughout project lifecycle
-    \end{itemize}
-\end{frame}
+\section{The Challenge of RE \& The Rise of LLMs}
 
 \begin{frame}[t]{Traditional RE Challenges}
     \begin{columns}
@@ -270,205 +256,18 @@ Dalian University of Technology
     \end{columns}
 \end{frame}
 
-% Slide 1: What is PlantUML?
-\begin{frame}[t]{What is PlantUML?}
+\begin{frame}[t]{AI-Assisted Requirements Engineering}
+    \begin{block}{The New Paradigm}
+        Using prompt engineering techniques to enhance traditional requirements engineering processes
+    \end{block}
+    
     \begin{itemize}
-        \item \textbf{Core Idea:} Uses simple, human-readable Domain Specific Language (DSL)
-        \item \textbf{Foundation:} Java-based tool for layout
-        \item \textbf{Philosophy:} Focus on content rather than manual layout
+        \item \textbf{Automated Requirements Generation}: AI can help draft initial requirements
+        \item \textbf{Requirements Analysis}: AI can identify inconsistencies and gaps
+        \item \textbf{Use Case Development}: AI can generate and refine use cases
+        \item \textbf{Specification Writing}: AI can help create clear, unambiguous specifications
+        \item \textbf{Validation Support}: AI can simulate scenarios and identify edge cases
     \end{itemize}
-    
-    \begin{quote}
-        "PlantUML is a versatile component for quickly and directly creating diagrams."
-    \end{quote}
-\end{frame}
-
-% Slide 2: Key Advantages
-\begin{frame}[t]{Key Advantages}
-    \begin{table}
-    \small
-    \begin{tabular}{p{0.4\textwidth} p{0.55\textwidth}}
-    \textbf{Advantage} & \textbf{Description} \\
-    \hline
-    Version Control Friendly & Text files work with Git - enables change history, diffing, collaboration \\
-    Efficiency \& Speed & Faster than manual graphical editing, especially for complex diagrams \\
-    Maintainability \& Consistency & Easy updates and consistent styling with themes \\
-    Automation \& Integration & Integrates with documentation pipelines, build systems, CI/CD \\
-    \end{tabular}
-    \end{table}
-\end{frame}
-
-% Slide 3: UML Diagrams Supported
-\begin{frame}[t]{UML Diagrams Supported}
-    \begin{columns}
-    \begin{column}{0.4\textwidth}
-        \begin{itemize}
-            \item Sequence Diagram
-            \item Use Case Diagram
-            \item Class Diagram
-            \item Activity Diagram
-            \item Component Diagram
-            \item Deployment Diagram
-            \item State Diagram
-            \item Object Diagram
-        \end{itemize}
-    \end{column}
-    \begin{column}{0.6\textwidth}
-        \centering
-        \begin{figure}
-        \begin{center}
-            \includegraphics[width=\textwidth]{images/component.png}
-        \end{center}
-        \caption{Component Diagram Example}
-        \end{figure}
-        
-    \end{column}
-    \end{columns}
-\end{frame}
-
-% Slide 4: Beyond UML
-\begin{frame}[t]{Beyond UML Diagrams}
-    \begin{itemize}
-        \item Architectural Diagrams (C4 model)
-        \item Entity Relationship Diagrams (ERD)
-        \item Wireframes / UI Mockups (salt library)
-        \item Gantt charts for project management
-        \item Mind Maps for brainstorming
-        \item JSON/YAML visualization
-        \item Network diagrams
-    \end{itemize}
-\end{frame}
-
-% Slide 5: How It Works
-\begin{frame}[t]{How PlantUML Works}
-    \begin{enumerate}
-        \item \textbf{Write:} Create text file (.puml) with PlantUML syntax
-        \item \textbf{Process:} Java processor parses text
-        \item \textbf{Render:} Layout engine generates final image
-        \item \textbf{Output:} Get image in desired format (PNG, SVG, etc.)
-    \end{enumerate}
-    
-    \begin{center}
-    \textbf{Text} $\rightarrow$ \textbf{PlantUML} $\rightarrow$ \textbf{Diagram}
-    \end{center}
-\end{frame}
-
-% Slide 6: Sequence Diagram Example
-\begin{frame}[fragile,t]{Syntax Example: Sequence Diagram}
-    \begin{lstlisting}[style=plantuml]
-@startuml
-actor User
-participant "Web Browser" as Browser
-participant Server
-
-autonumber
-User -> Browser: Enter URL
-Browser -> Server: HTTP Request
-Server -> Server: Process Request
-Server --> Browser: Return HTML
-Browser --> User: Display Page
-@enduml
-    \end{lstlisting}
-
-    
-    
-    \small
-    \begin{itemize}
-        \item \texttt{@startuml/@enduml}: Diagram boundaries
-        \item \texttt{actor}, \texttt{participant}: Element declarations
-        \item \texttt{->}, \texttt{-{}->}: Solid/dashed arrows
-        \item \texttt{autonumber}: Automatic message numbering
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile,t]{Syntax Example: Sequence Diagram}
-    \begin{lstlisting}[style=plantuml]
-@startuml
-actor User
-participant "Web Browser" as Browser
-participant Server
-
-autonumber
-User -> Browser: Enter URL
-Browser -> Server: HTTP Request
-Server -> Server: Process Request
-Server --> Browser: Return HTML
-Browser --> User: Display Page
-@enduml
-    \end{lstlisting}
-    
-    \includegraphics[width=.3\textwidth]{images/sequence.png} 
-\end{frame}
-
-% Slide 7: Use Case Diagram Example
-\begin{frame}[fragile,t]{Syntax Example: Use Case Diagram}
-    \begin{lstlisting}[style=plantuml]
-@startuml
-left to right direction
-actor "Library User" as User
-usecase "Borrow Book" as Borrow
-usecase "Search Catalog" as Search
-
-User --> Borrow
-User --> Search
-@enduml
-    \end{lstlisting}
-    
-    \small
-    \begin{itemize}
-        \item \texttt{left to right direction}: Layout control
-        \item \texttt{actor}, \texttt{usecase}: Actor and use case definitions
-        \item \texttt{-->}: Connection arrows
-    \end{itemize}
-\end{frame}
-
-% Slide 7: Use Case Diagram Example
-\begin{frame}[fragile,t]{Syntax Example: Use Case Diagram}
-    \begin{lstlisting}[style=plantuml]
-@startuml
-left to right direction
-actor "Library User" as User
-usecase "Borrow Book" as Borrow
-usecase "Search Catalog" as Search
-
-User --> Borrow
-User --> Search
-@enduml
-    \end{lstlisting}
-    
-    \includegraphics[width=.3\textwidth]{images/usecase.png} 
-\end{frame}
-
-% Slide 8: Getting Started
-\begin{frame}[t]{Getting Started with PlantUML}
-    \textbf{Online Servers (Quick Start):}
-    \begin{itemize}
-        \item Official server: \href{http://plantuml.com}{plantuml.com}
-        \item Community site: \href{http://planttext.com}{planttext.com}
-        \item No installation required
-    \end{itemize}
-    
-    \vspace{0.5cm}
-    \textbf{Local Installation (Recommended):}
-    \begin{itemize}
-        \item Prerequisites: Java JRE + Graphviz
-        \item IDE Plugins: VSCode, IntelliJ, Eclipse
-        \item Command Line: Use \texttt{plantuml.jar}
-    \end{itemize}
-\end{frame}
-
-% Slide 9: Summary
-\begin{frame}[t]{Summary \& Key Takeaways}
-    \begin{itemize}
-        \item \textbf{Why PlantUML?} Version control, automation, efficiency
-        \item \textbf{Text-Based:} Simple, readable language for diagrams
-        \item \textbf{Wide Support:} Comprehensive UML + additional diagram types
-        \item \textbf{Easy Integration:} Fits modern development workflows
-        \item \textbf{Quick Start:} Online editors → local integration
-    \end{itemize}
-    
-    \vspace{0.5cm}
-    \textbf{Embrace efficient diagram creation and maintenance!}
 \end{frame}
 
 \begin{frame}[t]{What is Prompt Engineering?}
@@ -484,6 +283,25 @@ User --> Search
         \item \textbf{Validation}: Ensuring output meets requirements
     \end{itemize}
 \end{frame}
+
+\begin{frame}[t]{Parallels Between RE and Prompt Engineering}
+    \begin{table}
+        \centering
+        \begin{tabular}{p{0.45\textwidth}|p{0.45\textwidth}}
+            \textbf{Requirements Engineering} & \textbf{Prompt Engineering} \\
+            \hline
+            Stakeholder needs analysis & Understanding user intent \\
+            Requirements elicitation & Prompt design and formulation \\
+            Use case modeling & Scenario specification \\
+            Requirements specification & Clear instruction crafting \\
+            Validation and verification & Output evaluation and refinement \\
+            Change management & Prompt iteration \\
+        \end{tabular}
+        \caption{Comparative Analysis}
+    \end{table}
+\end{frame}
+
+\section{Core Prompt Engineering Techniques for RE}
 
 \begin{frame}[t]{Prompt Engineering Techniques}
     \begin{columns}
@@ -597,7 +415,7 @@ Now create for "password reset"
         \item Improves traceability
     \end{itemize}
     \begin{lstlisting}[style=code, caption={Chain-of-Thought for Payment System}]
-Let's design requirements for an online payment system:
+Let\'s design requirements for an online payment system:
 
 Step 1: Identify main stakeholders
 - Customers, merchants, payment processors, banks
@@ -625,6 +443,7 @@ for the payment processing component...
     
     \begin{exampleblock}{RE Roles Examples}
         \begin{itemize}
+            \scriptsize
             \item \textbf{Product Owner}: "Act as a product owner for an e-commerce platform..."
             \item \textbf{System Architect}: "You are a system architect designing a microservices architecture..."
             \item \textbf{Quality Assurance Engineer}: "As a QA engineer, create test scenarios for..."
@@ -922,43 +741,59 @@ failed authentication attempts
     \end{itemize}
 \end{frame}
 
-\section{Bridging RE and Prompt Engineering}
+\section{Modeling Requirements as Code with PlantUML}
 
-\begin{frame}[t]{Parallels Between RE and Prompt Engineering}
-    \begin{table}
-        \centering
-        \begin{tabular}{p{0.45\textwidth}|p{0.45\textwidth}}
-            \textbf{Requirements Engineering} & \textbf{Prompt Engineering} \\
-            \hline
-            Stakeholder needs analysis & Understanding user intent \\
-            Requirements elicitation & Prompt design and formulation \\
-            Use case modeling & Scenario specification \\
-            Requirements specification & Clear instruction crafting \\
-            Validation and verification & Output evaluation and refinement \\
-            Change management & Prompt iteration \\
-        \end{tabular}
-        \caption{Comparative Analysis}
-    \end{table}
+\begin{frame}[t]{What is PlantUML?}
+    \begin{itemize}
+        \item An open-source tool to create diagrams from plain text language.
+        \item \textbf{Core Idea:} Describe the diagram in a human-readable text file, and PlantUML generates the image.
+        \item \textbf{Philosophy:} Focus on content and relationships, not manual layout.
+    \end{itemize}
+    \begin{center}
+    \textbf{Text} $\rightarrow$ \textbf{PlantUML} $\rightarrow$ \textbf{Diagram}
+    \end{center}
 \end{frame}
 
-\begin{frame}[t]{AI-Assisted Requirements Engineering}
-    \begin{block}{The New Paradigm}
-        Using prompt engineering techniques to enhance traditional requirements engineering processes
-    \end{block}
-    
+\begin{frame}[t]{Why PlantUML for AI-Assisted RE?}
     \begin{itemize}
-        \item \textbf{Automated Requirements Generation}: AI can help draft initial requirements
-        \item \textbf{Requirements Analysis}: AI can identify inconsistencies and gaps
-        \item \textbf{Use Case Development}: AI can generate and refine use cases
-        \item \textbf{Specification Writing}: AI can help create clear, unambiguous specifications
-        \item \textbf{Validation Support}: AI can simulate scenarios and identify edge cases
+        \item \textbf{Text-to-Diagram}: LLMs excel at generating structured text. PlantUML is a perfect output format for them.
+        \item \textbf{Version Control}: Prompts and generated `.puml` files can be versioned with Git, tracking the evolution of requirements.
+        \item \textbf{Automation}: Generated diagrams can be automatically included in documentation pipelines (like this presentation).
+        \item \textbf{Iterative Refinement}: It's easy to ask an LLM to modify a text file. This is much harder with binary image formats.
     \end{itemize}
 \end{frame}
 
-\section{Use Case Example with PlantUML}
+\begin{frame}[fragile,t]{Syntax Example: Use Case Diagram}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{lstlisting}[style=plantuml]
+@startuml
+left to right direction
+actor User
+usecase "Login" as UC_Login
+usecase "Logout" as UC_Logout
 
-\begin{frame}[fragile]{Sample Prompt for Use Case Generation}
-    \begin{block}{Effective Prompt Structure}
+User --> UC_Login
+User --> UC_Logout
+@enduml
+            \end{lstlisting}
+        \end{column}
+        \begin{column}{0.2\textwidth}
+            \includegraphics[width=\textwidth]{images/ex.png}
+        \end{column}
+    \end{columns}
+    \small
+    \begin{itemize}
+        \item Simple, declarative syntax.
+        \item Define actors and use cases.
+        \item Connect them with arrows.
+    \end{itemize}
+\end{frame}
+
+\section{Practical Application: AI-Assisted Requirements Generation}
+
+\begin{frame}[fragile]{Part 1: Prompting for a Use Case Diagram}
+    \begin{block}{The Prompt}
         \lstset{style=code}
         \begin{lstlisting}
 Act as a requirements engineer. Generate a use case 
@@ -969,61 +804,61 @@ transaction history. Use PlantUML syntax.
     \end{block}
     
     \begin{itemize}
-        \item \textbf{Role specification}: "Act as a requirements engineer"
+        \item \textbf{Role}: "Act as a requirements engineer"
         \item \textbf{Context}: "online banking system"
-        \item \textbf{Specific requirements}: listed functionalities
-        \item \textbf{Format specification}: "Use PlantUML syntax"
+        \item \textbf{Task}: "Generate a use case diagram"
+        \item \textbf{Format}: "Use PlantUML syntax"
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Generated Use Case Diagram (PlantUML Code)}
+\begin{frame}[fragile]{The Generated PlantUML Code}
     \lstset{style=plantuml}
-    \begin{lstlisting}[caption={Online Banking System Use Case Diagram}, label={lst:usecase}]
+    \begin{lstlisting}[caption={Online Banking System Use Case Diagram}]
 @startuml
 left to right direction
 actor "Bank Customer" as Customer
-actor "Bank Manager" as Manager
-actor "System Administrator" as Admin
 
 rectangle "Online Banking System" {
     usecase "Authenticate User" as UC1
     usecase "Check Balance" as UC2
     usecase "Transfer Funds" as UC3
     usecase "View Transaction History" as UC4
-    usecase "Generate Reports" as UC5
-    usecase "Manage Users" as UC6
 }
 Customer --> UC1
 Customer --> UC2
 Customer --> UC3
 Customer --> UC4
-Manager --> UC1
-Manager --> UC4
-Manager --> UC5
-Admin --> UC1
-Admin --> UC6
-UC1 .> UC2 : <<include>>
-UC1 .> UC3 : <<include>>
-UC1 .> UC4 : <<include>>
+
+UC2 .> UC1 : <<include>>
+UC3 .> UC1 : <<include>>
+UC4 .> UC1 : <<include>>
 @enduml
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}[t]{Expected Use Case Diagram Output}
-    \begin{center}
-        \includegraphics[width=0.4\textwidth]{images/uc.png} % Placeholder for PlantUML diagram
-    \end{center}
+\begin{frame}[t]{The Final Diagram}
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            \begin{center}
+                \includegraphics[width=0.5\textwidth]{images/uc.png}
+            \end{center}
+        \end{column}
     
-    \textbf{Key Components:}
-    \begin{itemize}
-        \item Actors: Customer, Manager, Administrator
-        \item Use Cases: Authentication, Balance Check, Funds Transfer, etc.
-        \item Relationships: Associations and <<include>> dependencies
-    \end{itemize}
+        \begin{column}{0.4\textwidth}
+            \textbf{Key Components:}
+            \begin{itemize}
+                \scriptsize
+                \item Actor: Bank Customer
+                \item System Boundary
+                \item Use Cases: Authenticate, Check Balance, etc.
+                \item Relationships: Includes, Associations
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Use Case Specification Prompt}
-    \begin{block}{Detailed Use Case Prompt}
+\begin{frame}[fragile]{Part 2: Prompting for a Use Case Specification}
+    \begin{block}{The Follow-up Prompt}
         \lstset{style=code}
         \begin{lstlisting}
 Expand the 'Transfer Funds' use case with: 
@@ -1033,18 +868,10 @@ structured use case specification.
         \end{lstlisting}
     \end{block}
     
-    \textbf{Expected Output Structure:}
-    \begin{itemize}
-        \item Use Case Name and ID
-        \item Primary Actor
-        \item Preconditions
-        \item Main Success Scenario (steps)
-        \item Alternative Flows
-        \item Postconditions
-    \end{itemize}
+    \textbf{This is an example of iterative refinement.}
 \end{frame}
 
-\begin{frame}[fragile]{Generated Use Case Specification}
+\begin{frame}[fragile]{The Generated Specification}
     \lstset{style=code}
     \begin{lstlisting}[caption={Transfer Funds Use Case Specification}]
 Use Case: Transfer Funds
@@ -1052,188 +879,156 @@ ID: UC-003
 Primary Actor: Bank Customer
 
 Preconditions:
-1. User is authenticated
-2. User has at least one active account
-3. Sufficient funds available for transfer
+1. User is authenticated.
+2. User has an active account with sufficient funds.
 
 Main Success Scenario:
-1. User selects "Transfer Funds" option
-2. System displays transfer form
-3. User enters recipient details and amount
-4. System validates transfer details
-5. System processes transfer
-6. System displays confirmation
-7. System updates transaction history
+1. User selects "Transfer Funds".
+2. System displays transfer form.
+3. User enters recipient details and amount.
+4. System validates details.
+5. System processes transfer.
+6. System displays confirmation.
 
 Alternative Flows:
-A1: Insufficient funds - System shows error
-A2: Invalid recipient - System validates and rejects
+A1: Insufficient funds - System shows error.
+A2: Invalid recipient - System shows error.
 
 Postconditions:
-1. Funds deducted from source account
-2. Funds credited to recipient account
-3. Transaction recorded in history
+1. Funds are deducted from source account.
+2. Funds are credited to recipient account.
+3. A transaction record is created.
     \end{lstlisting}
 \end{frame}
 
-\section{Requirements Specification}
-
-\begin{frame}[fragile]{From Use Cases to Formal Specifications}
-    \begin{block}{Specification Generation Prompt}
+\begin{frame}[fragile]{Part 3: From Use Cases to Formal Specs}
+    \begin{block}{The Prompt}
         \lstset{style=code}
         \begin{lstlisting}
-Convert the 'Transfer Funds' use case into functional 
-requirements specifications. Include: unique ID, 
-description, priority, acceptance criteria, and 
-dependencies.
+Convert the 'Transfer Funds' use case into formal 
+functional requirements. Include: ID, description, 
+priority, and acceptance criteria.
         \end{lstlisting}
     \end{block}
     
-    \textbf{Specification Components:}
-    \begin{itemize}
-        \item Requirement ID (e.g., FR-001)
-        \item Description (clear, unambiguous)
-        \item Priority (High/Medium/Low)
-        \item Acceptance Criteria (testable conditions)
-        \item Dependencies (related requirements)
-    \end{itemize}
+    \textbf{This bridges the gap between user-centric models and system-centric specifications.}
 \end{frame}
 
-\begin{frame}[fragile]{Sample Requirements Specification Output}
+\begin{frame}[fragile]{Generated Functional Requirements}
     \lstset{style=code}
     \begin{lstlisting}[caption={Functional Requirements Specification}]
-Requirement ID: FR-001
-Description: The system shall allow authenticated 
-users to transfer funds between their own accounts 
-or to other registered users.
+Requirement ID: FR-005
+Description: The system shall allow an authenticated 
+user to transfer funds to a valid recipient.
 
 Priority: High
 
 Acceptance Criteria:
-1. User must be successfully authenticated
-2. Source account must have sufficient funds
-3. Transfer amount must be positive numerical value
-4. Recipient account must be valid and active
-5. System must display transfer confirmation
-6. Transaction must be recorded in audit log
-7. Both accounts must reflect updated balances
-
-Dependencies: 
-- FR-010: User Authentication
-- FR-011: Account Balance Check
-- FR-012: Account Validation
-
-Status: Approved
-Version: 1.0
+1. Given the user is authenticated, when the user 
+   selects the transfer option, the system must 
+   display the transfer form.
+2. Given the transfer form is displayed, the user must
+   be able to input recipient and amount.
+3. Given the user submits the transfer, the system
+   must validate that the source account has 
+   sufficient funds.
+4. Given a valid transfer, the system must debit the
+   source and credit the recipient account.
+5. Given the transfer is complete, the system must
+   display a confirmation message.
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Non-Functional Requirements Example}
+\begin{frame}[fragile]{Generating Non-Functional Requirements}
+    \begin{block}{The Prompt}
+        \lstset{style=code}
+        \begin{lstlisting}
+Generate non-functional requirements for the 'Transfer
+Funds' feature, focusing on performance and security.
+        \end{lstlisting}
+    \end{block}
     \lstset{style=code}
     \begin{lstlisting}[caption={Non-Functional Requirements}]
-Requirement ID: NFR-005
-Description: The funds transfer functionality 
-shall meet specific performance and security standards.
+ID: NFR-001 (Performance)
+The system shall process a standard fund transfer in 
+less than 2 seconds under normal load.
 
-Category: Performance & Security
+ID: NFR-002 (Security)
+All data transmitted during the fund transfer process 
+must be encrypted using TLS 1.3.
 
-Performance Requirements:
-- Response time for transfer processing: < 2 seconds
-- System availability: 99.9% uptime
-- Maximum concurrent users: 10,000
-
-Security Requirements:
-- All transfers must be encrypted (TLS 1.2+)
-- Two-factor authentication for transfers > $1,000
-- Audit trail maintained for 7 years
-- Fraud detection mechanisms in place
-
-Compliance: PCI DSS, GDPR, SOX
-
-Testing: Load testing, security penetration testing
+ID: NFR-003 (Security)
+Transfers exceeding $1,000 shall require two-factor 
+authentication.
     \end{lstlisting}
 \end{frame}
 
-\section{Best Practices and Methodology}
+\section{Best Practices for AI-Integrated RE}
 
 \begin{frame}[t]{Prompt Engineering Patterns for RE}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
             \textbf{Effective Patterns:}
             \begin{itemize}
-                \scriptsize
-                \item \textbf{Template-based}: Use structured templates
-                \item \textbf{Iterative refinement}: Build complexity gradually
-                \item \textbf{Context provision}: Include domain knowledge
-                \item \textbf{Example-driven}: Provide similar examples
-                \item \textbf{Validation requests}: Ask for verification
+                \item Role-playing
+                \item Iterative refinement
+                \item Context provision
+                \item Few-shot examples
+                \item Use structured templates
             \end{itemize}
-            \textbf{Antipatterns:}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \textbf{Antipatterns to Avoid:}
             \begin{itemize}
-                \scriptsize
                 \item Vague or ambiguous terms
-                \item Overly complex single prompts
-                \item Assumed domain knowledge
-                \item Open-ended without constraints
+                \item Overly complex prompts
+                \item Assuming domain knowledge
+                \item Open-ended questions
                 \item Inconsistent terminology
             \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Effective Prompt Template}
+\begin{frame}[fragile]{An Effective Prompt Template}
     \lstset{style=code}
     \begin{lstlisting}[caption={Structured Prompt Template for RE}]
-[ROLE] Act as a [specific role, e.g., senior requirements engineer]
+[ROLE] Act as a [specific role, e.g., senior QA engineer]
 
-[CONTEXT] For a [domain/system type, e.g., healthcare management system]
+[CONTEXT] For a [system, e.g., healthcare management app]
 
-[TASK] Generate [specific artifact, e.g., use case diagram]
+[TASK] Generate [artifact, e.g., test cases for the 
+patient login feature]
 
-[REQUIREMENTS] That includes:
-- [Feature 1, e.g., patient registration]
-- [Feature 2, e.g., appointment scheduling]
-- [Feature 3, e.g., medical records access]
+[REQUIREMENTS] That cover:
+- [Requirement 1, e.g., successful login]
+- [Requirement 2, e.g., invalid password]
+- [Requirement 3, e.g., locked account]
 
 [CONSTRAINTS] With the following constraints:
-- [Constraint 1, e.g., HIPAA compliance]
-- [Constraint 2, e.g., mobile-first design]
+- [Constraint 1, e.g., consider HIPAA privacy rules]
 
-[FORMAT] Present the output in [format, e.g., PlantUML syntax]
-
-[VALIDATION] Also include [validation request, e.g., acceptance criteria]
+[FORMAT] Present the output in [format, e.g., a Gherkin table]
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{RE-PE Integration Workflow}
-    \lstset{style=plantuml}
-    \begin{lstlisting}[caption={Requirements Engineering Workflow}]
-@startuml
-start
-:Identify Stakeholders and Needs;
-:Define Project Scope and Objectives;
-
-while (Requirements Incomplete?) is (yes)
-  :Draft Initial Requirements\nusing Prompt Engineering;
-  :Review with Stakeholders;
-  :Refine Requirements;
-endwhile
-
-:Generate Detailed Use Cases\nand Specifications;
-:Validate Requirements with AI Assistance;
-:Create Traceability Matrix;
-
-if (Validation Successful?) then (yes)
-  :Finalize Requirements Document;
-  :Baseline Requirements;
-  stop
-else (no)
-  :Identify Gaps and Issues;
-  detach
-endif
-@enduml
-    \end{lstlisting}
+\begin{frame}[t]{Human-in-the-Loop is Critical}
+    \begin{alertblock}{Warning}
+        AI-generated content is a starting point, not a final product. It must be critically reviewed, validated, and refined by human engineers.
+    \end{alertblock}
+    
+    \textbf{Your Role as an Engineer:}
+    \begin{itemize}
+        \item \textbf{Validate Correctness}: Does the output meet the actual needs?
+        \item \textbf{Ensure Completeness}: Has the AI missed any edge cases or non-functional requirements?
+        \item \textbf{Refine for Clarity}: Is the language precise and unambiguous?
+        \item \textbf{Take Ownership}: You are ultimately responsible for the requirements, not the AI.
+    \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{RE-PE Integration Workflow}
+\begin{frame}[fragile]{Proposed RE-AI Integration Workflow}
     \centering
-    \includegraphics[width=0.3\textwidth]{images/re-pe.png} % Placeholder for PlantUML diagram
+    \includegraphics[width=0.3\textwidth]{images/re-pe.png}
 \end{frame}
 %%%%% \section{Case Study and Tools}
 
