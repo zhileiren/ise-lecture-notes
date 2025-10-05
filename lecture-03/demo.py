@@ -25,6 +25,8 @@ available_functions = {
 }
 
 for tool in response.message.tool_calls or []:
+    print(f"function name: {tool.function.name}")
+    print(f"arguments: {tool.function.arguments}")
     function_to_call = available_functions.get(tool.function.name)
     if function_to_call:
         print('Function output:', function_to_call(**tool.function.arguments))
