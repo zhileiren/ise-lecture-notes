@@ -228,8 +228,6 @@ Dalian University of Technology
         \end{figure}
     
     
-
-    
 \end{frame}
 
 \section{The Challenge of RE \& The Rise of LLMs}
@@ -1024,6 +1022,8 @@ patient login feature]
         \item \textbf{Refine for Clarity}: Is the language precise and unambiguous?
         \item \textbf{Take Ownership}: You are ultimately responsible for the requirements, not the AI.
     \end{itemize}
+		\pause
+		The code and the developer: we're good as long as one of them is able to run
 \end{frame}
 
 \begin{frame}[fragile]{Proposed RE-AI Integration Workflow}
@@ -1127,34 +1127,115 @@ patient login feature]
 %%%%%     \end{enumerate}
 %%%%% \end{frame}
 %%%%% 
-%%%%% \begin{frame}[t]{Techniques for Requirements Engineering Research}
-%%%%% \end{frame}
-%%%%% 
-%%%%% \begin{frame}[t]{Next Release Problem}
-%%%%%     % https://mde-optimiser.github.io/case-studies/nrp/
-%%%%%     % https://www.sciencedirect.com/science/article/pii/S095058490100194X
-%%%%%     % feature model
-%%%%%     Given:
-%%%%%     \begin{itemize}
-%%%%%       \item A set of software requirements \( R = \{r_1, r_2, \dots, r_n\} \),
-%%%%%       \item A set of customers \( C = \{c_1, c_2, \dots, c_m\} \),
-%%%%%       \item Each customer \( c_j \in C \) requests a subset of requirements \( R_j \subseteq R \) and provides a profit  \( p_j > 0 \) if all requirements in \( R_j \) are satisfied,
-%%%%%       \item Each requirement \( r_i \in R \) has an associated cost \( \text{cost}(r_i) > 0 \),
-%%%%%       \item A total available budget \( B > 0 \).
-%%%%%     \end{itemize}
-%%%%% 
-%%%%%     The goal is to select a subset of requirements \( R' \subseteq R \) such that:
-%%%%%     \begin{enumerate}
-%%%%%       \item The total cost does not exceed the budget: $\sum_{r_i \in R'} \text{cost}(r_i) \leq B$, 
-%%%%%       \item The total profit is maximized:
-%%%%%       \[
-%%%%%       \max_{R' \subseteq R} \sum_{\substack{c_j \in C \\ R_j \subseteq R'}} p_j.
-%%%%%       \]
-%%%%%     \end{enumerate}
-%%%%% 
-%%%%%     This is known as the \textbf{Next Release Problem (NRP)} and is a well-known NP-hard problem in requirements engineering and software release planning.
-%%%%% \end{frame}
+\section{Techniques for Requirements Engineering Research (Bonus)}
 
+\begin{frame}[t]{Next Release Problem}
+    % https://mde-optimiser.github.io/case-studies/nrp/
+    % https://www.sciencedirect.com/science/article/pii/S095058490100194X
+    % feature model
+    Given:
+    \begin{itemize}
+      \item A set of software requirements \( R = \{r_1, r_2, \dots, r_n\} \),
+      \item A set of customers \( C = \{c_1, c_2, \dots, c_m\} \),
+      \item Each customer \( c_j \in C \) requests a subset of requirements \( R_j \subseteq R \) and provides a profit  \( p_j > 0 \) if all requirements in \( R_j \) are satisfied,
+      \item Each requirement \( r_i \in R \) has an associated cost \( \text{cost}(r_i) > 0 \),
+      \item A total available budget \( B > 0 \).
+    \end{itemize}
+
+    The goal is to select a subset of requirements \( R' \subseteq R \) such that:
+    \begin{enumerate}
+      \item The total cost does not exceed the budget: $\sum_{r_i \in R'} \text{cost}(r_i) \leq B$, 
+      \item The total profit is maximized:
+      \[
+      \max_{R' \subseteq R} \sum_{\substack{c_j \in C \\ R_j \subseteq R'}} p_j.
+      \]
+    \end{enumerate}
+
+    This is known as the \textbf{Next Release Problem (NRP)} and is a well-known NP-hard problem in requirements engineering and software release planning.
+\end{frame}
+
+\begin{frame}[t]{The Next Release Problem}
+	
+	\begin{figure}
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{images/nrp_graph.png}
+	\end{center}
+	\caption{A demo instance}
+	\end{figure}
+\end{frame}
+
+\begin{frame}[t,fragile]{The Next Release Problem}
+	\tiny
+	\begin{verbatim}
+
+from pyscipopt import Model
+
+# 1. Define problem data
+requirements = [f'r{i}' for i in range(1, 8)]
+costs = { 'r1': 15, 'r2': 10, 'r3': 12, 'r4': 8, 'r5': 20, 'r6': 5, 'r7': 18 }
+BUDGET = 50
+customers = {
+    'c1': {'reqs': ['r1', 'r3'], 'profit': 200},
+    'c2': {'reqs': ['r2', 'r4', 'r5'], 'profit': 300},
+    'c3': {'reqs': ['r1', 'r5'], 'profit': 150},
+    'c4': {'reqs': ['r6'], 'profit': 100}
+}
+# 2. Create a SCIP model
+model = Model("NRP_Solver")
+# 3. Create variables
+# Binary variables for each requirement (1 if selected, 0 otherwise)
+req_vars = {r: model.addVar(vtype="B", name=r) for r in requirements}
+# Binary variables for each customer's satisfaction
+cust_sat_vars = {c: model.addVar(vtype="B", name=f'sat_{c}') for c in customers}
+# 4. Add Constraints
+# Constraint 1: Budget constraint
+model.addCons(sum(costs[r] * req_vars[r] for r in requirements) <= BUDGET)
+# Constraint 2: Feature Dependencies
+# If r2 is selected, r1 must also be selected (r2 -> r1  <=>  r2 <= r1)
+model.addCons(req_vars['r2'] <= req_vars['r1'])
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[t,fragile]{The Next Release Problem}
+	\tiny
+	\begin{verbatim}
+# Constraint 3: Customer Satisfaction
+# A customer is satisfied if all their requested requirements are met.
+for name, data in customers.items():
+    # This is equivalent to sat_c = AND(reqs), which can be modeled as:
+    # sat_c <= req_i for all req_i in data['reqs']
+    for req in data['reqs']:
+        model.addCons(cust_sat_vars[name] <= req_vars[req])
+    # sat_c >= sum(req_i) - (len(reqs) - 1)
+    model.addCons(cust_sat_vars[name] >= sum(req_vars[r] for r in data['reqs']) - (len(data['reqs']) - 1))
+# 5. Define Objective Function: Maximize total profit
+total_profit = sum(data['profit'] * cust_sat_vars[name] for name, data in customers.items())
+model.setObjective(total_profit, "maximize")
+# 6. Solve the problem
+model.optimize()
+# 7. Print the solution
+if model.getStatus() == "optimal":
+    print("Optimal Solution Found:")
+    selected_reqs = [r for r in requirements if model.getVal(req_vars[r]) > 0.9]
+    final_cost = sum(costs[r] for r in selected_reqs)
+    final_profit = model.getObjVal()
+    print(f"\nSelected Requirements: {', '.join(sorted(selected_reqs))}")
+    print(f"Total Cost: {final_cost} (Budget: {BUDGET})")
+    print("\nCustomer Satisfaction:")
+    for name, data in customers.items():
+        if model.getVal(cust_sat_vars[name]) > 0.9:
+            status = "SATISFIED"
+        else:
+            status = "NOT SATISFIED"
+        req_names = sorted(data['reqs'])
+        print(f"  - Customer {name} (requests {req_names}): {status}")
+    print(f"\nTotal Profit: {final_profit}")
+else:
+    print("No optimal solution found.")
+\end{verbatim}
+
+	
+\end{frame}
 
 \begin{frame}[t]{References and Further Reading}
     \begin{thebibliography}{10}
