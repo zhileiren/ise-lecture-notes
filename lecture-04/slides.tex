@@ -158,19 +158,21 @@ Early "debugging" was a physical, hardware-centric activity.
     \begin{column}{0.6\textwidth}
         \textbf{The Rise of Testing Theory}
         \begin{itemize}
+                \scriptsize
             \item \textbf{Black-box vs. White-box Testing}: Distinguishing between testing functionality (black-box) and testing internal structures (white-box).
             \item \textbf{Levels of Testing}: Unit, Integration, System, and Acceptance testing became standard concepts.
             \item \textbf{Static Analysis}: Compilers began to include more sophisticated warnings for potential code issues.
         \end{itemize}
         \textbf{The First Debugging Tools}
         \begin{itemize}
+                \scriptsize
             \item \textbf{Symbolic Debuggers} (e.g., gdb): Allowed programmers to interact with a running program, set breakpoints, and inspect variables symbolically.
             \item This was a monumental leap from raw core dumps.
         \end{itemize}
     \end{column}
     \begin{column}{0.4\textwidth}
-        % \includegraphics[width=0.8\textwidth]{images/gdb-screenshot.png}
-        \\\scriptsize{Early GNU Debugger (GDB) interface.}
+        \includegraphics[width=0.8\textwidth]{images/gdb.png}
+        \\\scriptsize{GNU Debugger (GDB)}
     \end{column}
 \end{columns}
 \end{frame}
@@ -298,15 +300,15 @@ System testing mainly includes functional testing, interface testing, reliabilit
     \begin{block}{Regression Testing}
 Regression testing refers to testing activities conducted during the software maintenance phase to detect errors introduced by code modifications. Regression testing is an important task in the software maintenance phase, with studies showing that the cost of regression testing accounts for more than one-third of the total cost of the software lifecycle.
 
-Unlike ordinary testing, at the beginning of the regression testing process, testers have a complete set of test cases available. Therefore, how to effectively reuse existing test case sets based on code modifications is an important direction in regression testing research. Additionally, research directions in regression testing involve automation tools, object-oriented regression testing, test case prioritization, and supplementary generation of regression test cases.
+% Unlike ordinary testing, at the beginning of the regression testing process, testers have a complete set of test cases available. Therefore, how to effectively reuse existing test case sets based on code modifications is an important direction in regression testing research. Additionally, research directions in regression testing involve automation tools, object-oriented regression testing, test case prioritization, and supplementary generation of regression test cases.
 \end{block}
 \end{frame}
 
-\begin{frame}[t]{Unit Testing}
-In computer programming, unit testing (English: Unit Testing), also known as module testing, is testing work conducted to verify the correctness of program modules (the smallest units of software design). A program unit is the smallest testable component of an application. In procedural programming, a unit is a single program, function, procedure, etc.; for object-oriented programming, the smallest unit is a method, including methods in base classes (superclasses), abstract classes, or derived classes (subclasses).
-
-Each ideal test case is independent of other cases; to isolate modules during testing, test harness programs such as stubs, mocks, or fakes are often used. Unit testing is typically written by software developers to ensure that their code meets software requirements and follows development goals. Its implementation can be very manual or integrated as part of build automation.\footnote{\url{https://en.wikipedia.org/wiki/Unit_testing}}
-\end{frame}
+% \begin{frame}[t]{Unit Testing}
+% In computer programming, unit testing (English: Unit Testing), also known as module testing, is testing work conducted to verify the correctness of program modules (the smallest units of software design). A program unit is the smallest testable component of an application. In procedural programming, a unit is a single program, function, procedure, etc.; for object-oriented programming, the smallest unit is a method, including methods in base classes (superclasses), abstract classes, or derived classes (subclasses).
+% 
+% Each ideal test case is independent of other cases; to isolate modules during testing, test harness programs such as stubs, mocks, or fakes are often used. Unit testing is typically written by software developers to ensure that their code meets software requirements and follows development goals. Its implementation can be very manual or integrated as part of build automation.\footnote{\url{https://en.wikipedia.org/wiki/Unit_testing}}
+% \end{frame}
 
 \begin{frame}[t]{Test Oracle}
 A test oracle, also known as a test criterion, is a mechanism used by software testers or software engineers to determine whether a test has passed. The test oracle determines the expected output of the product for a given test case input, which is then compared with the output of the system under test.
@@ -417,8 +419,7 @@ Common test oracles include:
 \end{frame}
 
 \begin{frame}[t]{Add a test}
-In test-driven development, each new feature begins with writing a test. Write a test that defines a function or improvements of a function, which should be very succinct. To write a test, the developer must clearly understand the feature's specification and requirements. The developer can accomplish this through use cases and user stories to cover the requirements and exception conditions, and can write the test in whatever testing framework is appropriate to the software environment. It could be a modified version of an existing test. This is a differentiating feature of test-driven development versus writing unit tests after the code is written: it makes the developer focus on the requirements before writing the code, a subtle but important difference.
-    
+In test-driven development, each new feature begins with writing a test. Write a test that defines a function or improvements of a function, which should be very succinct. The developer can accomplish this through use cases and user stories to cover the requirements and exception conditions, and can write the test in whatever testing framework is appropriate to the software environment. 
 \end{frame}
 
 
@@ -441,14 +442,14 @@ If all test cases now pass, the programmer can be confident that the new code me
 
 
 \begin{frame}[t]{Refactor code}
-The growing code base must be cleaned up regularly during test-driven development. New code can be moved from where it was convenient for passing a test to where it more logically belongs. Duplication must be removed. Object, class, module, variable and method names should clearly represent their current purpose and use, as extra functionality is added. As features are added, method bodies can get longer and other objects larger. They benefit from being split and their parts carefully named to improve readability and maintainability, which will be increasingly valuable later in the software lifecycle. 
+The growing code base must be cleaned up regularly during test-driven development. New code can be moved from where it was convenient for passing a test to where it more logically belongs. % Duplication must be removed. Object, class, module, variable and method names should clearly represent their current purpose and use, as extra functionality is added. As features are added, method bodies can get longer and other objects larger. They benefit from being split and their parts carefully named to improve readability and maintainability, which will be increasingly valuable later in the software lifecycle. 
     
 \end{frame}
 
 
 \begin{frame}[t]{Repeat}
     
-Starting with another new test, the cycle is then repeated to push forward the functionality. The size of the steps should always be small, with as few as 1 to 10 edits between each test run. If new code does not rapidly satisfy a new test, or other tests fail unexpectedly, the programmer should undo or revert in preference to excessive debugging. Continuous integration helps by providing revertible checkpoints. When using external libraries it is important not to make increments that are so small as to be effectively merely testing the library itself,[4] unless there is some reason to believe that the library is buggy or is not sufficiently feature-complete to serve all the needs of the software under development.
+Starting with another new test, the cycle is then repeated to push forward the functionality. The size of the steps should always be small, with as few as 1 to 10 edits between each test run. If new code does not rapidly satisfy a new test, or other tests fail unexpectedly, the programmer should undo or revert in preference to excessive debugging. Continuous integration helps by providing revertible checkpoints. %When using external libraries it is important not to make increments that are so small as to be effectively merely testing the library itself,[4] unless there is some reason to believe that the library is buggy or is not sufficiently feature-complete to serve all the needs of the software under development.
 \end{frame}
 
 \section{Research Topics in Software Testing}
@@ -477,6 +478,7 @@ Metamorphic relations (MRs) are necessary properties of the intended functionali
 \end{frame}
 
 \begin{frame}[t]{Evolutionary Fuzz Testing}
+    \centering
     \includegraphics[width=.5\textwidth]{images/evo_fuzz.png} 
 \end{frame}
 
@@ -588,17 +590,7 @@ Metamorphic relations (MRs) are necessary properties of the intended functionali
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Strict Input Challenge (Input File)}
-\begin{center}
-\includegraphics[width=0.8\textwidth]{example-image}
-\end{center}
-\begin{itemize}
-\item SDF file $\rightarrow$ DOM tree $\rightarrow$ Rendered scenario
-\item Load $\rightarrow$ Parse $\rightarrow$ Simulate
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Strict Input Challenge (Command)}
+\begin{frame}[fragile]{Strict Input Challenge}
 \begin{verbatim}
 gz service --timeout 10000 \
 -s /world/default/create \
@@ -618,12 +610,17 @@ name: "model"'
 
 \begin{frame}{State Space Challenge}
 \begin{itemize}
+        \scriptsize
 \item More than 100 plugins/modules
 \item Joints/links/sensors dynamically created
 \item More than 50 built-in services and topics
 \item Plugin-specific services and topics
 \item Command sequence of arbitrary length
 \end{itemize}
+\begin{figure}
+    \includegraphics[width=.6\textwidth]{images/state-space.png}
+    \caption{State Space Challenge}
+\end{figure}
 \end{frame}
 
 \begin{frame}[t]{Our Approach: GzFuzz}
@@ -632,25 +629,38 @@ name: "model"'
 \item Learning-based Command Generator Selection
 \end{itemize}
 \begin{center}
-\includegraphics[width=0.9\textwidth]{images/workflow.pdf}
+    \begin{figure}
+        \includegraphics[width=0.9\textwidth]{images/workflow.pdf}
+        \caption{GzFuzz}
+    \end{figure}
 \end{center}
 \end{frame}
 
-\begin{frame}{Syntax-aware Feasible Command Generation}
+\begin{frame}[t]{Syntax-aware Feasible Command Generation}
 \begin{itemize}
+\scriptsize
 \item For Generators 6–9, further determine specific parameters
 \item Ensures commands are both feasible and diverse
 \end{itemize}
+\begin{figure}
+    \includegraphics[width=.8\textwidth]{images/generators.png}
+    \caption{Command Generators}
+\end{figure}
 \end{frame}
 
-\begin{frame}{Learning-based Command Generator Selection}
+\begin{frame}[t]{Learning-based Command Generator Selection}
 \begin{itemize}
+        \scriptsize
 \item Simplified hierarchical reinforcement learning (Advantage Actor-Critic)
 \item Actors select command generators
 \item Sub-Actors select parameters
 \item Critic updates parameters of Actors and Sub-Actors
 \item Reward based on crash, coverage improvement, and diversity
 \end{itemize}
+\begin{figure}
+    \includegraphics[width=.4\textwidth]{images/reinforcement-learning.png}
+    \caption{Reinforcement Learning Module}
+\end{figure}
 \end{frame}
 
 \begin{frame}{Bug Detection}
@@ -683,32 +693,51 @@ name: "model"'
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Evaluation Results}
-\begin{center}
-\includegraphics[width=0.8\textwidth]{example-image}
-\end{center}
-\end{frame}
-
-\begin{frame}{Answer to RQ1}
+\begin{frame}[t]{Answer to RQ1}
 \begin{itemize}
 \item GzFuzz detected \textbf{25 unique crashes} in less than six months
 \item \textbf{24 bugs} were fixed or confirmed
 \end{itemize}
+\begin{figure}
+    \includegraphics[width=0.9\textwidth]{images/bugs1.png}
+    \caption{Detected Bugs}
+\end{figure}
 \end{frame}
 
-\begin{frame}{Answer to RQ2}
+\begin{frame}[t]{Answer to RQ1}
 \begin{itemize}
+\item GzFuzz detected \textbf{25 unique crashes} in less than six months
+\item \textbf{24 bugs} were fixed or confirmed
+\end{itemize}
+\begin{figure}
+    \includegraphics[width=0.9\textwidth]{images/bugs2.png}
+    \caption{Detected Bugs}
+\end{figure}
+\end{frame}
+
+\begin{frame}[t]{Answer to RQ2}
+\begin{itemize}
+        \scriptsize
 \item GzFuzz significantly outperforms baseline approaches
 \item Over 12-hour testing: more bugs detected on previous Gazebo release
 \item Statistically significant improvement
 \end{itemize}
+\begin{figure}
+    \includegraphics[width=0.7\textwidth]{images/rq2.png}
+    \caption{Comparison Between Baselines}
+\end{figure}
 \end{frame}
 
-\begin{frame}{Answer to RQ3}
+\begin{frame}[t]{Answer to RQ3}
 \begin{itemize}
+        \scriptsize
 \item Syntax-aware generators and RL-based selection both contribute
 \item Two mechanisms collectively enhance effectiveness
 \end{itemize}
+\begin{figure}
+    \includegraphics[width=0.8\textwidth]{images/rq3.png}
+    \caption{Ablation Study}
+\end{figure}
 \end{frame}
 
 \begin{frame}{Contributions}
